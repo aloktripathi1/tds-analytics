@@ -3,56 +3,218 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Platform Analytics: 4-Term Trends</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <title>TDS Deep Analytics | 4-Term Performance Dashboard</title>
+    <meta name="description" content="Deep data analysis of TDS graded assignments and ROE across 4 academic terms with hack detection">
+    <link href="https://fonts.googleapis.com/css2?family=Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="dashboard.css">
 </head>
 <body>
-    <div class="dashboard-container">
-        <header>
-            <h1>Platform Performance Analytics</h1>
-            <p>Deep-dive analysis across 4 consecutive academic terms</p>
-        </header>
-
-        <div class="stats-overview">
-            <div class="stat-card">
-                <h3>Total Terms</h3>
-                <div class="stat-value">4</div>
+    <!-- Sidebar Navigation -->
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-top">
+            <div class="sidebar-brand">
+                <div class="brand-icon">📊</div>
+                <span class="sidebar-text">TDS Analytics</span>
             </div>
-            <div class="stat-card">
-                <h3>Total Tracked Assignments</h3>
-                <div class="stat-value">25</div>
-            </div>
-            <div class="stat-card highlight-card">
-                <h3>Lowest Average</h3>
-                <div class="stat-value">28.5%</div>
-                <div class="stat-label">2025-05-ROE</div>
-            </div>
-            <div class="stat-card success-card">
-                <h3>Highest Average</h3>
-                <div class="stat-value">93.4%</div>
-                <div class="stat-label">2026-01-GA5</div>
-            </div>
+            <button class="sidebar-toggle" id="sidebar-toggle" aria-label="Toggle sidebar">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+            </button>
         </div>
+        <ul class="nav-links">
+            <li><a href="#" class="nav-link active" data-page="overview" id="nav-overview">
+                <span class="nav-icon">🏠</span> <span class="sidebar-text">Overview</span>
+            </a></li>
+            <li><a href="#" class="nav-link" data-page="ga-analysis" id="nav-ga">
+                <span class="nav-icon">📝</span> <span class="sidebar-text">GA Analysis</span>
+            </a></li>
+            <li><a href="#" class="nav-link" data-page="roe-analysis" id="nav-roe">
+                <span class="nav-icon">🎯</span> <span class="sidebar-text">ROE Analysis</span>
+            </a></li>
+            <li><a href="#" class="nav-link" data-page="hack-audit" id="nav-hack">
+                <span class="nav-icon">🏴‍☠️</span> <span class="sidebar-text">Hack Audit</span>
+            </a></li>
+            <li><a href="#" class="nav-link" data-page="difficulty" id="nav-difficulty">
+                <span class="nav-icon">🔥</span> <span class="sidebar-text">Difficulty Rank</span>
+            </a></li>
+        </ul>
+        <div class="sidebar-footer">
+            <p class="sidebar-text">Data from 4 Terms</p>
+            <p class="term-range sidebar-text">Jan 2025 → Jan 2026</p>
+        </div>
+    </nav>
 
-        <div class="charts-grid">
-            <div class="chart-wrapper">
-                <h2>Difficulty Index (Average Score %)</h2>
-                <div class="canvas-container">
-                    <canvas id="averageScoresChart"></canvas>
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- ==================== OVERVIEW PAGE ==================== -->
+        <section class="page active" id="page-overview">
+            <div class="page-header">
+                <h1>TDS Course Analysis</h1>
+                <p class="subtitle">Tools in Data Science — Cross-term intelligence across 4 consecutive academic sessions</p>
+            </div>
+
+            <div class="kpi-grid" id="kpi-grid">
+                <!-- Filled by JS -->
+            </div>
+
+            <div class="charts-row">
+                <div class="chart-card full-width">
+                    <h2>Average Score % Across All Terms</h2>
+                    <div class="chart-container"><canvas id="overviewAvgChart"></canvas></div>
                 </div>
             </div>
-            
-            <div class="chart-wrapper">
-                <h2>Student Retention (Total Submissions)</h2>
-                <div class="canvas-container">
-                    <canvas id="submissionDropoffChart"></canvas>
+            <div class="charts-row">
+                <div class="chart-card full-width">
+                    <h2>Student Retention Funnel (Unique Submissions)</h2>
+                    <div class="chart-container"><canvas id="overviewRetentionChart"></canvas></div>
                 </div>
             </div>
-        </div>
-    </div>
+        </section>
 
-    <script type="module" src="app.js"></script>
+        <!-- ==================== GA ANALYSIS PAGE ==================== -->
+        <section class="page" id="page-ga-analysis">
+            <div class="page-header">
+                <h1>Graded Assignment Analysis</h1>
+                <p class="subtitle">Per-GA performance comparison across all 4 terms</p>
+            </div>
+
+            <div class="filter-row">
+                <div class="ga-selector" id="ga-selector">
+                    <!-- GA Buttons filled by JS -->
+                </div>
+                <div class="term-filter">
+                    <label for="term-filter-select">Filter by Term:</label>
+                    <select id="term-filter-select" class="term-select">
+                        <option value="all">All Terms</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="ga-insights" id="ga-insights">
+                <!-- Filled by JS -->
+            </div>
+
+            <div class="ga-comparison-table-wrapper">
+                <table class="data-table" id="ga-comparison-table">
+                    <thead><tr><th>Metric</th></tr></thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+
+            <div class="charts-row">
+                <div class="chart-card">
+                    <h2>Gross Average % by GA</h2>
+                    <div class="chart-container"><canvas id="gaGrossChart"></canvas></div>
+                </div>
+                <div class="chart-card">
+                    <h2>Honest Average % by GA (Excluding Hacks)</h2>
+                    <div class="chart-container"><canvas id="gaHonestChart"></canvas></div>
+                </div>
+            </div>
+
+            <div class="charts-row">
+                <div class="chart-card full-width">
+                    <h2>Perfect Score Rate by GA</h2>
+                    <div class="chart-container"><canvas id="gaPerfectChart"></canvas></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== ROE ANALYSIS PAGE ==================== -->
+        <section class="page" id="page-roe-analysis">
+            <div class="page-header">
+                <h1>Remote Online Exam (ROE) Deep Dive</h1>
+                <p class="subtitle">The most punishing assessments on the platform</p>
+            </div>
+
+            <div class="roe-insights" id="roe-insights">
+                <!-- Filled by JS -->
+            </div>
+
+            <div class="roe-cards" id="roe-cards">
+                <!-- Filled by JS -->
+            </div>
+
+            <div class="charts-row">
+                <div class="chart-card">
+                    <h2>ROE: Gross vs Honest Average</h2>
+                    <div class="chart-container"><canvas id="roeCompareChart"></canvas></div>
+                </div>
+                <div class="chart-card">
+                    <h2>ROE: Hack Rate per Term</h2>
+                    <div class="chart-container"><canvas id="roeHackChart"></canvas></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== HACK AUDIT PAGE ==================== -->
+        <section class="page" id="page-hack-audit">
+            <div class="page-header">
+                <h1>Bypass / Hack Audit</h1>
+                <p class="subtitle">Students who submitted empty string ("") answers — bypassing the actual questions</p>
+            </div>
+
+            <div class="hack-summary-row" id="hack-summary-row">
+                <!-- Filled by JS -->
+            </div>
+
+            <div class="charts-row">
+                <div class="chart-card full-width">
+                    <h2>Hack % Across All Assignments & Terms</h2>
+                    <div class="chart-container tall"><canvas id="hackBarChart"></canvas></div>
+                </div>
+            </div>
+
+            <div class="hack-table-wrapper">
+                <h2>Full Hack Audit Table</h2>
+                <table class="data-table" id="hack-table">
+                    <thead>
+                        <tr>
+                            <th>Term</th>
+                            <th>Exam</th>
+                            <th>Total Students</th>
+                            <th>Hacked</th>
+                            <th>Hack %</th>
+                            <th>Gross Avg</th>
+                            <th>Honest Avg</th>
+                            <th>Score Inflation</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- ==================== DIFFICULTY RANKING PAGE ==================== -->
+        <section class="page" id="page-difficulty">
+            <div class="page-header">
+                <h1>Difficulty Rankings</h1>
+                <p class="subtitle">Every assignment ranked by honest average — the true difficulty measure</p>
+            </div>
+
+            <div class="difficulty-table-wrapper">
+                <table class="data-table" id="difficulty-table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Assignment</th>
+                            <th>Term</th>
+                            <th>Students</th>
+                            <th>Gross Avg %</th>
+                            <th>Honest Avg %</th>
+                            <th>Hack %</th>
+                            <th>Perfect %</th>
+                            <th>Difficulty</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <script type="module" src="dashboard_app.js"></script>
 </body>
 </html>
