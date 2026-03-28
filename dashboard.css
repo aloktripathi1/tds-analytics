@@ -26,7 +26,7 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-  font-family: 'Jakarta Sans', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   background: var(--bg-body);
   color: var(--text-primary);
   min-height: 100vh;
@@ -398,7 +398,7 @@ body {
   border: 1px solid var(--border-subtle);
   background: var(--bg-card);
   color: var(--text-secondary);
-  font-family: 'Jakarta Sans', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 600;
   font-size: 0.85rem;
   cursor: pointer;
@@ -553,7 +553,7 @@ body {
 }
 
 .term-select {
-  font-family: 'Jakarta Sans', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 0.88rem;
   font-weight: 600;
   padding: 8px 16px;

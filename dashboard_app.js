@@ -2,7 +2,7 @@ import { analysisData, insights } from './analysis_data.js';
 
 // ===== Chart.js Global Config =====
 Chart.defaults.color = '#8b95a8';
-Chart.defaults.font.family = "'Jakarta Sans', sans-serif";
+Chart.defaults.font.family = "'Plus Jakarta Sans', sans-serif";
 Chart.defaults.font.weight = 500;
 
 const TERMS = Object.keys(analysisData);
