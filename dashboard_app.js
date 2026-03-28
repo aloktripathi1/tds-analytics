@@ -437,8 +437,55 @@ function renderGAAnalysis() {
     );
   }
 
+  const BUCKET_LABELS = ['0-10%','10-20%','20-30%','30-40%','40-50%','50-60%','60-70%','70-80%','80-90%','90-99%','100%'];
+
+  function updateDistribution() {
+    const activeTerms = getActiveTerms();
+    document.getElementById('distributionTitle').textContent = `Score Distribution — ${selectedGA}`;
+
+    destroyChart('gaDistributionChart');
+    chartInstances['gaDistributionChart'] = new Chart(
+      document.getElementById('gaDistributionChart'), {
+        type: 'bar',
+        data: {
+          labels: BUCKET_LABELS,
+          datasets: activeTerms.filter(t => analysisData[t]?.[selectedGA]).map(t => ({
+            label: t,
+            data: analysisData[t][selectedGA].percentBuckets,
+            backgroundColor: TERM_COLORS[t].border + 'aa',
+            borderColor: TERM_COLORS[t].border,
+            borderWidth: 1,
+            borderRadius: 4
+          }))
+        },
+        options: {
+          responsive: true, maintainAspectRatio: false,
+          plugins: {
+            tooltip: {
+              callbacks: {
+                label: ctx => `${ctx.dataset.label}: ${ctx.raw} students`
+              }
+            }
+          },
+          scales: {
+            y: {
+              beginAtZero: true,
+              title: { display: true, text: 'Number of Students', color: '#8b95a8' },
+              grid: { color: 'rgba(255,255,255,0.04)' }
+            },
+            x: {
+              title: { display: true, text: 'Score Range', color: '#8b95a8' },
+              grid: { display: false }
+            }
+          }
+        }
+      }
+    );
+  }
+
   updateTable();
   updateCharts();
+  updateDistribution();
 
   // Event: GA button click
   selectorEl.querySelectorAll('.ga-btn').forEach(btn => {
@@ -447,6 +494,7 @@ function renderGAAnalysis() {
       btn.classList.add('active');
       selectedGA = btn.dataset.ga;
       updateTable();
+      updateDistribution();
     });
   });
 
@@ -455,6 +503,7 @@ function renderGAAnalysis() {
     selectedTerm = termSelect.value;
     updateTable();
     updateCharts();
+    updateDistribution();
   });
 
   // Render GA insights
