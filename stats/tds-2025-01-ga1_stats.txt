@@ -1,0 +1,50 @@
+
+📊 Submission Statistics: tds-2025-01-ga1
+══════════════════════════════════════════════════
+   Total Submissions: 1504
+   Unique Students: 1500
+   Average Score: 6.84/10
+   Percentage: 68.4%
+
+   Score Distribution:
+     10/10: ███████████ (407 students)
+   9.75/10: █ (4 students)
+    9.5/10: ███ (86 students)
+   9.25/10: ██ (46 students)
+      9/10: ██ (56 students)
+   8.75/10: ██ (49 students)
+    8.5/10: █ (34 students)
+   8.25/10: ██ (63 students)
+      8/10: █ (31 students)
+   7.75/10: █ (29 students)
+    7.5/10: █ (33 students)
+   7.25/10: █ (22 students)
+      7/10: █ (33 students)
+   6.75/10: █ (23 students)
+    6.5/10: █ (29 students)
+   6.25/10: █ (15 students)
+      6/10: █ (31 students)
+   5.75/10: █ (16 students)
+    5.5/10: █ (33 students)
+   5.25/10: █ (25 students)
+      5/10: █ (21 students)
+   4.75/10: █ (18 students)
+    4.5/10: █ (22 students)
+   4.25/10: █ (28 students)
+      4/10: █ (23 students)
+   3.75/10: █ (25 students)
+    3.5/10: █ (19 students)
+   3.25/10: █ (17 students)
+      3/10: █ (16 students)
+   2.75/10: █ (21 students)
+    2.5/10: █ (14 students)
+   2.25/10: █ (22 students)
+      2/10: █ (15 students)
+   1.75/10: █ (11 students)
+    1.5/10: █ (12 students)
+   1.25/10: █ (25 students)
+      1/10: █ (13 students)
+   0.75/10: █ (17 students)
+    0.5/10: █ (19 students)
+   0.25/10: ██ (47 students)
+      0/10: █ (34 students)

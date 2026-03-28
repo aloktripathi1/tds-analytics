@@ -1,0 +1,22 @@
+
+📊 Submission Statistics: tds-2025-01-roe
+══════════════════════════════════════════════════
+   Total Submissions: 1017
+   Unique Students: 1017
+   Average Score: 5.62/12
+   Percentage: 46.8%
+
+   Score Distribution:
+     12/12: █ (2 students)
+     10/12: ███ (53 students)
+      9/12: ███ (55 students)
+      8/12: █████ (104 students)
+      7/12: ███████ (168 students)
+      6/12: ███████ (168 students)
+      5/12: ███████ (174 students)
+      4/12: █████ (104 students)
+      3/12: ████ (84 students)
+      2/12: ███ (53 students)
+      1/12: █ (24 students)
+      0/12: █ (10 students)
+     -1/12: █ (18 students)

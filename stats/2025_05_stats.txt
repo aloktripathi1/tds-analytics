@@ -1,0 +1,310 @@
+
+📊 Submission Statistics: tds-2025-05-ga1
+══════════════════════════════════════════════════
+   Total Submissions: 1138
+   Unique Students: 1138
+   Average Score: 7.38/10
+   Percentage: 73.8%
+
+   Score Distribution:
+     10/10: █████████████ (358 students)
+    9.5/10: █████ (116 students)
+   9.25/10: █ (9 students)
+      9/10: ███ (61 students)
+   8.75/10: █ (14 students)
+    8.5/10: ██ (38 students)
+   8.25/10: ██ (31 students)
+      8/10: ██ (32 students)
+   7.75/10: █ (25 students)
+    7.5/10: █ (13 students)
+   7.25/10: █ (26 students)
+      7/10: █ (19 students)
+   6.75/10: █ (20 students)
+    6.5/10: ██ (30 students)
+   6.25/10: █ (18 students)
+      6/10: █ (17 students)
+   5.75/10: █ (17 students)
+    5.5/10: █ (16 students)
+   5.25/10: █ (17 students)
+      5/10: █ (21 students)
+   4.75/10: █ (17 students)
+    4.5/10: █ (10 students)
+   4.25/10: █ (20 students)
+      4/10: █ (10 students)
+   3.75/10: █ (10 students)
+    3.5/10: █ (14 students)
+   3.25/10: █ (11 students)
+      3/10: █ (15 students)
+   2.75/10: █ (11 students)
+    2.5/10: █ (13 students)
+   2.25/10: █ (9 students)
+      2/10: █ (4 students)
+   1.75/10: █ (13 students)
+    1.5/10: █ (9 students)
+   1.25/10: █ (20 students)
+      1/10: █ (7 students)
+   0.75/10: █ (6 students)
+    0.5/10: █ (16 students)
+   0.25/10: █ (12 students)
+      0/10: █ (13 students)
+
+--------------------------------------------------
+
+📊 Submission Statistics: tds-2025-05-ga2
+══════════════════════════════════════════════════
+   Total Submissions: 1166
+   Unique Students: 1166
+   Average Score: 5.76/10
+   Percentage: 57.6%
+
+   Score Distribution:
+     10/10: ████████ (209 students)
+   9.75/10: █ (1 students)
+    9.5/10: █ (1 students)
+   9.25/10: █ (8 students)
+      9/10: █████ (122 students)
+   8.75/10: █ (1 students)
+    8.5/10: █ (7 students)
+   8.25/10: █ (14 students)
+      8/10: ███ (74 students)
+   7.75/10: █ (1 students)
+    7.5/10: █ (27 students)
+   7.25/10: █ (14 students)
+      7/10: █ (28 students)
+   6.75/10: █ (12 students)
+    6.5/10: ██ (37 students)
+   6.25/10: █ (11 students)
+      6/10: █ (14 students)
+   5.75/10: █ (20 students)
+    5.5/10: ██ (44 students)
+   5.25/10: █ (9 students)
+      5/10: █ (16 students)
+   4.75/10: █ (27 students)
+    4.5/10: ██ (42 students)
+   4.25/10: █ (13 students)
+      4/10: █ (9 students)
+   3.75/10: █ (25 students)
+    3.5/10: ██ (34 students)
+   3.25/10: █ (18 students)
+      3/10: █ (15 students)
+   2.75/10: █ (21 students)
+    2.5/10: ██ (36 students)
+   2.25/10: █ (25 students)
+      2/10: ██ (37 students)
+   1.75/10: ██ (31 students)
+    1.5/10: █ (25 students)
+   1.25/10: ██ (39 students)
+      1/10: █ (8 students)
+   0.75/10: ██ (39 students)
+    0.5/10: █ (28 students)
+   0.25/10: █ (7 students)
+      0/10: █ (17 students)
+
+--------------------------------------------------
+
+📊 Submission Statistics: tds-2025-05-ga3
+══════════════════════════════════════════════════
+   Total Submissions: 1092
+   Unique Students: 1092
+   Average Score: 7.02/10
+   Percentage: 70.2%
+
+   Score Distribution:
+     10/10: ████████████████ (428 students)
+    9.5/10: █ (22 students)
+      9/10: ████ (88 students)
+   8.75/10: █ (1 students)
+    8.5/10: █ (10 students)
+   8.25/10: █ (1 students)
+      8/10: ██ (54 students)
+   7.75/10: █ (2 students)
+    7.5/10: █ (10 students)
+   7.25/10: █ (2 students)
+      7/10: ██ (43 students)
+    6.5/10: █ (12 students)
+   6.25/10: █ (3 students)
+      6/10: █ (21 students)
+   5.75/10: █ (1 students)
+    5.5/10: ██ (32 students)
+   5.25/10: █ (2 students)
+      5/10: ██ (28 students)
+    4.5/10: ██ (42 students)
+   4.25/10: █ (2 students)
+      4/10: █ (24 students)
+   3.75/10: █ (1 students)
+    3.5/10: ███ (58 students)
+   3.25/10: █ (5 students)
+      3/10: ██ (46 students)
+   2.75/10: █ (3 students)
+    2.5/10: █ (27 students)
+   2.25/10: █ (2 students)
+      2/10: ██ (45 students)
+    1.5/10: █ (20 students)
+   1.25/10: █ (2 students)
+      1/10: █ (17 students)
+   0.75/10: █ (1 students)
+    0.5/10: ██ (32 students)
+   0.25/10: █ (1 students)
+      0/10: █ (4 students)
+
+--------------------------------------------------
+
+📊 Submission Statistics: tds-2025-05-ga4
+══════════════════════════════════════════════════
+   Total Submissions: 1089
+   Unique Students: 1089
+   Average Score: 8.12/10
+   Percentage: 81.2%
+
+   Score Distribution:
+     10/10: █████████████████████ (555 students)
+    9.5/10: █ (13 students)
+   9.25/10: █ (2 students)
+      9/10: █████ (124 students)
+   8.75/10: █ (1 students)
+    8.5/10: █ (23 students)
+   8.25/10: █ (3 students)
+      8/10: ███ (68 students)
+   7.75/10: █ (3 students)
+    7.5/10: █ (25 students)
+   7.25/10: █ (3 students)
+      7/10: █ (25 students)
+   6.75/10: █ (7 students)
+    6.5/10: █ (17 students)
+   6.25/10: █ (9 students)
+      6/10: █ (16 students)
+   5.75/10: █ (4 students)
+    5.5/10: █ (14 students)
+   5.25/10: █ (4 students)
+      5/10: █ (10 students)
+   4.75/10: █ (9 students)
+    4.5/10: █ (8 students)
+   4.25/10: █ (9 students)
+      4/10: █ (14 students)
+   3.75/10: █ (2 students)
+    3.5/10: █ (6 students)
+   3.25/10: █ (5 students)
+      3/10: █ (5 students)
+   2.75/10: █ (10 students)
+    2.5/10: █ (7 students)
+   2.25/10: █ (13 students)
+   1.75/10: █ (11 students)
+    1.5/10: █ (3 students)
+   1.25/10: █ (20 students)
+   0.75/10: █ (9 students)
+   0.25/10: ██ (29 students)
+      0/10: █ (3 students)
+
+--------------------------------------------------
+
+📊 Submission Statistics: tds-2025-05-ga5
+══════════════════════════════════════════════════
+   Total Submissions: 1030
+   Unique Students: 1030
+   Average Score: 8.34/10
+   Percentage: 83.4%
+
+   Score Distribution:
+     10/10: █████████████████ (430 students)
+    9.5/10: ██ (33 students)
+      9/10: ████████ (206 students)
+    8.5/10: ██ (33 students)
+      8/10: ████ (85 students)
+    7.5/10: ██ (38 students)
+      7/10: ██ (26 students)
+    6.5/10: █ (19 students)
+      6/10: █ (18 students)
+    5.5/10: █ (21 students)
+      5/10: █ (18 students)
+    4.5/10: █ (13 students)
+      4/10: █ (16 students)
+    3.5/10: █ (11 students)
+      3/10: █ (11 students)
+    2.5/10: █ (11 students)
+      2/10: █ (5 students)
+    1.5/10: █ (8 students)
+      1/10: █ (10 students)
+    0.5/10: █ (12 students)
+      0/10: █ (6 students)
+
+--------------------------------------------------
+
+📊 Submission Statistics: tds-2025-05-ga6
+══════════════════════════════════════════════════
+   Total Submissions: 815
+   Unique Students: 815
+   Average Score: 8.81/10
+   Percentage: 88.1%
+
+   Score Distribution:
+     10/10: ██████████████████████ (438 students)
+   9.75/10: ██ (35 students)
+    9.5/10: █ (17 students)
+   9.25/10: █ (3 students)
+      9/10: █████ (98 students)
+   8.75/10: ██ (32 students)
+    8.5/10: █ (16 students)
+   8.25/10: █ (7 students)
+      8/10: ██ (39 students)
+   7.75/10: █ (12 students)
+    7.5/10: █ (7 students)
+   7.25/10: █ (4 students)
+      7/10: █ (15 students)
+   6.75/10: █ (7 students)
+    6.5/10: █ (7 students)
+   6.25/10: █ (4 students)
+      6/10: █ (7 students)
+   5.75/10: █ (2 students)
+    5.5/10: █ (1 students)
+   5.25/10: █ (1 students)
+      5/10: █ (3 students)
+    4.5/10: █ (3 students)
+      4/10: █ (6 students)
+   3.75/10: █ (2 students)
+    3.5/10: █ (4 students)
+   3.25/10: █ (2 students)
+      3/10: █ (5 students)
+   2.75/10: █ (1 students)
+    2.5/10: █ (3 students)
+   2.25/10: █ (1 students)
+      2/10: █ (2 students)
+   1.75/10: █ (3 students)
+    1.5/10: █ (3 students)
+   1.25/10: █ (3 students)
+      1/10: █ (7 students)
+   0.75/10: █ (1 students)
+    0.5/10: █ (5 students)
+   0.25/10: █ (3 students)
+      0/10: █ (6 students)
+
+--------------------------------------------------
+
+📊 Submission Statistics: tds-2025-05-ga7
+══════════════════════════════════════════════════
+   Total Submissions: 219
+   Unique Students: 219
+   Average Score: 7.01/10
+   Percentage: 70.1%
+
+   Score Distribution:
+     10/10: ███████████████ (82 students)
+      9/10: ███ (11 students)
+    8.5/10: ████ (17 students)
+      8/10: █ (3 students)
+    7.5/10: ██ (9 students)
+      7/10: ██ (10 students)
+    6.5/10: █ (5 students)
+      6/10: ██ (7 students)
+    5.5/10: ██ (8 students)
+      5/10: ██ (6 students)
+    4.5/10: ██ (8 students)
+      4/10: █ (4 students)
+    3.5/10: ███ (16 students)
+      3/10: █ (1 students)
+    2.5/10: ███ (11 students)
+      2/10: █ (2 students)
+    1.5/10: █ (5 students)
+      1/10: ███ (11 students)
+      0/10: █ (3 students)
+
+--------------------------------------------------

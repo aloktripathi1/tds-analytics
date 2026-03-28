@@ -1,0 +1,80 @@
+
+📊 Submission Statistics: tds-2025-01-roe
+══════════════════════════════════════════════════
+   Total Submissions: 1017
+   Unique Students: 1017
+   Average Score: 5.62/12
+   Percentage: 46.8%
+
+   Score Distribution:
+     12/12: █ (2 students)
+     10/12: ███ (53 students)
+      9/12: ███ (55 students)
+      8/12: █████ (104 students)
+      7/12: ███████ (168 students)
+      6/12: ███████ (168 students)
+      5/12: ███████ (174 students)
+      4/12: █████ (104 students)
+      3/12: ████ (84 students)
+      2/12: ███ (53 students)
+      1/12: █ (24 students)
+      0/12: █ (10 students)
+     -1/12: █ (18 students)
+
+--------------------------------------------------
+
+📊 Submission Statistics: tds-2025-05-roe
+══════════════════════════════════════════════════
+   Total Submissions: 913
+   Unique Students: 911
+   Average Score: 2.85/10
+   Percentage: 28.5%
+
+   Score Distribution:
+     10/10: ██ (36 students)
+      9/10: █ (4 students)
+      8/10: █ (3 students)
+      7/10: █ (3 students)
+      6/10: █ (10 students)
+      5/10: ███ (46 students)
+      4/10: █████ (112 students)
+      3/10: ████████████ (271 students)
+      2/10: ███████████ (236 students)
+      1/10: ███████ (154 students)
+      0/10: ██ (26 students)
+     -1/10: █ (12 students)
+
+--------------------------------------------------
+
+📊 Submission Statistics: tds-2025-09-roe
+══════════════════════════════════════════════════
+   Total Submissions: 1132
+   Unique Students: 1132
+   Average Score: 4.01/10
+   Percentage: 40.1%
+
+   Score Distribution:
+     10/10: ████ (108 students)
+    9.5/10: █ (1 students)
+      9/10: ████ (112 students)
+    8.5/10: █ (6 students)
+      8/10: █████ (130 students)
+    7.5/10: █ (20 students)
+      7/10: ████ (100 students)
+    6.5/10: █ (28 students)
+      6/10: ███ (58 students)
+    5.5/10: █ (28 students)
+      5/10: █ (23 students)
+    4.5/10: █ (12 students)
+      4/10: █ (4 students)
+    3.5/10: █ (8 students)
+      3/10: █ (5 students)
+    2.5/10: █ (9 students)
+      2/10: █ (5 students)
+    1.5/10: █ (3 students)
+      1/10: █ (7 students)
+    0.5/10: █ (2 students)
+      0/10: █ (2 students)
+     -1/10: █████████████████ (461 students)
+
+--------------------------------------------------
