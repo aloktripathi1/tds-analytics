@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Platform Analytics: 4-Term Trends</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="dashboard-container">
+        <header>
+            <h1>Platform Performance Analytics</h1>
+            <p>Deep-dive analysis across 4 consecutive academic terms</p>
+        </header>
+
+        <div class="stats-overview">
+            <div class="stat-card">
+                <h3>Total Terms</h3>
+                <div class="stat-value">4</div>
+            </div>
+            <div class="stat-card">
+                <h3>Total Tracked Assignments</h3>
+                <div class="stat-value">25</div>
+            </div>
+            <div class="stat-card highlight-card">
+                <h3>Lowest Average</h3>
+                <div class="stat-value">28.5%</div>
+                <div class="stat-label">2025-05-ROE</div>
+            </div>
+            <div class="stat-card success-card">
+                <h3>Highest Average</h3>
+                <div class="stat-value">93.4%</div>
+                <div class="stat-label">2026-01-GA5</div>
+            </div>
+        </div>
+
+        <div class="charts-grid">
+            <div class="chart-wrapper">
+                <h2>Difficulty Index (Average Score %)</h2>
+                <div class="canvas-container">
+                    <canvas id="averageScoresChart"></canvas>
+                </div>
+            </div>
+            
+            <div class="chart-wrapper">
+                <h2>Student Retention (Total Submissions)</h2>
+                <div class="canvas-container">
+                    <canvas id="submissionDropoffChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="app.js"></script>
+</body>
+</html>
