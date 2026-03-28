@@ -627,3 +627,44 @@ body {
   color: var(--text-secondary);
   line-height: 1.5;
 }
+
+/* ===== METHODOLOGY NOTE ===== */
+.methodology-note {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  background: rgba(79, 143, 247, 0.04);
+  border: 1px solid rgba(79, 143, 247, 0.12);
+  border-radius: var(--radius-md);
+  padding: 22px 26px;
+  margin-top: 30px;
+}
+
+.methodology-note .methodology-icon {
+  font-size: 1.5rem;
+  min-width: 32px;
+  margin-top: 2px;
+}
+
+.methodology-note .methodology-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--accent-blue);
+  margin-bottom: 8px;
+}
+
+.methodology-note p {
+  font-size: 0.84rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  margin: 0;
+}
+
+.methodology-note code {
+  background: rgba(79, 143, 247, 0.1);
+  color: var(--accent-cyan);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.82rem;
+  font-family: 'Fira Code', 'Consolas', monospace;
+}

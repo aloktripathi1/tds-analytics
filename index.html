@@ -193,6 +193,14 @@
                     <tbody></tbody>
                 </table>
             </div>
+
+            <div class="methodology-note">
+                <div class="methodology-icon">ℹ️</div>
+                <div>
+                    <div class="methodology-title">How is this Hack Audit counted?</div>
+                    <p>Students who bypassed a Graded Assignment (GA) or Remote Online Exam (ROE) submitted their answers as <strong>empty strings (<code>""</code>)</strong> instead of actual responses. When the submission JSON is parsed, their <code>result.answers</code> object contains one or more fields with a value of <code>""</code> (empty string) or <code>null</code>. Any student with <strong>at least one empty-string answer</strong> in their submission is flagged as a "bypassed" submission. The <strong>Honest Average</strong> is then recalculated by completely excluding these flagged submissions from the score computation — giving a clearer picture of how the exam truly performed for students who genuinely attempted the questions.</p>
+                </div>
+            </div>
         </section>
 
         <!-- ==================== DIFFICULTY RANKING PAGE ==================== -->
