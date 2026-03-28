@@ -1,0 +1,4 @@
+submissions/
+node_modules/
+parser_output.txt
+*.log
