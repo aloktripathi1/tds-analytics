@@ -29,8 +29,16 @@ document.querySelectorAll('.nav-link').forEach(link => {
 });
 
 // ===== SIDEBAR COLLAPSE =====
-document.getElementById('sidebar-toggle').addEventListener('click', () => {
-  document.getElementById('sidebar').classList.toggle('collapsed');
+const sidebarEl = document.getElementById('sidebar');
+const sidebarToggleBtn = document.getElementById('sidebar-toggle');
+
+sidebarToggleBtn.addEventListener('click', () => {
+  sidebarEl.classList.toggle('collapsed');
+  const expanded = !sidebarEl.classList.contains('collapsed');
+  sidebarToggleBtn.setAttribute('aria-expanded', String(expanded));
+  sidebarToggleBtn.setAttribute('aria-label', expanded ? 'Collapse sidebar' : 'Expand sidebar');
+  sidebarToggleBtn.setAttribute('title', expanded ? 'Collapse sidebar' : 'Expand sidebar');
+
   // Trigger chart resize after transition completes
   setTimeout(() => {
     Object.values(chartInstances).forEach(c => c.resize());
@@ -185,8 +193,8 @@ function generateROEInsights() {
   const totalROEHacks = roeData.reduce((s,d) => s + d.hackCount, 0);
   insightCards.push({
     icon: '🏴‍☠️',
-    title: 'Massive Bypass Epidemic in ROEs',
-    body: `An average of <strong>${avgHack}%</strong> of ROE submissions are bypassed across all terms. That's <strong>${totalROEHacks.toLocaleString()}</strong> total hacked submissions. <strong>${roeData.sort((a,b)=>b.hackPercent-a.hackPercent)[0].term}</strong> was worst at <strong>${roeData[0].hackPercent}%</strong> — nearly every student used the exploit.`,
+    title: 'Bypass Exploit in ROEs',
+    body: `An average of <strong>${avgHack}%</strong> of ROE submissions used the bypass exploit across all terms. That's <strong>${totalROEHacks.toLocaleString()}</strong> total hacked submissions. <strong>${roeData.sort((a,b)=>b.hackPercent-a.hackPercent)[0].term}</strong> was worst at <strong>${roeData[0].hackPercent}%</strong>.`,
     type: 'hack'
   });
 
@@ -617,6 +625,14 @@ function renderHackAudit() {
   `;
 
   allRows.sort((a, b) => b.hackPercent - a.hackPercent);
+  const maxHackPercent = allRows.length ? Math.max(...allRows.map(r => r.hackPercent)) : 0;
+  // Keep a zero baseline for truthful comparisons, but fit max to real data range.
+  const xAxisMax = Math.max(5, Math.ceil(maxHackPercent * 1.15));
+  let xTickStep = 1;
+  if (xAxisMax > 15) xTickStep = 2;
+  if (xAxisMax > 30) xTickStep = 5;
+  if (xAxisMax > 60) xTickStep = 10;
+
   destroyChart('hackBarChart');
   chartInstances['hackBarChart'] = new Chart(
     document.getElementById('hackBarChart'), {
@@ -640,7 +656,12 @@ function renderHackAudit() {
         responsive: true, maintainAspectRatio: false,
         plugins: { legend: { display: false } },
         scales: {
-          x: { min: 0, max: 100, ticks: { callback: v => v + '%' }, grid: { color: 'rgba(255,255,255,0.04)' } },
+          x: {
+            min: 0,
+            max: xAxisMax,
+            ticks: { stepSize: xTickStep, callback: v => v + '%' },
+            grid: { color: 'rgba(255,255,255,0.04)' }
+          },
           y: { grid: { display: false } }
         }
       }

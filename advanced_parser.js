@@ -32,7 +32,7 @@ function analyzeFile(filePath, quizId) {
   let perfectCount = 0;
   let zeroCount = 0;
   let negativeCount = 0;
-  let hackCount = 0;     // students with at least one "" answer
+  let hackCount = 0;     // students with at least one bypassed empty answer ("" + marks)
   let totalEmptyAnswers = 0;
   let totalAnswerFields = 0;
   let hackStudentEmails = [];
@@ -70,20 +70,26 @@ function analyzeFile(filePath, quizId) {
     if (score === 0) zeroCount++;
     if (score < 0) negativeCount++;
     
-    // Hack detection: check if any answer is empty string ""
+    // Bypass detection: answer is exactly "" and still got marks.
+    // Empty string with 0 marks is a normal unanswered response.
     const answers = s.result?.answers || {};
-    const answerValues = Object.values(answers);
-    totalAnswerFields += answerValues.length;
+    const scores = s.scores || {};
+    const answerEntries = Object.entries(answers);
+    totalAnswerFields += answerEntries.length;
     
-    let hasEmptyAnswer = false;
-    answerValues.forEach(v => {
-      if (v === '' || v === null) {
-        totalEmptyAnswers++;
-        hasEmptyAnswer = true;
+    let hasBypassedAnswer = false;
+    answerEntries.forEach(([qKey, v]) => {
+      if (v === '') {
+        if (scores[qKey] > 0) {
+          // Empty answer but got marks = actual bypass exploit
+          totalEmptyAnswers++;
+          hasBypassedAnswer = true;
+        }
+        // Empty answer with 0 marks = just didn't answer, not a bypass
       }
     });
     
-    if (hasEmptyAnswer) {
+    if (hasBypassedAnswer) {
       hackCount++;
       hackStudentEmails.push(s.email);
     } else {

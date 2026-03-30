@@ -38,11 +38,11 @@ A deep data analytics dashboard for the **Tools in Data Science (TDS)** course, 
 
 | Metric | Value |
 |---|---|
-| **Hardest Assignment (Honest Avg)** | 2025-09 ROE → 54.5% |
-| **Easiest Assignment (Honest Avg)** | 2025-05 GA1 → 98% |
-| **Most Bypassed** | 2025-05 ROE → 97% hack rate (884/911 students) |
+| **Hardest Assignment (Honest Avg)** | 2025-05 ROE → 26.5% |
+| **Easiest Assignment (Honest Avg)** | 2026-01 GA5 → 93.4% |
+| **Most Bypassed** | 2025-05 GA7 → 10.0% bypass rate (22/219 students) |
 | **Total Submissions Analyzed** | 25,000+ |
-| **Overall Bypass Rate** | ~53% |
+| **Overall Bypass Rate** | 2.66% |
 
 ---
 

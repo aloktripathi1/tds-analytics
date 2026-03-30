@@ -1,4 +1,5 @@
 :root {
+  --font-ui: "Plus Jakarta Sans", "Manrope", "SF Pro Text", "SF Pro Display", -apple-system, BlinkMacSystemFont, "Roboto", "Noto Sans", "Ubuntu", "Cantarell", "Helvetica Neue", Arial, sans-serif;
   --bg-primary: #0f172a;
   --bg-secondary: rgba(30, 41, 59, 0.7);
   --text-main: #f8fafc;
@@ -11,7 +12,7 @@
 
 body {
   margin: 0;
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-ui);
   background-color: var(--bg-primary);
   color: var(--text-main);
   background-image: radial-gradient(circle at 15% 50%, rgba(59, 130, 246, 0.15), transparent 25%),
