@@ -17,16 +17,15 @@
                 <div class="brand-icon">📊</div>
                 <span class="sidebar-text">TDS Analytics</span>
             </div>
-            <button class="sidebar-toggle" id="sidebar-toggle" aria-label="Toggle sidebar">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                    <polyline points="15 18 9 12 15 6"></polyline>
-                </svg>
-            </button>
         </div>
+
         <ul class="nav-links">
+            <li class="nav-section-label sidebar-text">Main</li>
             <li><a href="#" class="nav-link active" data-page="overview" id="nav-overview">
                 <span class="nav-icon">🏠</span> <span class="sidebar-text">Overview</span>
             </a></li>
+
+            <li class="nav-section-label sidebar-text">Analysis</li>
             <li><a href="#" class="nav-link" data-page="ga-analysis" id="nav-ga">
                 <span class="nav-icon">📝</span> <span class="sidebar-text">GA Analysis</span>
             </a></li>
@@ -39,6 +38,14 @@
             <li><a href="#" class="nav-link" data-page="difficulty" id="nav-difficulty">
                 <span class="nav-icon">🔥</span> <span class="sidebar-text">Difficulty Rank</span>
             </a></li>
+            <li class="nav-collapse">
+                <button class="sidebar-toggle" id="sidebar-toggle" aria-label="Collapse sidebar" aria-expanded="true" aria-controls="sidebar" title="Collapse sidebar">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                    <span class="sidebar-text">Collapse</span>
+                </button>
+            </li>
         </ul>
         <div class="sidebar-footer">
             <p class="sidebar-text">Data from 4 Terms</p>
@@ -198,7 +205,7 @@
                 <div class="methodology-icon">ℹ️</div>
                 <div>
                     <div class="methodology-title">How is this Hack Audit counted?</div>
-                    <p>Students who bypassed a Graded Assignment (GA) or Remote Online Exam (ROE) submitted their answers as <strong>empty strings (<code>""</code>)</strong> instead of actual responses. When the submission JSON is parsed, their <code>result.answers</code> object contains one or more fields with a value of <code>""</code> (empty string) or <code>null</code>. Any student with <strong>at least one empty-string answer</strong> in their submission is flagged as a "bypassed" submission. The <strong>Honest Average</strong> is then recalculated by completely excluding these flagged submissions from the score computation — giving a clearer picture of how the exam truly performed for students who genuinely attempted the questions.</p>
+                    <p>A submission is flagged as bypassed only when at least one response in <code>result.answers</code> is exactly <strong><code>""</code></strong> <em>and</em> that same question received <strong>non-zero marks</strong> in <code>scores</code>. Empty-string answers with <strong>0 marks</strong> are treated as normal unanswered attempts and are <strong>not</strong> counted as bypass. <code>null</code> values are also not counted as bypass under this logic. The <strong>Honest Average</strong> is recalculated after excluding only these bypass-flagged submissions, so the metric reflects students who genuinely attempted the questions.</p>
                 </div>
             </div>
         </section>
