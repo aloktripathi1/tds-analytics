@@ -113,16 +113,35 @@ export default function AnomalyPage() {
     flaggedCount: q.flagged_count,
   })));
 
+  const POST_TERM_EXCLUDED = ['GA7', 'GA8'];
+
+  const crossTermAssignments = assignmentOptions.filter(a => !POST_TERM_EXCLUDED.includes(a));
+
   const crossTermData = data.terms.map(term => {
     const entry = { term };
     const summary = data.overview[term]?.hack_summary_by_assignment
       ?? data.overview[term]?.anomaly_summary_by_assignment
       ?? {};
-    for (const assignment of assignmentOptions) {
+    for (const assignment of crossTermAssignments) {
       entry[assignment] = summary[assignment] ?? null;
     }
     return entry;
   });
+
+  // Count how many terms each assignment appears in (non-null)
+  const termCountByAssignment = Object.fromEntries(
+    crossTermAssignments.map(a => [
+      a,
+      crossTermData.filter(row => row[a] != null).length,
+    ])
+  );
+
+  // Dynamic Y-axis max: highest value + 10pp, rounded up to nearest 5
+  const allValues = crossTermData.flatMap(row =>
+    crossTermAssignments.map(a => row[a]).filter(v => v != null)
+  );
+  const rawMax = allValues.length ? Math.max(...allValues) : 10;
+  const yAxisMax = Math.ceil((rawMax + 10) / 5) * 5;
 
   const flaggedPct = totals.students ? (totals.flagged / totals.students) * 100 : 0;
 
@@ -176,12 +195,6 @@ export default function AnomalyPage() {
           sub={highest ? `${highest.anomalyPct}% hack rate` : ''}
           accentColor="var(--red)"
         />
-        <KpiCard
-          label="Most common pattern"
-          value={mostCommonPattern ? PATTERN_LABELS[mostCommonPattern[0]] : '-'}
-          sub={mostCommonPattern ? `${mostCommonPattern[1]} students` : ''}
-          accentColor="var(--blue)"
-        />
       </div>
 
       <SectionCard title="Hack % by assignment" sub="students with scored empty answers or scored hack markers">
@@ -233,28 +246,35 @@ export default function AnomalyPage() {
       </SectionCard>
 
       {termFilter === 'ALL' && (
-        <SectionCard title="Cross-term view" sub="assignment hack percentage by term">
+        <SectionCard title="Cross-term view" sub="assignment hack percentage by term — post-term additions excluded">
           <div className={styles.chart}>
             <ResponsiveContainer width="100%" height={320}>
               <LineChart data={crossTermData} margin={{ top: 8, right: 24, left: 0, bottom: 8 }}>
                 <CartesianGrid strokeDasharray="3 3" vertical={false} />
                 <XAxis dataKey="term" />
-                <YAxis domain={[0, 100]} tickFormatter={(value) => `${value}%`} />
-                <Tooltip formatter={(value) => [`${value}%`, 'hack rate']} />
+                <YAxis domain={[0, yAxisMax]} tickFormatter={(value) => `${value}%`} />
+                <Tooltip formatter={(value) => [`${value != null ? value.toFixed(1) : '—'}%`, 'hack rate']} />
                 <Legend />
-                {assignmentOptions.map((assignment, index) => (
-                  <Line
-                    key={assignment}
-                    type="monotone"
-                    dataKey={assignment}
-                    connectNulls
-                    stroke={['#1D9E75', '#378ADD', '#EF9F27', '#E24B4A', '#888780', '#5DCAA5'][index % 6]}
-                    strokeWidth={2}
-                    dot={{ r: 3 }}
-                  />
-                ))}
+                {crossTermAssignments.map((assignment, index) => {
+                  const singleTerm = termCountByAssignment[assignment] <= 1;
+                  return (
+                    <Line
+                      key={assignment}
+                      type="monotone"
+                      dataKey={assignment}
+                      connectNulls={false}
+                      stroke={['#1D9E75', '#378ADD', '#EF9F27', '#E24B4A', '#888780', '#5DCAA5'][index % 6]}
+                      strokeWidth={singleTerm ? 0 : 2}
+                      dot={{ r: singleTerm ? 5 : 3 }}
+                      activeDot={{ r: 5 }}
+                    />
+                  );
+                })}
               </LineChart>
             </ResponsiveContainer>
+          </div>
+          <div style={{ fontSize: 11, fontFamily: 'var(--font-mono)', color: 'var(--text-muted)', marginTop: 8 }}>
+            GA7 and GA8 excluded — added after term completion.
           </div>
         </SectionCard>
       )}

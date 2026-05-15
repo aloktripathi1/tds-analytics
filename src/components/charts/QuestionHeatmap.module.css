@@ -2,7 +2,7 @@
 
 .grid {
   display: grid;
-  gap: 6px;
+  gap: 5px;
 }
 
 .cell {
