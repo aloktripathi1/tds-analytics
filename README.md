@@ -1,28 +1,62 @@
 # TDS Analytics
 
-Student performance analytics dashboard for the Tools in Data Science course.
+A student-built analytics dashboard for the 
+**Tools in Data Science** course at IIT Madras.
 
-**Live:** https://[YOUR-USERNAME].github.io/tds-analytics/
+**Live → [tds-analytics](https://aloktripathi1.github.io/tds-analytics)**
 
-## What this shows
-- Cohort-level score distributions and completion rates
-- Question-level heatmaps and assignment summaries
-- Term-by-term comparisons across four academic terms
+---
 
-## Data privacy
-All data shown is aggregated. No individual student data is stored or displayed.
+## What this is
 
-## Tech stack
-- React
-- Vite
-- Recharts
+Performance data across 4 terms (2025-01 through 2026-01), 
+covering graded assignments (GA1–GA8), reports of evaluation (ROE), 
+and projects — visualized as a clean, browsable dashboard.
+
+Built because the data exists, and patterns are worth seeing.
+
+---
+
+## What it shows
+
+- Score distributions and completion rates per assignment
+- Question-level heatmaps (which questions most students scored on)
+- Submission timing patterns
+- Student retention across assignments
+- Cross-term difficulty trends
+- Submission anomaly patterns
+- ROE deep-dive with AI solvability context
+
+---
+
+## What it doesn't do
+
+- No individual student data is stored or displayed
+- No recommendations or judgments — only what the data shows
+- Raw submission files never leave the local machine
+
+---
+
+## Stack
+
+React · Vite · Recharts
+
+---
 
 ## Run locally
-1. `git clone https://github.com/[YOUR-USERNAME]/tds-analytics.git`
-2. `npm install`
-3. `npm run dev`
 
-## Data inputs
-Stage 1 JSON files live in `src/data/pipeline/stage1/`.
+git clone https://github.com/[username]/tds-analytics
+cd tds-analytics
+npm install
+npm run dev
 
-Raw submission files are not included in this repository.
+---
+
+## Data
+
+Aggregated stats only — processed from autograder submission logs
+into compact JSON summaries. Raw files are not in this repo.
+
+---
+
+*Built by a student, for students — past, present, and future.*
