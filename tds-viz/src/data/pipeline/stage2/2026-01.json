@@ -1,0 +1,87 @@
+{
+  "totalStudents": 770,
+  "retention": [
+    {
+      "assignment": "GA2",
+      "pct": 10.5
+    },
+    {
+      "assignment": "GA3",
+      "pct": 94.5
+    },
+    {
+      "assignment": "GA4",
+      "pct": 100
+    },
+    {
+      "assignment": "GA6",
+      "pct": 93.8
+    },
+    {
+      "assignment": "GA7",
+      "pct": 86.1
+    },
+    {
+      "assignment": "GA8",
+      "pct": 65.6
+    },
+    {
+      "assignment": "P1",
+      "pct": 86.4
+    },
+    {
+      "assignment": "P2",
+      "pct": 78.3
+    },
+    {
+      "assignment": "ROE",
+      "pct": 54.8
+    }
+  ],
+  "difficultyRanking": [
+    {
+      "assignment": "ROE",
+      "normalizedMean": 0.21
+    },
+    {
+      "assignment": "GA2",
+      "normalizedMean": 0.43
+    },
+    {
+      "assignment": "GA3",
+      "normalizedMean": 0.71
+    },
+    {
+      "assignment": "P2",
+      "normalizedMean": 0.71
+    },
+    {
+      "assignment": "GA8",
+      "normalizedMean": 0.75
+    },
+    {
+      "assignment": "P1",
+      "normalizedMean": 0.79
+    },
+    {
+      "assignment": "GA4",
+      "normalizedMean": 0.83
+    },
+    {
+      "assignment": "GA6",
+      "normalizedMean": 0.9
+    },
+    {
+      "assignment": "GA7",
+      "normalizedMean": 0.9
+    }
+  ],
+  "combinedBuckets": {
+    "0_20": 400,
+    "20_40": 453,
+    "40_60": 397,
+    "60_80": 854,
+    "80_100": 3055
+  },
+  "post_term_note": "GA7 and GA8 were added after the term ended. Their completion rates reflect availability, not difficulty. Exclude from difficulty comparisons."
+}

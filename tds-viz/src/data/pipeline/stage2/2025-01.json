@@ -1,0 +1,63 @@
+{
+  "totalStudents": 1500,
+  "retention": [
+    {
+      "assignment": "GA1",
+      "pct": 100
+    },
+    {
+      "assignment": "GA2",
+      "pct": 80.8
+    },
+    {
+      "assignment": "GA3",
+      "pct": 66.2
+    },
+    {
+      "assignment": "GA4",
+      "pct": 65.5
+    },
+    {
+      "assignment": "GA5",
+      "pct": 56
+    },
+    {
+      "assignment": "ROE",
+      "pct": 66.6
+    }
+  ],
+  "difficultyRanking": [
+    {
+      "assignment": "ROE",
+      "normalizedMean": 0.48
+    },
+    {
+      "assignment": "GA2",
+      "normalizedMean": 0.62
+    },
+    {
+      "assignment": "GA3",
+      "normalizedMean": 0.67
+    },
+    {
+      "assignment": "GA4",
+      "normalizedMean": 0.67
+    },
+    {
+      "assignment": "GA1",
+      "normalizedMean": 0.68
+    },
+    {
+      "assignment": "GA5",
+      "normalizedMean": 0.77
+    }
+  ],
+  "combinedBuckets": {
+    "0_20": 588,
+    "20_40": 839,
+    "40_60": 1319,
+    "60_80": 1024,
+    "80_100": 2757
+  },
+  "post_term_note": "GA7 and GA8 were added after the term ended. Their completion rates reflect availability, not difficulty. Exclude from difficulty comparisons."
+}

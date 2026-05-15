@@ -1,0 +1,76 @@
+.page { display: flex; flex-direction: column; }
+
+.empty {
+  padding: 2rem;
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.kpiGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin-bottom: .875rem;
+}
+
+.twoCol {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.statRow {
+  display: flex;
+  gap: 12px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+.statItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.statLabel {
+  font-size: 9px;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: .05em;
+}
+.statValue {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.timingCells {
+  display: flex;
+  gap: 8px;
+}
+.timingCell {
+  flex: 1;
+  border-radius: var(--radius-md);
+  padding: 10px;
+}
+.timingLabel {
+  font-size: 10px;
+  font-family: var(--font-mono);
+  margin-bottom: 4px;
+  font-weight: 500;
+}
+.timingCount {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1;
+}
+.timingAvg {
+  font-size: 10px;
+  margin-top: 3px;
+  opacity: .8;
+}
+
+@media (max-width: 900px) {
+  .kpiGrid { grid-template-columns: repeat(2, 1fr); }
+  .twoCol  { grid-template-columns: 1fr; }
+  .timingCells { flex-direction: column; }
+}
