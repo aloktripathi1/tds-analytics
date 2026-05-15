@@ -2,12 +2,11 @@ import { useParams } from 'react-router-dom';
 import { useDashboard } from '../context/DashboardContext.jsx';
 import KpiCard          from '../components/shared/KpiCard.jsx';
 import SectionCard      from '../components/shared/SectionCard.jsx';
-import BarRow           from '../components/shared/BarRow.jsx';
 import MiniDistribution from '../components/shared/MiniDistribution.jsx';
 import ObsBox           from '../components/shared/ObsBox.jsx';
 import QuestionHeatmap  from '../components/charts/QuestionHeatmap.jsx';
 import {
-  roeCorrelationObs, completionObs, spreadObs,
+  completionObs, spreadObs,
   distributionShapeObs, surpriseObs, partialCreditObs,
   markUtilizationObs, crossTermDriftObs, submissionConcentrationObs,
   skillTaxonomyObs,
@@ -86,10 +85,8 @@ export default function RoePage() {
     return <div className={styles.empty}>No ROE data found for term <strong>{term}</strong>.</div>;
   }
 
-  const { meta, scoreDistribution: dist, questions: rawQuestions = [], roeGaCorrelation, gaQuartileRoeScores } = roe;
+  const { meta, scoreDistribution: dist, questions: rawQuestions = [] } = roe;
   const maxP = meta.maxPossible;
-  const corr = roeGaCorrelation?.r ?? 0;
-  const quartile = gaQuartileRoeScores ?? {};
 
   // Enrich questions with all analytical layers
   const questionsWithPartial = computePartialCreditDepth(rawQuestions);
@@ -141,12 +138,6 @@ export default function RoePage() {
           accentColor="var(--blue)"
         />
         <KpiCard
-          label="GA correlation"
-          value={corr !== 0 ? toFixed(corr, 2) : '—'}
-          sub="Pearson r vs GA avg"
-          accentColor="var(--blue)"
-        />
-        <KpiCard
           label="Questions"
           value={questions.length}
           sub="ROE sections"
@@ -194,21 +185,6 @@ export default function RoePage() {
         <SubmissionTimeline concentration={concentration} />
       </SectionCard>
 
-      {/* 6. GA correlation section */}
-      {corr !== 0 ? (
-        <SectionCard title="GA performance as predictor" sub="avg ROE score by GA performance quartile">
-          <BarRow label="GA top 25%" value={quartile.top25 ?? 0} color="green" displayValue={`${quartile.top25 ?? 0}%`} />
-          <BarRow label="GA mid 50%" value={quartile.mid50 ?? 0} color="amber" displayValue={`${quartile.mid50 ?? 0}%`} />
-          <BarRow label="GA bottom 25%" value={quartile.bottom25 ?? 0} color="red" displayValue={`${quartile.bottom25 ?? 0}%`} />
-          <div className={styles.corrNote}>Pearson r = {toFixed(corr, 2)} (GA avg ↔ ROE score)</div>
-        </SectionCard>
-      ) : (
-        <SectionCard title="ROE vs GA comparison" sub="avg ROE score by GA performance quartile">
-          <div className={styles.noDataNote}>
-            Per-student GA data not available for this term — correlation requires matching student identifiers across assignments.
-          </div>
-        </SectionCard>
-      )}
 
       {/* 7. Surprise factor */}
       {questions.some(q => q.surpriseFlag) && (
@@ -239,11 +215,6 @@ export default function RoePage() {
         {driftObs && <ObsBox tag="cross-term drift">{driftObs}</ObsBox>}
         {concObs && <ObsBox tag="submission concentration">{concObs}</ObsBox>}
         <ObsBox tag="skill taxonomy">{taxObs}</ObsBox>
-        {corr !== 0 && (
-          <ObsBox tag="ga correlation">
-            {roeCorrelationObs(corr, quartile.top25 ?? 0, quartile.mid50 ?? 0, quartile.bottom25 ?? 0)}
-          </ObsBox>
-        )}
       </SectionCard>
     </div>
   );
