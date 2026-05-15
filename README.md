@@ -24,7 +24,6 @@ Built because the data exists, and patterns are worth seeing.
 - Submission timing patterns
 - Student retention across assignments
 - Cross-term difficulty trends
-- Submission anomaly patterns
 - ROE deep-dive with AI solvability context
 
 ---
