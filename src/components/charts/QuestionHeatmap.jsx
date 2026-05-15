@@ -37,7 +37,7 @@ export default function QuestionHeatmap({ questions = [], columns = 4, mode = 'c
 
   return (
     <div className={styles.wrap}>
-      <div className={styles.grid} style={{ gridTemplateColumns: `repeat(${columns}, 1fr)` }}>
+      <div className={styles.grid} style={{ gridTemplateColumns: `repeat(auto-fill, minmax(${columns <= 3 ? 172 : 142}px, 1fr))` }}>
         {sorted.map((q) => {
           const rawPct = mode === 'anomaly' ? q.anomalyPct : q.completionRate;
           const colors = mode === 'anomaly' ? heatColor(100 - rawPct) : heatColor(rawPct);
@@ -62,7 +62,7 @@ export default function QuestionHeatmap({ questions = [], columns = 4, mode = 'c
               <div className={styles.avg} style={{ color: colors.text }}>
                 {mode === 'anomaly' ? `${q.flaggedCount ?? 0} students` : `avg ${mean}/${max}`}
               </div>
-              {showPartialCredit && q.partialScorerPct != null && (
+              {showPartialCredit && q.partialScorerPct > 0 && (
                 <div className={styles.partial} style={{ color: colors.text }}>
                   {q.fullScorerPct}% full · {q.partialScorerPct}% partial · {q.zeroScorerPct}% zero
                 </div>
