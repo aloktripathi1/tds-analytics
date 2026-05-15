@@ -1,0 +1,23 @@
+node_modules/
+dist/
+.env
+.env.local
+.env.*.local
+*.log
+.DS_Store
+Thumbs.db
+*.bak
+*.orig
+
+# Raw submission data — never commit these
+raw-data/
+submissions/
+*.submission.json
+
+# If raw JSONs are anywhere inside src, block them too
+src/**/*-submissions.json
+src/**/*-sub.json
+
+stats/
+parser_output.txt
+*.json.bak
