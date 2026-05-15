@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { useDashboard } from '../context/DashboardContext.jsx';
 import KpiCard          from '../components/shared/KpiCard.jsx';
 import SectionCard      from '../components/shared/SectionCard.jsx';
@@ -16,8 +15,6 @@ export default function Overview() {
     .sort((a, b) => a.normalizedMean - b.normalizedMean);
   const retention   = ov.retention ?? [];
   const hasPostTermRetention = retention.some(r => r.postTerm);
-  const [dismissed, setDismissed] = useState(() => localStorage.getItem('tds-disclaimer-dismissed') === '1');
-
   // KPI: avg completion — mean of all question completionRates across all GAs
   let totalComp = 0, compCount = 0;
   assignments.forEach(a => {
@@ -32,37 +29,6 @@ export default function Overview() {
 
   return (
     <div className={styles.page}>
-      <div style={{
-        background: 'var(--amber-bg)',
-        borderBottom: '0.5px solid var(--amber-dark)',
-        padding: '10px 20px',
-        display: dismissed ? 'none' : 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        fontSize: 13,
-        color: 'var(--amber-text)',
-        fontFamily: 'var(--font-mono)',
-      }}>
-        <span>
-          Aggregated data only — no individual student information is stored
-          or displayed. All figures are cohort-level statistics.
-        </span>
-        <button
-          onClick={() => {
-            setDismissed(true);
-            localStorage.setItem('tds-disclaimer-dismissed', '1');
-          }}
-          style={{
-            background: 'none',
-            border: 'none',
-            cursor: 'pointer',
-            fontSize: 16,
-            color: 'var(--amber-text)',
-          }}
-        >
-          ×
-        </button>
-      </div>
       {/* Row 1 — KPI grid */}
       <div className={styles.kpiGrid}>
         <KpiCard
