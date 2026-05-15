@@ -1,0 +1,436 @@
+{
+  "file": "tds-2025-09-ga7.json",
+  "term": "2025-09",
+  "assignment": "GA7",
+  "type": "GA",
+  "post_term_addition": true,
+  "schema_notes": "",
+  "meta": {
+    "total_records": 1000,
+    "valid_records": 980,
+    "unique_students": 980,
+    "late_submissions": 0,
+    "max_possible_total": 14,
+    "question_max_total": 14,
+    "deadline_inferred": "2025-11-16T18:29:56.338Z",
+    "deadline_method": "latest_timestamp",
+    "data_cross_check": "ok"
+  },
+  "score_distribution": {
+    "mean": 12.92,
+    "median": 14,
+    "std_dev": 2.27,
+    "min": 0,
+    "max": 14,
+    "p10": 11.23,
+    "p25": 13,
+    "p50": 14,
+    "p75": 14,
+    "p90": 14,
+    "normalized_mean": 0.92,
+    "buckets": {
+      "0_20pct": 15,
+      "20_40pct": 14,
+      "40_60pct": 24,
+      "60_80pct": 45,
+      "80_100pct": 882
+    }
+  },
+  "questions": [
+    {
+      "id": "q-geospatial-qgis-buffer-area",
+      "label": "q-geospatial-qgis-buffer-area",
+      "max_possible": 1,
+      "mean_score": 0.61,
+      "normalized_mean": 0.61,
+      "zero_rate": 0.39,
+      "full_rate": 0.61,
+      "partial_rate": 0,
+      "completion_rate": 0.61,
+      "std_dev": 0.49,
+      "discriminative_proxy": 0.27,
+      "classification": "CALIBRATED"
+    },
+    {
+      "id": "q-geospatial-python-proximity",
+      "label": "q-geospatial-python-proximity",
+      "max_possible": 1,
+      "mean_score": 0.91,
+      "normalized_mean": 0.91,
+      "zero_rate": 0.09,
+      "full_rate": 0.91,
+      "partial_rate": 0,
+      "completion_rate": 0.91,
+      "std_dev": 0.29,
+      "discriminative_proxy": 0.68,
+      "classification": "EASY"
+    },
+    {
+      "id": "q-sql-rolling-anomaly",
+      "label": "q-sql-rolling-anomaly",
+      "max_possible": 1.25,
+      "mean_score": 1.16,
+      "normalized_mean": 0.93,
+      "zero_rate": 0.07,
+      "full_rate": 0.93,
+      "partial_rate": 0,
+      "completion_rate": 0.93,
+      "std_dev": 0.32,
+      "discriminative_proxy": 0.72,
+      "classification": "EASY"
+    },
+    {
+      "id": "q-datasette-facet-revenue",
+      "label": "q-datasette-facet-revenue",
+      "max_possible": 1,
+      "mean_score": 0.93,
+      "normalized_mean": 0.93,
+      "zero_rate": 0.07,
+      "full_rate": 0.93,
+      "partial_rate": 0,
+      "completion_rate": 0.93,
+      "std_dev": 0.26,
+      "discriminative_proxy": 0.71,
+      "classification": "EASY"
+    },
+    {
+      "id": "q-duckdb-sku-benchmark",
+      "label": "q-duckdb-sku-benchmark",
+      "max_possible": 1,
+      "mean_score": 0.93,
+      "normalized_mean": 0.93,
+      "zero_rate": 0.07,
+      "full_rate": 0.93,
+      "partial_rate": 0,
+      "completion_rate": 0.93,
+      "std_dev": 0.25,
+      "discriminative_proxy": 0.73,
+      "classification": "EASY"
+    },
+    {
+      "id": "q-excel-multivariate-regression",
+      "label": "q-excel-multivariate-regression",
+      "max_possible": 1.25,
+      "mean_score": 1.18,
+      "normalized_mean": 0.94,
+      "zero_rate": 0.06,
+      "full_rate": 0.94,
+      "partial_rate": 0,
+      "completion_rate": 0.94,
+      "std_dev": 0.29,
+      "discriminative_proxy": 0.58,
+      "classification": "EASY"
+    },
+    {
+      "id": "q-excel-linear-forecast",
+      "label": "q-excel-linear-forecast",
+      "max_possible": 1,
+      "mean_score": 0.95,
+      "normalized_mean": 0.95,
+      "zero_rate": 0.05,
+      "full_rate": 0.95,
+      "partial_rate": 0,
+      "completion_rate": 0.95,
+      "std_dev": 0.21,
+      "discriminative_proxy": 0.56,
+      "classification": "EASY"
+    },
+    {
+      "id": "q-python-cohort-retention",
+      "label": "q-python-cohort-retention",
+      "max_possible": 1.25,
+      "mean_score": 1.18,
+      "normalized_mean": 0.95,
+      "zero_rate": 0.05,
+      "full_rate": 0.95,
+      "partial_rate": 0,
+      "completion_rate": 0.95,
+      "std_dev": 0.28,
+      "discriminative_proxy": 0.68,
+      "classification": "EASY"
+    },
+    {
+      "id": "q-geospatial-excel-gap",
+      "label": "q-geospatial-excel-gap",
+      "max_possible": 0.75,
+      "mean_score": 0.71,
+      "normalized_mean": 0.95,
+      "zero_rate": 0.05,
+      "full_rate": 0.95,
+      "partial_rate": 0,
+      "completion_rate": 0.95,
+      "std_dev": 0.17,
+      "discriminative_proxy": 0.74,
+      "classification": "EASY"
+    },
+    {
+      "id": "q-sql-enterprise-margin",
+      "label": "q-sql-enterprise-margin",
+      "max_possible": 1,
+      "mean_score": 0.96,
+      "normalized_mean": 0.96,
+      "zero_rate": 0.04,
+      "full_rate": 0.96,
+      "partial_rate": 0,
+      "completion_rate": 0.96,
+      "std_dev": 0.19,
+      "discriminative_proxy": 0.71,
+      "classification": "EASY"
+    },
+    {
+      "id": "q-network-python-centrality",
+      "label": "q-network-python-centrality",
+      "max_possible": 1,
+      "mean_score": 0.96,
+      "normalized_mean": 0.96,
+      "zero_rate": 0.04,
+      "full_rate": 0.96,
+      "partial_rate": 0,
+      "completion_rate": 0.96,
+      "std_dev": 0.2,
+      "discriminative_proxy": 0.64,
+      "classification": "EASY"
+    },
+    {
+      "id": "q-excel-zscore-outlier",
+      "label": "q-excel-zscore-outlier",
+      "max_possible": 0.75,
+      "mean_score": 0.73,
+      "normalized_mean": 0.97,
+      "zero_rate": 0.03,
+      "full_rate": 0.97,
+      "partial_rate": 0,
+      "completion_rate": 0.97,
+      "std_dev": 0.12,
+      "discriminative_proxy": 0.62,
+      "classification": "EASY"
+    },
+    {
+      "id": "q-python-channel-conversion",
+      "label": "q-python-channel-conversion",
+      "max_possible": 1,
+      "mean_score": 0.97,
+      "normalized_mean": 0.97,
+      "zero_rate": 0.03,
+      "full_rate": 0.97,
+      "partial_rate": 0,
+      "completion_rate": 0.97,
+      "std_dev": 0.18,
+      "discriminative_proxy": 0.68,
+      "classification": "EASY"
+    },
+    {
+      "id": "q-excel-region-correlation",
+      "label": "q-excel-region-correlation",
+      "max_possible": 0.75,
+      "mean_score": 0.74,
+      "normalized_mean": 0.99,
+      "zero_rate": 0.01,
+      "full_rate": 0.99,
+      "partial_rate": 0,
+      "completion_rate": 0.99,
+      "std_dev": 0.09,
+      "discriminative_proxy": 0.42,
+      "classification": "EASY"
+    }
+  ],
+  "timing": {
+    "skipped": true,
+    "skip_reason": "Post-term addition",
+    "deadline_ms": 1763317796338,
+    "early_gt6h": {
+      "count": 0,
+      "avg_score": 0
+    },
+    "mid_1_6h": {
+      "count": 0,
+      "avg_score": 0
+    },
+    "last_lt1h": {
+      "count": 0,
+      "avg_score": 0
+    }
+  },
+  "roe_specific": null,
+  "project_specific": null,
+  "flags": [],
+  "observations": [],
+  "anomalies": {
+    "total_flagged_students": 50,
+    "anomaly_pct": 5.1,
+    "by_question": [
+      {
+        "question_id": "q-geospatial-qgis-buffer-area",
+        "label": "q-geospatial-qgis-buffer-area",
+        "flagged_count": 50,
+        "flagged_pct": 5.1,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 544,
+        "patterns": {
+          "empty_submission": 50,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-geospatial-python-proximity",
+        "label": "q-geospatial-python-proximity",
+        "flagged_count": 49,
+        "flagged_pct": 5,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 838,
+        "patterns": {
+          "empty_submission": 49,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-duckdb-sku-benchmark",
+        "label": "q-duckdb-sku-benchmark",
+        "flagged_count": 49,
+        "flagged_pct": 5,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 865,
+        "patterns": {
+          "empty_submission": 49,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-python-channel-conversion",
+        "label": "q-python-channel-conversion",
+        "flagged_count": 49,
+        "flagged_pct": 5,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 898,
+        "patterns": {
+          "empty_submission": 49,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-datasette-facet-revenue",
+        "label": "q-datasette-facet-revenue",
+        "flagged_count": 48,
+        "flagged_pct": 4.9,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 862,
+        "patterns": {
+          "empty_submission": 48,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-geospatial-excel-gap",
+        "label": "q-geospatial-excel-gap",
+        "flagged_count": 48,
+        "flagged_pct": 4.9,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 879,
+        "patterns": {
+          "empty_submission": 48,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-network-python-centrality",
+        "label": "q-network-python-centrality",
+        "flagged_count": 48,
+        "flagged_pct": 4.9,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 892,
+        "patterns": {
+          "empty_submission": 48,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-excel-linear-forecast",
+        "label": "q-excel-linear-forecast",
+        "flagged_count": 47,
+        "flagged_pct": 4.8,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 886,
+        "patterns": {
+          "empty_submission": 47,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-python-cohort-retention",
+        "label": "q-python-cohort-retention",
+        "flagged_count": 47,
+        "flagged_pct": 4.8,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 880,
+        "patterns": {
+          "empty_submission": 47,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-sql-enterprise-margin",
+        "label": "q-sql-enterprise-margin",
+        "flagged_count": 47,
+        "flagged_pct": 4.8,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 897,
+        "patterns": {
+          "empty_submission": 47,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-sql-rolling-anomaly",
+        "label": "q-sql-rolling-anomaly",
+        "flagged_count": 46,
+        "flagged_pct": 4.7,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 863,
+        "patterns": {
+          "empty_submission": 46,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-excel-multivariate-regression",
+        "label": "q-excel-multivariate-regression",
+        "flagged_count": 46,
+        "flagged_pct": 4.7,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 879,
+        "patterns": {
+          "empty_submission": 46,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-excel-zscore-outlier",
+        "label": "q-excel-zscore-outlier",
+        "flagged_count": 46,
+        "flagged_pct": 4.7,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 909,
+        "patterns": {
+          "empty_submission": 46,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-excel-region-correlation",
+        "label": "q-excel-region-correlation",
+        "flagged_count": 45,
+        "flagged_pct": 4.6,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 922,
+        "patterns": {
+          "empty_submission": 45,
+          "hacked_by_marker": 0
+        }
+      }
+    ],
+    "by_pattern": {
+      "empty_submission": 50,
+      "hacked_by_marker": 0
+    }
+  }
+}

@@ -1,0 +1,671 @@
+{
+  "file": "tds-2025-01-roe.json",
+  "term": "2025-01",
+  "assignment": "ROE",
+  "type": "ROE",
+  "post_term_addition": false,
+  "schema_notes": "",
+  "meta": {
+    "total_records": 1023,
+    "valid_records": 999,
+    "unique_students": 999,
+    "late_submissions": 0,
+    "max_possible_total": 27,
+    "question_max_total": 27,
+    "deadline_inferred": "2025-11-06T02:56:56.467Z",
+    "deadline_method": "latest_timestamp",
+    "data_cross_check": "ok"
+  },
+  "score_distribution": {
+    "mean": 5.74,
+    "median": 6,
+    "std_dev": 2.26,
+    "min": 0,
+    "max": 12,
+    "p10": 3,
+    "p25": 4,
+    "p50": 6,
+    "p75": 7,
+    "p90": 9,
+    "normalized_mean": 0.21,
+    "buckets": {
+      "0_20pct": 449,
+      "20_40pct": 548,
+      "40_60pct": 2,
+      "60_80pct": 0,
+      "80_100pct": 0
+    }
+  },
+  "questions": [
+    {
+      "id": "q-count-gold-ticket-sales-from-html",
+      "label": "q-count-gold-ticket-sales-from-html",
+      "max_possible": 1,
+      "mean_score": 0,
+      "normalized_mean": 0,
+      "zero_rate": 1,
+      "full_rate": 0,
+      "partial_rate": 0,
+      "completion_rate": 0,
+      "std_dev": 0.04,
+      "discriminative_proxy": 0.1,
+      "classification": "BROKEN"
+    },
+    {
+      "id": "q-generate-addresses-with-llms",
+      "label": "q-generate-addresses-with-llms",
+      "max_possible": 2,
+      "mean_score": 0,
+      "normalized_mean": 0,
+      "zero_rate": 1,
+      "full_rate": 0,
+      "partial_rate": 0,
+      "completion_rate": 0,
+      "std_dev": 0.09,
+      "discriminative_proxy": 0.09,
+      "classification": "BROKEN"
+    },
+    {
+      "id": "q-get-llm-to-say-yes",
+      "label": "q-get-llm-to-say-yes",
+      "max_possible": 1,
+      "mean_score": 0,
+      "normalized_mean": 0,
+      "zero_rate": 1,
+      "full_rate": 0,
+      "partial_rate": 0,
+      "completion_rate": 0,
+      "std_dev": 0.04,
+      "discriminative_proxy": 0.1,
+      "classification": "BROKEN"
+    },
+    {
+      "id": "q-clean-up-excel-sales-data",
+      "label": "q-clean-up-excel-sales-data",
+      "max_possible": 1,
+      "mean_score": 0,
+      "normalized_mean": 0,
+      "zero_rate": 1,
+      "full_rate": 0,
+      "partial_rate": 0,
+      "completion_rate": 0,
+      "std_dev": 0.03,
+      "discriminative_proxy": 0.05,
+      "classification": "BROKEN"
+    },
+    {
+      "id": "q-clean-up-student-marks",
+      "label": "q-clean-up-student-marks",
+      "max_possible": 1,
+      "mean_score": 0,
+      "normalized_mean": 0,
+      "zero_rate": 1,
+      "full_rate": 0,
+      "partial_rate": 0,
+      "completion_rate": 0,
+      "std_dev": 0.03,
+      "discriminative_proxy": 0.05,
+      "classification": "BROKEN"
+    },
+    {
+      "id": "q-apache-log-requests",
+      "label": "q-apache-log-requests",
+      "max_possible": 1,
+      "mean_score": 0,
+      "normalized_mean": 0,
+      "zero_rate": 1,
+      "full_rate": 0,
+      "partial_rate": 0,
+      "completion_rate": 0,
+      "std_dev": 0.03,
+      "discriminative_proxy": 0.05,
+      "classification": "BROKEN"
+    },
+    {
+      "id": "q-apache-log-downloads",
+      "label": "q-apache-log-downloads",
+      "max_possible": 1,
+      "mean_score": 0,
+      "normalized_mean": 0,
+      "zero_rate": 1,
+      "full_rate": 0,
+      "partial_rate": 0,
+      "completion_rate": 0,
+      "std_dev": 0.03,
+      "discriminative_proxy": 0.05,
+      "classification": "BROKEN"
+    },
+    {
+      "id": "q-clean-up-sales-data",
+      "label": "q-clean-up-sales-data",
+      "max_possible": 1,
+      "mean_score": 0,
+      "normalized_mean": 0,
+      "zero_rate": 1,
+      "full_rate": 0,
+      "partial_rate": 0,
+      "completion_rate": 0,
+      "std_dev": 0.03,
+      "discriminative_proxy": 0.05,
+      "classification": "BROKEN"
+    },
+    {
+      "id": "q-parse-partial-json",
+      "label": "q-parse-partial-json",
+      "max_possible": 1,
+      "mean_score": 0,
+      "normalized_mean": 0,
+      "zero_rate": 1,
+      "full_rate": 0,
+      "partial_rate": 0,
+      "completion_rate": 0,
+      "std_dev": 0.03,
+      "discriminative_proxy": 0.05,
+      "classification": "BROKEN"
+    },
+    {
+      "id": "q-extract-nested-json-keys",
+      "label": "q-extract-nested-json-keys",
+      "max_possible": 1,
+      "mean_score": 0,
+      "normalized_mean": 0,
+      "zero_rate": 1,
+      "full_rate": 0,
+      "partial_rate": 0,
+      "completion_rate": 0,
+      "std_dev": 0.03,
+      "discriminative_proxy": 0.05,
+      "classification": "BROKEN"
+    },
+    {
+      "id": "q-duckdb-social-media-interactions",
+      "label": "q-duckdb-social-media-interactions",
+      "max_possible": 1,
+      "mean_score": 0,
+      "normalized_mean": 0,
+      "zero_rate": 1,
+      "full_rate": 0,
+      "partial_rate": 0,
+      "completion_rate": 0,
+      "std_dev": 0.03,
+      "discriminative_proxy": 0.05,
+      "classification": "BROKEN"
+    },
+    {
+      "id": "q-transcribe-youtube",
+      "label": "q-transcribe-youtube",
+      "max_possible": 1,
+      "mean_score": 0,
+      "normalized_mean": 0,
+      "zero_rate": 1,
+      "full_rate": 0,
+      "partial_rate": 0,
+      "completion_rate": 0,
+      "std_dev": 0.03,
+      "discriminative_proxy": 0.05,
+      "classification": "BROKEN"
+    },
+    {
+      "id": "q-image-jigsaw",
+      "label": "q-image-jigsaw",
+      "max_possible": 1,
+      "mean_score": 0,
+      "normalized_mean": 0,
+      "zero_rate": 1,
+      "full_rate": 0,
+      "partial_rate": 0,
+      "completion_rate": 0,
+      "std_dev": 0.03,
+      "discriminative_proxy": 0.05,
+      "classification": "BROKEN"
+    },
+    {
+      "id": "q-region-containing-point",
+      "label": "q-region-containing-point",
+      "max_possible": 2,
+      "mean_score": 0.07,
+      "normalized_mean": 0.03,
+      "zero_rate": 0.93,
+      "full_rate": 0,
+      "partial_rate": 0.06,
+      "completion_rate": 0.07,
+      "std_dev": 0.26,
+      "discriminative_proxy": 0.35,
+      "classification": "BROKEN"
+    },
+    {
+      "id": "q-shortest-path-between-cities",
+      "label": "q-shortest-path-between-cities",
+      "max_possible": 2,
+      "mean_score": 0.39,
+      "normalized_mean": 0.2,
+      "zero_rate": 0.61,
+      "full_rate": 0,
+      "partial_rate": 0.39,
+      "completion_rate": 0.39,
+      "std_dev": 0.49,
+      "discriminative_proxy": 0.38,
+      "classification": "CALIBRATED"
+    },
+    {
+      "id": "q-fastapi-proxy",
+      "label": "q-fastapi-proxy",
+      "max_possible": 1,
+      "mean_score": 0.42,
+      "normalized_mean": 0.42,
+      "zero_rate": 0.58,
+      "full_rate": 0.42,
+      "partial_rate": 0,
+      "completion_rate": 0.42,
+      "std_dev": 0.49,
+      "discriminative_proxy": 0.34,
+      "classification": "BINARY"
+    },
+    {
+      "id": "q-move-rename-files",
+      "label": "q-move-rename-files",
+      "max_possible": 1,
+      "mean_score": 0.45,
+      "normalized_mean": 0.45,
+      "zero_rate": 0.55,
+      "full_rate": 0.45,
+      "partial_rate": 0,
+      "completion_rate": 0.45,
+      "std_dev": 0.5,
+      "discriminative_proxy": 0.39,
+      "classification": "BINARY"
+    },
+    {
+      "id": "q-extract-tables-from-pdf",
+      "label": "q-extract-tables-from-pdf",
+      "max_possible": 1,
+      "mean_score": 0.5,
+      "normalized_mean": 0.5,
+      "zero_rate": 0.5,
+      "full_rate": 0.5,
+      "partial_rate": 0,
+      "completion_rate": 0.5,
+      "std_dev": 0.5,
+      "discriminative_proxy": 0.33,
+      "classification": "CALIBRATED"
+    },
+    {
+      "id": "q-stackoverflow-common-tags",
+      "label": "q-stackoverflow-common-tags",
+      "max_possible": 1,
+      "mean_score": 0.59,
+      "normalized_mean": 0.59,
+      "zero_rate": 0.41,
+      "full_rate": 0.59,
+      "partial_rate": 0,
+      "completion_rate": 0.59,
+      "std_dev": 0.49,
+      "discriminative_proxy": 0.32,
+      "classification": "CALIBRATED"
+    },
+    {
+      "id": "q-duckdb-sales-over-time",
+      "label": "q-duckdb-sales-over-time",
+      "max_possible": 2,
+      "mean_score": 0.7,
+      "normalized_mean": 0.35,
+      "zero_rate": 0.3,
+      "full_rate": 0,
+      "partial_rate": 0.69,
+      "completion_rate": 0.7,
+      "std_dev": 0.46,
+      "discriminative_proxy": 0.38,
+      "classification": "CALIBRATED"
+    },
+    {
+      "id": "q-llm-embeddings",
+      "label": "q-llm-embeddings",
+      "max_possible": 1,
+      "mean_score": 0.83,
+      "normalized_mean": 0.83,
+      "zero_rate": 0.17,
+      "full_rate": 0.83,
+      "partial_rate": 0,
+      "completion_rate": 0.83,
+      "std_dev": 0.38,
+      "discriminative_proxy": 0.34,
+      "classification": "EASY"
+    },
+    {
+      "id": "q-calculate-correlation",
+      "label": "q-calculate-correlation",
+      "max_possible": 1,
+      "mean_score": 0.86,
+      "normalized_mean": 0.86,
+      "zero_rate": 0.14,
+      "full_rate": 0.86,
+      "partial_rate": 0,
+      "completion_rate": 0.86,
+      "std_dev": 0.34,
+      "discriminative_proxy": 0.41,
+      "classification": "EASY"
+    },
+    {
+      "id": "q-least-unique-subjects-from-csv",
+      "label": "q-least-unique-subjects-from-csv",
+      "max_possible": 1,
+      "mean_score": 0.9,
+      "normalized_mean": 0.9,
+      "zero_rate": 0.1,
+      "full_rate": 0.9,
+      "partial_rate": 0,
+      "completion_rate": 0.9,
+      "std_dev": 0.3,
+      "discriminative_proxy": 0.32,
+      "classification": "EASY"
+    }
+  ],
+  "timing": {
+    "skipped": false,
+    "skip_reason": null,
+    "deadline_ms": 1762397816467,
+    "early_gt6h": {
+      "count": 998,
+      "avg_score": 5.74
+    },
+    "mid_1_6h": {
+      "count": 0,
+      "avg_score": 0
+    },
+    "last_lt1h": {
+      "count": 1,
+      "avg_score": 8
+    },
+    "max_possible_total": 27
+  },
+  "roe_specific": {},
+  "project_specific": null,
+  "flags": [],
+  "observations": [],
+  "anomalies": {
+    "total_flagged_students": 41,
+    "anomaly_pct": 4.1,
+    "by_question": [
+      {
+        "question_id": "q-region-containing-point",
+        "label": "q-region-containing-point",
+        "flagged_count": 36,
+        "flagged_pct": 3.6,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 29,
+        "patterns": {
+          "empty_submission": 36,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-shortest-path-between-cities",
+        "label": "q-shortest-path-between-cities",
+        "flagged_count": 34,
+        "flagged_pct": 3.4,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 356,
+        "patterns": {
+          "empty_submission": 34,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-move-rename-files",
+        "label": "q-move-rename-files",
+        "flagged_count": 33,
+        "flagged_pct": 3.3,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 418,
+        "patterns": {
+          "empty_submission": 33,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-calculate-correlation",
+        "label": "q-calculate-correlation",
+        "flagged_count": 31,
+        "flagged_pct": 3.1,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 833,
+        "patterns": {
+          "empty_submission": 31,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-extract-tables-from-pdf",
+        "label": "q-extract-tables-from-pdf",
+        "flagged_count": 30,
+        "flagged_pct": 3,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 470,
+        "patterns": {
+          "empty_submission": 30,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-fastapi-proxy",
+        "label": "q-fastapi-proxy",
+        "flagged_count": 28,
+        "flagged_pct": 2.8,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 388,
+        "patterns": {
+          "empty_submission": 28,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-duckdb-sales-over-time",
+        "label": "q-duckdb-sales-over-time",
+        "flagged_count": 27,
+        "flagged_pct": 2.7,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 669,
+        "patterns": {
+          "empty_submission": 27,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-llm-embeddings",
+        "label": "q-llm-embeddings",
+        "flagged_count": 27,
+        "flagged_pct": 2.7,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 798,
+        "patterns": {
+          "empty_submission": 27,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-stackoverflow-common-tags",
+        "label": "q-stackoverflow-common-tags",
+        "flagged_count": 26,
+        "flagged_pct": 2.6,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 565,
+        "patterns": {
+          "empty_submission": 26,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-least-unique-subjects-from-csv",
+        "label": "q-least-unique-subjects-from-csv",
+        "flagged_count": 26,
+        "flagged_pct": 2.6,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 875,
+        "patterns": {
+          "empty_submission": 26,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-count-gold-ticket-sales-from-html",
+        "label": "q-count-gold-ticket-sales-from-html",
+        "flagged_count": 1,
+        "flagged_pct": 0.1,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 1,
+        "patterns": {
+          "empty_submission": 1,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-generate-addresses-with-llms",
+        "label": "q-generate-addresses-with-llms",
+        "flagged_count": 1,
+        "flagged_pct": 0.1,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 1,
+        "patterns": {
+          "empty_submission": 1,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-get-llm-to-say-yes",
+        "label": "q-get-llm-to-say-yes",
+        "flagged_count": 1,
+        "flagged_pct": 0.1,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 1,
+        "patterns": {
+          "empty_submission": 1,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-extract-nested-json-keys",
+        "label": "q-extract-nested-json-keys",
+        "flagged_count": 1,
+        "flagged_pct": 0.1,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 0,
+        "patterns": {
+          "empty_submission": 1,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-duckdb-social-media-interactions",
+        "label": "q-duckdb-social-media-interactions",
+        "flagged_count": 1,
+        "flagged_pct": 0.1,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 0,
+        "patterns": {
+          "empty_submission": 1,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-transcribe-youtube",
+        "label": "q-transcribe-youtube",
+        "flagged_count": 1,
+        "flagged_pct": 0.1,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 0,
+        "patterns": {
+          "empty_submission": 1,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-clean-up-excel-sales-data",
+        "label": "q-clean-up-excel-sales-data",
+        "flagged_count": 0,
+        "flagged_pct": 0,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 1,
+        "patterns": {
+          "empty_submission": 0,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-clean-up-student-marks",
+        "label": "q-clean-up-student-marks",
+        "flagged_count": 0,
+        "flagged_pct": 0,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 1,
+        "patterns": {
+          "empty_submission": 0,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-apache-log-requests",
+        "label": "q-apache-log-requests",
+        "flagged_count": 0,
+        "flagged_pct": 0,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 1,
+        "patterns": {
+          "empty_submission": 0,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-apache-log-downloads",
+        "label": "q-apache-log-downloads",
+        "flagged_count": 0,
+        "flagged_pct": 0,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 1,
+        "patterns": {
+          "empty_submission": 0,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-clean-up-sales-data",
+        "label": "q-clean-up-sales-data",
+        "flagged_count": 0,
+        "flagged_pct": 0,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 1,
+        "patterns": {
+          "empty_submission": 0,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-parse-partial-json",
+        "label": "q-parse-partial-json",
+        "flagged_count": 0,
+        "flagged_pct": 0,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 1,
+        "patterns": {
+          "empty_submission": 0,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-image-jigsaw",
+        "label": "q-image-jigsaw",
+        "flagged_count": 0,
+        "flagged_pct": 0,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 1,
+        "patterns": {
+          "empty_submission": 0,
+          "hacked_by_marker": 0
+        }
+      }
+    ],
+    "by_pattern": {
+      "empty_submission": 41,
+      "hacked_by_marker": 0
+    }
+  }
+}

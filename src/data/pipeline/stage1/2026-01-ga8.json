@@ -1,0 +1,462 @@
+{
+  "file": "tds-2026-01-ga8.json",
+  "term": "2026-01",
+  "assignment": "GA8",
+  "type": "GA",
+  "post_term_addition": true,
+  "schema_notes": "",
+  "meta": {
+    "total_records": 511,
+    "valid_records": 505,
+    "unique_students": 505,
+    "late_submissions": 0,
+    "max_possible_total": 23.5,
+    "question_max_total": 23.5,
+    "deadline_inferred": "2026-04-30T18:30:22.233Z",
+    "deadline_method": "latest_timestamp",
+    "data_cross_check": "ok"
+  },
+  "score_distribution": {
+    "mean": 17.71,
+    "median": 23.5,
+    "std_dev": 7.78,
+    "min": 0,
+    "max": 23.5,
+    "p10": 6.5,
+    "p25": 11.5,
+    "p50": 23.5,
+    "p75": 23.5,
+    "p90": 23.5,
+    "normalized_mean": 0.75,
+    "buckets": {
+      "0_20pct": 41,
+      "20_40pct": 64,
+      "40_60pct": 53,
+      "60_80pct": 40,
+      "80_100pct": 307
+    }
+  },
+  "questions": [
+    {
+      "id": "q-gcp-cloud-run-ml",
+      "label": "q-gcp-cloud-run-ml",
+      "max_possible": 2,
+      "mean_score": 1.21,
+      "normalized_mean": 0.6,
+      "zero_rate": 0.4,
+      "full_rate": 0.6,
+      "partial_rate": 0,
+      "completion_rate": 0.6,
+      "std_dev": 0.98,
+      "discriminative_proxy": 0.89,
+      "classification": "CALIBRATED"
+    },
+    {
+      "id": "q-gcp-cloud-run-hashapi",
+      "label": "q-gcp-cloud-run-hashapi",
+      "max_possible": 1.5,
+      "mean_score": 0.9,
+      "normalized_mean": 0.6,
+      "zero_rate": 0.4,
+      "full_rate": 0.6,
+      "partial_rate": 0,
+      "completion_rate": 0.6,
+      "std_dev": 0.73,
+      "discriminative_proxy": 0.89,
+      "classification": "CALIBRATED"
+    },
+    {
+      "id": "q-gcp-cloud-run-compute",
+      "label": "q-gcp-cloud-run-compute",
+      "max_possible": 2,
+      "mean_score": 1.23,
+      "normalized_mean": 0.61,
+      "zero_rate": 0.39,
+      "full_rate": 0.61,
+      "partial_rate": 0,
+      "completion_rate": 0.61,
+      "std_dev": 0.97,
+      "discriminative_proxy": 0.9,
+      "classification": "CALIBRATED"
+    },
+    {
+      "id": "q-gcp-cloud-functions-http",
+      "label": "q-gcp-cloud-functions-http",
+      "max_possible": 1.5,
+      "mean_score": 0.92,
+      "normalized_mean": 0.61,
+      "zero_rate": 0.39,
+      "full_rate": 0.61,
+      "partial_rate": 0,
+      "completion_rate": 0.61,
+      "std_dev": 0.73,
+      "discriminative_proxy": 0.9,
+      "classification": "CALIBRATED"
+    },
+    {
+      "id": "q-gcp-cloud-run-envconfig",
+      "label": "q-gcp-cloud-run-envconfig",
+      "max_possible": 1.5,
+      "mean_score": 0.91,
+      "normalized_mean": 0.61,
+      "zero_rate": 0.39,
+      "full_rate": 0.61,
+      "partial_rate": 0,
+      "completion_rate": 0.61,
+      "std_dev": 0.73,
+      "discriminative_proxy": 0.9,
+      "classification": "CALIBRATED"
+    },
+    {
+      "id": "q-precommit-ci-gate",
+      "label": "q-precommit-ci-gate",
+      "max_possible": 1.5,
+      "mean_score": 1.1,
+      "normalized_mean": 0.73,
+      "zero_rate": 0.27,
+      "full_rate": 0.73,
+      "partial_rate": 0,
+      "completion_rate": 0.73,
+      "std_dev": 0.66,
+      "discriminative_proxy": 0.86,
+      "classification": "CALIBRATED"
+    },
+    {
+      "id": "q-fastapi-iris-deploy",
+      "label": "q-fastapi-iris-deploy",
+      "max_possible": 2,
+      "mean_score": 1.52,
+      "normalized_mean": 0.76,
+      "zero_rate": 0.24,
+      "full_rate": 0.76,
+      "partial_rate": 0,
+      "completion_rate": 0.76,
+      "std_dev": 0.86,
+      "discriminative_proxy": 0.81,
+      "classification": "CALIBRATED"
+    },
+    {
+      "id": "q-hf-spaces-ml-api",
+      "label": "q-hf-spaces-ml-api",
+      "max_possible": 2,
+      "mean_score": 1.53,
+      "normalized_mean": 0.76,
+      "zero_rate": 0.24,
+      "full_rate": 0.76,
+      "partial_rate": 0,
+      "completion_rate": 0.76,
+      "std_dev": 0.85,
+      "discriminative_proxy": 0.81,
+      "classification": "CALIBRATED"
+    },
+    {
+      "id": "q-docker-hash-verify",
+      "label": "q-docker-hash-verify",
+      "max_possible": 1.5,
+      "mean_score": 1.24,
+      "normalized_mean": 0.83,
+      "zero_rate": 0.17,
+      "full_rate": 0.83,
+      "partial_rate": 0,
+      "completion_rate": 0.83,
+      "std_dev": 0.57,
+      "discriminative_proxy": 0.73,
+      "classification": "EASY"
+    },
+    {
+      "id": "q-gh-actions-secret-chain",
+      "label": "q-gh-actions-secret-chain",
+      "max_possible": 1.5,
+      "mean_score": 1.27,
+      "normalized_mean": 0.85,
+      "zero_rate": 0.15,
+      "full_rate": 0.85,
+      "partial_rate": 0,
+      "completion_rate": 0.85,
+      "std_dev": 0.54,
+      "discriminative_proxy": 0.65,
+      "classification": "EASY"
+    },
+    {
+      "id": "q-gcp-gemini-classification",
+      "label": "q-gcp-gemini-classification",
+      "max_possible": 1.5,
+      "mean_score": 1.32,
+      "normalized_mean": 0.88,
+      "zero_rate": 0.12,
+      "full_rate": 0.88,
+      "partial_rate": 0,
+      "completion_rate": 0.88,
+      "std_dev": 0.49,
+      "discriminative_proxy": 0.61,
+      "classification": "EASY"
+    },
+    {
+      "id": "q-gcp-gemini-json-extract",
+      "label": "q-gcp-gemini-json-extract",
+      "max_possible": 1.5,
+      "mean_score": 1.34,
+      "normalized_mean": 0.89,
+      "zero_rate": 0.11,
+      "full_rate": 0.89,
+      "partial_rate": 0,
+      "completion_rate": 0.89,
+      "std_dev": 0.46,
+      "discriminative_proxy": 0.57,
+      "classification": "EASY"
+    },
+    {
+      "id": "q-mlops-bash-script",
+      "label": "q-mlops-bash-script",
+      "max_possible": 1,
+      "mean_score": 0.91,
+      "normalized_mean": 0.91,
+      "zero_rate": 0.09,
+      "full_rate": 0.91,
+      "partial_rate": 0,
+      "completion_rate": 0.91,
+      "std_dev": 0.28,
+      "discriminative_proxy": 0.59,
+      "classification": "EASY"
+    },
+    {
+      "id": "q-gemini-math-puzzle",
+      "label": "q-gemini-math-puzzle",
+      "max_possible": 1.5,
+      "mean_score": 1.39,
+      "normalized_mean": 0.92,
+      "zero_rate": 0.08,
+      "full_rate": 0.92,
+      "partial_rate": 0,
+      "completion_rate": 0.92,
+      "std_dev": 0.4,
+      "discriminative_proxy": 0.53,
+      "classification": "EASY"
+    },
+    {
+      "id": "q-mlops-concepts-quiz",
+      "label": "q-mlops-concepts-quiz",
+      "max_possible": 1,
+      "mean_score": 0.93,
+      "normalized_mean": 0.93,
+      "zero_rate": 0.07,
+      "full_rate": 0.93,
+      "partial_rate": 0,
+      "completion_rate": 0.93,
+      "std_dev": 0.25,
+      "discriminative_proxy": 0.53,
+      "classification": "EASY"
+    }
+  ],
+  "timing": {
+    "skipped": true,
+    "skip_reason": "Post-term addition",
+    "deadline_ms": 1777573822233,
+    "early_gt6h": {
+      "count": 0,
+      "avg_score": 0
+    },
+    "mid_1_6h": {
+      "count": 0,
+      "avg_score": 0
+    },
+    "last_lt1h": {
+      "count": 0,
+      "avg_score": 0
+    }
+  },
+  "roe_specific": null,
+  "project_specific": null,
+  "flags": [],
+  "observations": [],
+  "anomalies": {
+    "total_flagged_students": 232,
+    "anomaly_pct": 45.9,
+    "by_question": [
+      {
+        "question_id": "q-gcp-cloud-run-envconfig",
+        "label": "q-gcp-cloud-run-envconfig",
+        "flagged_count": 230,
+        "flagged_pct": 45.5,
+        "dominant_pattern": "hacked_by_marker",
+        "scored_zero_normally": 76,
+        "patterns": {
+          "empty_submission": 10,
+          "hacked_by_marker": 220
+        }
+      },
+      {
+        "question_id": "q-gcp-cloud-run-ml",
+        "label": "q-gcp-cloud-run-ml",
+        "flagged_count": 228,
+        "flagged_pct": 45.1,
+        "dominant_pattern": "hacked_by_marker",
+        "scored_zero_normally": 77,
+        "patterns": {
+          "empty_submission": 10,
+          "hacked_by_marker": 218
+        }
+      },
+      {
+        "question_id": "q-gcp-cloud-functions-http",
+        "label": "q-gcp-cloud-functions-http",
+        "flagged_count": 228,
+        "flagged_pct": 45.1,
+        "dominant_pattern": "hacked_by_marker",
+        "scored_zero_normally": 81,
+        "patterns": {
+          "empty_submission": 10,
+          "hacked_by_marker": 218
+        }
+      },
+      {
+        "question_id": "q-gcp-cloud-run-hashapi",
+        "label": "q-gcp-cloud-run-hashapi",
+        "flagged_count": 226,
+        "flagged_pct": 44.8,
+        "dominant_pattern": "hacked_by_marker",
+        "scored_zero_normally": 78,
+        "patterns": {
+          "empty_submission": 10,
+          "hacked_by_marker": 216
+        }
+      },
+      {
+        "question_id": "q-gcp-cloud-run-compute",
+        "label": "q-gcp-cloud-run-compute",
+        "flagged_count": 226,
+        "flagged_pct": 44.8,
+        "dominant_pattern": "hacked_by_marker",
+        "scored_zero_normally": 84,
+        "patterns": {
+          "empty_submission": 10,
+          "hacked_by_marker": 216
+        }
+      },
+      {
+        "question_id": "q-precommit-ci-gate",
+        "label": "q-precommit-ci-gate",
+        "flagged_count": 214,
+        "flagged_pct": 42.4,
+        "dominant_pattern": "hacked_by_marker",
+        "scored_zero_normally": 157,
+        "patterns": {
+          "empty_submission": 9,
+          "hacked_by_marker": 205
+        }
+      },
+      {
+        "question_id": "q-hf-spaces-ml-api",
+        "label": "q-hf-spaces-ml-api",
+        "flagged_count": 209,
+        "flagged_pct": 41.4,
+        "dominant_pattern": "hacked_by_marker",
+        "scored_zero_normally": 177,
+        "patterns": {
+          "empty_submission": 9,
+          "hacked_by_marker": 200
+        }
+      },
+      {
+        "question_id": "q-fastapi-iris-deploy",
+        "label": "q-fastapi-iris-deploy",
+        "flagged_count": 201,
+        "flagged_pct": 39.8,
+        "dominant_pattern": "hacked_by_marker",
+        "scored_zero_normally": 182,
+        "patterns": {
+          "empty_submission": 9,
+          "hacked_by_marker": 192
+        }
+      },
+      {
+        "question_id": "q-docker-hash-verify",
+        "label": "q-docker-hash-verify",
+        "flagged_count": 200,
+        "flagged_pct": 39.6,
+        "dominant_pattern": "hacked_by_marker",
+        "scored_zero_normally": 217,
+        "patterns": {
+          "empty_submission": 8,
+          "hacked_by_marker": 192
+        }
+      },
+      {
+        "question_id": "q-gh-actions-secret-chain",
+        "label": "q-gh-actions-secret-chain",
+        "flagged_count": 195,
+        "flagged_pct": 38.6,
+        "dominant_pattern": "hacked_by_marker",
+        "scored_zero_normally": 232,
+        "patterns": {
+          "empty_submission": 7,
+          "hacked_by_marker": 188
+        }
+      },
+      {
+        "question_id": "q-gcp-gemini-classification",
+        "label": "q-gcp-gemini-classification",
+        "flagged_count": 176,
+        "flagged_pct": 34.9,
+        "dominant_pattern": "hacked_by_marker",
+        "scored_zero_normally": 267,
+        "patterns": {
+          "empty_submission": 7,
+          "hacked_by_marker": 169
+        }
+      },
+      {
+        "question_id": "q-gcp-gemini-json-extract",
+        "label": "q-gcp-gemini-json-extract",
+        "flagged_count": 175,
+        "flagged_pct": 34.7,
+        "dominant_pattern": "hacked_by_marker",
+        "scored_zero_normally": 276,
+        "patterns": {
+          "empty_submission": 7,
+          "hacked_by_marker": 168
+        }
+      },
+      {
+        "question_id": "q-mlops-concepts-quiz",
+        "label": "q-mlops-concepts-quiz",
+        "flagged_count": 169,
+        "flagged_pct": 33.5,
+        "dominant_pattern": "hacked_by_marker",
+        "scored_zero_normally": 301,
+        "patterns": {
+          "empty_submission": 7,
+          "hacked_by_marker": 162
+        }
+      },
+      {
+        "question_id": "q-mlops-bash-script",
+        "label": "q-mlops-bash-script",
+        "flagged_count": 167,
+        "flagged_pct": 33.1,
+        "dominant_pattern": "hacked_by_marker",
+        "scored_zero_normally": 294,
+        "patterns": {
+          "empty_submission": 7,
+          "hacked_by_marker": 160
+        }
+      },
+      {
+        "question_id": "q-gemini-math-puzzle",
+        "label": "q-gemini-math-puzzle",
+        "flagged_count": 164,
+        "flagged_pct": 32.5,
+        "dominant_pattern": "hacked_by_marker",
+        "scored_zero_normally": 303,
+        "patterns": {
+          "empty_submission": 7,
+          "hacked_by_marker": 157
+        }
+      }
+    ],
+    "by_pattern": {
+      "empty_submission": 10,
+      "hacked_by_marker": 222
+    }
+  }
+}

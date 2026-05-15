@@ -1,0 +1,177 @@
+{
+  "file": "tds-2026-01-p2 (1).json",
+  "term": "2026-01",
+  "assignment": "P2",
+  "type": "PROJECT",
+  "post_term_addition": false,
+  "schema_notes": "",
+  "meta": {
+    "total_records": 603,
+    "valid_records": 603,
+    "unique_students": 603,
+    "late_submissions": 0,
+    "max_possible_total": 30,
+    "question_max_total": 30,
+    "deadline_inferred": "2026-05-04T18:30:31.833Z",
+    "deadline_method": "latest_timestamp",
+    "data_cross_check": "ok"
+  },
+  "score_distribution": {
+    "mean": 26.22,
+    "median": 29.28,
+    "std_dev": 6.92,
+    "min": 0,
+    "max": 30,
+    "p10": 15,
+    "p25": 28.32,
+    "p50": 29.28,
+    "p75": 29.76,
+    "p90": 30,
+    "normalized_mean": 0.87,
+    "buckets": {
+      "0_20pct": 23,
+      "20_40pct": 13,
+      "40_60pct": 48,
+      "60_80pct": 25,
+      "80_100pct": 494
+    }
+  },
+  "questions": [
+    {
+      "id": "q-damaged-qr-crypto-server",
+      "label": "q-damaged-qr-crypto-server",
+      "max_possible": 3,
+      "mean_score": 2.65,
+      "normalized_mean": 0.88,
+      "zero_rate": 0.12,
+      "full_rate": 0.88,
+      "partial_rate": 0,
+      "completion_rate": 0.88,
+      "std_dev": 0.96,
+      "discriminative_proxy": 0.69,
+      "classification": "EASY"
+    },
+    {
+      "id": "q-onion-scrape-server",
+      "label": "q-onion-scrape-server",
+      "max_possible": 12,
+      "mean_score": 10.93,
+      "normalized_mean": 0.91,
+      "zero_rate": 0.09,
+      "full_rate": 0.91,
+      "partial_rate": 0,
+      "completion_rate": 0.91,
+      "std_dev": 3.43,
+      "discriminative_proxy": 0.45,
+      "classification": "EASY"
+    },
+    {
+      "id": "q-discourse-analysis-server",
+      "label": "q-discourse-analysis-server",
+      "max_possible": 12,
+      "mean_score": 9.83,
+      "normalized_mean": 0.82,
+      "zero_rate": 0.09,
+      "full_rate": 0.24,
+      "partial_rate": 0.66,
+      "completion_rate": 0.91,
+      "std_dev": 3.65,
+      "discriminative_proxy": 0.38,
+      "classification": "CALIBRATED"
+    },
+    {
+      "id": "q-crypto-transfers-server",
+      "label": "q-crypto-transfers-server",
+      "max_possible": 3,
+      "mean_score": 2.82,
+      "normalized_mean": 0.94,
+      "zero_rate": 0.06,
+      "full_rate": 0.94,
+      "partial_rate": 0,
+      "completion_rate": 0.94,
+      "std_dev": 0.72,
+      "discriminative_proxy": 0.43,
+      "classification": "EASY"
+    }
+  ],
+  "timing": {
+    "skipped": false,
+    "skip_reason": null,
+    "deadline_ms": 1777919431833,
+    "early_gt6h": {
+      "count": 464,
+      "avg_score": 27.11
+    },
+    "mid_1_6h": {
+      "count": 89,
+      "avg_score": 25.13
+    },
+    "last_lt1h": {
+      "count": 50,
+      "avg_score": 19.92
+    },
+    "max_possible_total": 30
+  },
+  "roe_specific": null,
+  "project_specific": {},
+  "flags": [],
+  "observations": [],
+  "anomalies": {
+    "total_flagged_students": 0,
+    "anomaly_pct": 0,
+    "by_question": [
+      {
+        "question_id": "q-damaged-qr-crypto-server",
+        "label": "q-damaged-qr-crypto-server",
+        "flagged_count": 0,
+        "flagged_pct": 0,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 533,
+        "patterns": {
+          "empty_submission": 0,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-onion-scrape-server",
+        "label": "q-onion-scrape-server",
+        "flagged_count": 0,
+        "flagged_pct": 0,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 549,
+        "patterns": {
+          "empty_submission": 0,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-discourse-analysis-server",
+        "label": "q-discourse-analysis-server",
+        "flagged_count": 0,
+        "flagged_pct": 0,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 546,
+        "patterns": {
+          "empty_submission": 0,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-crypto-transfers-server",
+        "label": "q-crypto-transfers-server",
+        "flagged_count": 0,
+        "flagged_pct": 0,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 566,
+        "patterns": {
+          "empty_submission": 0,
+          "hacked_by_marker": 0
+        }
+      }
+    ],
+    "by_pattern": {
+      "empty_submission": 0,
+      "hacked_by_marker": 0
+    }
+  }
+}

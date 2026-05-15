@@ -1,0 +1,463 @@
+{
+  "file": "tds-2026-01-ga6.json",
+  "term": "2026-01",
+  "assignment": "GA6",
+  "type": "GA",
+  "post_term_addition": false,
+  "schema_notes": "",
+  "meta": {
+    "total_records": 728,
+    "valid_records": 722,
+    "unique_students": 722,
+    "late_submissions": 0,
+    "max_possible_total": 15,
+    "question_max_total": 15,
+    "deadline_inferred": "2026-03-31T18:29:39.940Z",
+    "deadline_method": "latest_timestamp",
+    "data_cross_check": "ok"
+  },
+  "score_distribution": {
+    "mean": 13.56,
+    "median": 14,
+    "std_dev": 2.57,
+    "min": 0,
+    "max": 15,
+    "p10": 12,
+    "p25": 13,
+    "p50": 14,
+    "p75": 15,
+    "p90": 15,
+    "normalized_mean": 0.9,
+    "buckets": {
+      "0_20pct": 16,
+      "20_40pct": 5,
+      "40_60pct": 6,
+      "60_80pct": 40,
+      "80_100pct": 655
+    }
+  },
+  "questions": [
+    {
+      "id": "q-minimal-prompt-robustness",
+      "label": "q-minimal-prompt-robustness",
+      "max_possible": 1,
+      "mean_score": 0.62,
+      "normalized_mean": 0.62,
+      "zero_rate": 0.38,
+      "full_rate": 0.62,
+      "partial_rate": 0,
+      "completion_rate": 0.62,
+      "std_dev": 0.49,
+      "discriminative_proxy": 0.37,
+      "classification": "CALIBRATED"
+    },
+    {
+      "id": "q-token-miser-prompt",
+      "label": "q-token-miser-prompt",
+      "max_possible": 1,
+      "mean_score": 0.75,
+      "normalized_mean": 0.75,
+      "zero_rate": 0.25,
+      "full_rate": 0.75,
+      "partial_rate": 0,
+      "completion_rate": 0.75,
+      "std_dev": 0.43,
+      "discriminative_proxy": 0.42,
+      "classification": "CALIBRATED"
+    },
+    {
+      "id": "q-binary-eval-rubric",
+      "label": "q-binary-eval-rubric",
+      "max_possible": 1,
+      "mean_score": 0.8,
+      "normalized_mean": 0.8,
+      "zero_rate": 0.2,
+      "full_rate": 0.8,
+      "partial_rate": 0,
+      "completion_rate": 0.8,
+      "std_dev": 0.4,
+      "discriminative_proxy": 0.45,
+      "classification": "CALIBRATED"
+    },
+    {
+      "id": "q-bug-hunter-property-based-testing",
+      "label": "q-bug-hunter-property-based-testing",
+      "max_possible": 1,
+      "mean_score": 0.88,
+      "normalized_mean": 0.88,
+      "zero_rate": 0.12,
+      "full_rate": 0.88,
+      "partial_rate": 0,
+      "completion_rate": 0.88,
+      "std_dev": 0.32,
+      "discriminative_proxy": 0.27,
+      "classification": "EASY"
+    },
+    {
+      "id": "q-idempotency-prober",
+      "label": "q-idempotency-prober",
+      "max_possible": 1,
+      "mean_score": 0.89,
+      "normalized_mean": 0.89,
+      "zero_rate": 0.11,
+      "full_rate": 0.89,
+      "partial_rate": 0,
+      "completion_rate": 0.89,
+      "std_dev": 0.31,
+      "discriminative_proxy": 0.57,
+      "classification": "EASY"
+    },
+    {
+      "id": "q-leakage-auditor",
+      "label": "q-leakage-auditor",
+      "max_possible": 1,
+      "mean_score": 0.94,
+      "normalized_mean": 0.94,
+      "zero_rate": 0.06,
+      "full_rate": 0.94,
+      "partial_rate": 0,
+      "completion_rate": 0.94,
+      "std_dev": 0.23,
+      "discriminative_proxy": 0.73,
+      "classification": "EASY"
+    },
+    {
+      "id": "q-train-test-contamination",
+      "label": "q-train-test-contamination",
+      "max_possible": 1,
+      "mean_score": 0.95,
+      "normalized_mean": 0.95,
+      "zero_rate": 0.05,
+      "full_rate": 0.95,
+      "partial_rate": 0,
+      "completion_rate": 0.95,
+      "std_dev": 0.21,
+      "discriminative_proxy": 0.78,
+      "classification": "EASY"
+    },
+    {
+      "id": "q-data-contract-violation",
+      "label": "q-data-contract-violation",
+      "max_possible": 1,
+      "mean_score": 0.96,
+      "normalized_mean": 0.96,
+      "zero_rate": 0.04,
+      "full_rate": 0.96,
+      "partial_rate": 0,
+      "completion_rate": 0.96,
+      "std_dev": 0.19,
+      "discriminative_proxy": 0.74,
+      "classification": "EASY"
+    },
+    {
+      "id": "q-slice-detective",
+      "label": "q-slice-detective",
+      "max_possible": 1,
+      "mean_score": 0.96,
+      "normalized_mean": 0.96,
+      "zero_rate": 0.04,
+      "full_rate": 0.96,
+      "partial_rate": 0,
+      "completion_rate": 0.96,
+      "std_dev": 0.19,
+      "discriminative_proxy": 0.74,
+      "classification": "EASY"
+    },
+    {
+      "id": "q-threshold-engineer",
+      "label": "q-threshold-engineer",
+      "max_possible": 1,
+      "mean_score": 0.96,
+      "normalized_mean": 0.96,
+      "zero_rate": 0.04,
+      "full_rate": 0.96,
+      "partial_rate": 0,
+      "completion_rate": 0.96,
+      "std_dev": 0.19,
+      "discriminative_proxy": 0.78,
+      "classification": "EASY"
+    },
+    {
+      "id": "q-benchmark-overfitter",
+      "label": "q-benchmark-overfitter",
+      "max_possible": 1,
+      "mean_score": 0.97,
+      "normalized_mean": 0.97,
+      "zero_rate": 0.03,
+      "full_rate": 0.97,
+      "partial_rate": 0,
+      "completion_rate": 0.97,
+      "std_dev": 0.18,
+      "discriminative_proxy": 0.78,
+      "classification": "EASY"
+    },
+    {
+      "id": "q-flaky-test-finder",
+      "label": "q-flaky-test-finder",
+      "max_possible": 1,
+      "mean_score": 0.97,
+      "normalized_mean": 0.97,
+      "zero_rate": 0.03,
+      "full_rate": 0.97,
+      "partial_rate": 0,
+      "completion_rate": 0.97,
+      "std_dev": 0.17,
+      "discriminative_proxy": 0.79,
+      "classification": "EASY"
+    },
+    {
+      "id": "q-embedding-auditor",
+      "label": "q-embedding-auditor",
+      "max_possible": 1,
+      "mean_score": 0.97,
+      "normalized_mean": 0.97,
+      "zero_rate": 0.03,
+      "full_rate": 0.97,
+      "partial_rate": 0,
+      "completion_rate": 0.97,
+      "std_dev": 0.18,
+      "discriminative_proxy": 0.8,
+      "classification": "EASY"
+    },
+    {
+      "id": "q-latency-sla-checker",
+      "label": "q-latency-sla-checker",
+      "max_possible": 1,
+      "mean_score": 0.97,
+      "normalized_mean": 0.97,
+      "zero_rate": 0.03,
+      "full_rate": 0.97,
+      "partial_rate": 0,
+      "completion_rate": 0.97,
+      "std_dev": 0.18,
+      "discriminative_proxy": 0.8,
+      "classification": "EASY"
+    },
+    {
+      "id": "q-coverage-gap-finder",
+      "label": "q-coverage-gap-finder",
+      "max_possible": 1,
+      "mean_score": 0.97,
+      "normalized_mean": 0.97,
+      "zero_rate": 0.03,
+      "full_rate": 0.97,
+      "partial_rate": 0,
+      "completion_rate": 0.97,
+      "std_dev": 0.18,
+      "discriminative_proxy": 0.75,
+      "classification": "EASY"
+    }
+  ],
+  "timing": {
+    "skipped": false,
+    "skip_reason": null,
+    "deadline_ms": 1774981779940,
+    "early_gt6h": {
+      "count": 537,
+      "avg_score": 13.53
+    },
+    "mid_1_6h": {
+      "count": 111,
+      "avg_score": 13.97
+    },
+    "last_lt1h": {
+      "count": 74,
+      "avg_score": 13.08
+    },
+    "max_possible_total": 15
+  },
+  "roe_specific": null,
+  "project_specific": null,
+  "flags": [],
+  "observations": [],
+  "anomalies": {
+    "total_flagged_students": 31,
+    "anomaly_pct": 4.3,
+    "by_question": [
+      {
+        "question_id": "q-token-miser-prompt",
+        "label": "q-token-miser-prompt",
+        "flagged_count": 31,
+        "flagged_pct": 4.3,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 508,
+        "patterns": {
+          "empty_submission": 31,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-minimal-prompt-robustness",
+        "label": "q-minimal-prompt-robustness",
+        "flagged_count": 30,
+        "flagged_pct": 4.2,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 416,
+        "patterns": {
+          "empty_submission": 30,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-idempotency-prober",
+        "label": "q-idempotency-prober",
+        "flagged_count": 30,
+        "flagged_pct": 4.2,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 612,
+        "patterns": {
+          "empty_submission": 30,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-leakage-auditor",
+        "label": "q-leakage-auditor",
+        "flagged_count": 30,
+        "flagged_pct": 4.2,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 652,
+        "patterns": {
+          "empty_submission": 30,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-train-test-contamination",
+        "label": "q-train-test-contamination",
+        "flagged_count": 30,
+        "flagged_pct": 4.2,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 659,
+        "patterns": {
+          "empty_submission": 30,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-data-contract-violation",
+        "label": "q-data-contract-violation",
+        "flagged_count": 30,
+        "flagged_pct": 4.2,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 666,
+        "patterns": {
+          "empty_submission": 30,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-slice-detective",
+        "label": "q-slice-detective",
+        "flagged_count": 30,
+        "flagged_pct": 4.2,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 666,
+        "patterns": {
+          "empty_submission": 30,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-threshold-engineer",
+        "label": "q-threshold-engineer",
+        "flagged_count": 30,
+        "flagged_pct": 4.2,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 664,
+        "patterns": {
+          "empty_submission": 30,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-benchmark-overfitter",
+        "label": "q-benchmark-overfitter",
+        "flagged_count": 30,
+        "flagged_pct": 4.2,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 669,
+        "patterns": {
+          "empty_submission": 30,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-flaky-test-finder",
+        "label": "q-flaky-test-finder",
+        "flagged_count": 30,
+        "flagged_pct": 4.2,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 670,
+        "patterns": {
+          "empty_submission": 30,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-embedding-auditor",
+        "label": "q-embedding-auditor",
+        "flagged_count": 30,
+        "flagged_pct": 4.2,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 667,
+        "patterns": {
+          "empty_submission": 30,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-latency-sla-checker",
+        "label": "q-latency-sla-checker",
+        "flagged_count": 30,
+        "flagged_pct": 4.2,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 667,
+        "patterns": {
+          "empty_submission": 30,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-coverage-gap-finder",
+        "label": "q-coverage-gap-finder",
+        "flagged_count": 30,
+        "flagged_pct": 4.2,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 667,
+        "patterns": {
+          "empty_submission": 30,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-binary-eval-rubric",
+        "label": "q-binary-eval-rubric",
+        "flagged_count": 29,
+        "flagged_pct": 4,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 546,
+        "patterns": {
+          "empty_submission": 29,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-bug-hunter-property-based-testing",
+        "label": "q-bug-hunter-property-based-testing",
+        "flagged_count": 29,
+        "flagged_pct": 4,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 609,
+        "patterns": {
+          "empty_submission": 29,
+          "hacked_by_marker": 0
+        }
+      }
+    ],
+    "by_pattern": {
+      "empty_submission": 31,
+      "hacked_by_marker": 0
+    }
+  }
+}

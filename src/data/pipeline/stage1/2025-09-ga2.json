@@ -1,0 +1,411 @@
+{
+  "file": "tds-2025-09-ga2.json",
+  "term": "2025-09",
+  "assignment": "GA2",
+  "type": "GA",
+  "post_term_addition": false,
+  "schema_notes": "",
+  "meta": {
+    "total_records": 943,
+    "valid_records": 942,
+    "unique_students": 942,
+    "late_submissions": 0,
+    "max_possible_total": 13.5,
+    "question_max_total": 13.5,
+    "deadline_inferred": "2025-10-19T21:54:55.898Z",
+    "deadline_method": "latest_timestamp",
+    "data_cross_check": "ok"
+  },
+  "score_distribution": {
+    "mean": 5.82,
+    "median": 5,
+    "std_dev": 3.98,
+    "min": 0,
+    "max": 12,
+    "p10": 0.75,
+    "p25": 2.25,
+    "p50": 5,
+    "p75": 9.5,
+    "p90": 12,
+    "normalized_mean": 0.43,
+    "buckets": {
+      "0_20pct": 262,
+      "20_40pct": 222,
+      "40_60pct": 146,
+      "60_80pct": 127,
+      "80_100pct": 185
+    }
+  },
+  "questions": [
+    {
+      "id": "q-ollama",
+      "label": "q-ollama",
+      "max_possible": 1,
+      "mean_score": 0.22,
+      "normalized_mean": 0.22,
+      "zero_rate": 0.78,
+      "full_rate": 0.22,
+      "partial_rate": 0,
+      "completion_rate": 0.22,
+      "std_dev": 0.41,
+      "discriminative_proxy": 0.63,
+      "classification": "BROKEN"
+    },
+    {
+      "id": "q-vercel-latency",
+      "label": "q-vercel-latency",
+      "max_possible": 1,
+      "mean_score": 0.27,
+      "normalized_mean": 0.27,
+      "zero_rate": 0.73,
+      "full_rate": 0.27,
+      "partial_rate": 0,
+      "completion_rate": 0.27,
+      "std_dev": 0.44,
+      "discriminative_proxy": 0.66,
+      "classification": "BROKEN"
+    },
+    {
+      "id": "q-huggingface-docker",
+      "label": "q-huggingface-docker",
+      "max_possible": 1,
+      "mean_score": 0.35,
+      "normalized_mean": 0.35,
+      "zero_rate": 0.65,
+      "full_rate": 0.35,
+      "partial_rate": 0,
+      "completion_rate": 0.35,
+      "std_dev": 0.48,
+      "discriminative_proxy": 0.7,
+      "classification": "BINARY"
+    },
+    {
+      "id": "q-google-oauth-fastapi",
+      "label": "q-google-oauth-fastapi",
+      "max_possible": 1.5,
+      "mean_score": 0.53,
+      "normalized_mean": 0.35,
+      "zero_rate": 0.65,
+      "full_rate": 0.35,
+      "partial_rate": 0,
+      "completion_rate": 0.35,
+      "std_dev": 0.72,
+      "discriminative_proxy": 0.74,
+      "classification": "BINARY"
+    },
+    {
+      "id": "q-docker-hub-image",
+      "label": "q-docker-hub-image",
+      "max_possible": 1,
+      "mean_score": 0.41,
+      "normalized_mean": 0.41,
+      "zero_rate": 0.59,
+      "full_rate": 0.41,
+      "partial_rate": 0,
+      "completion_rate": 0.41,
+      "std_dev": 0.49,
+      "discriminative_proxy": 0.75,
+      "classification": "BINARY"
+    },
+    {
+      "id": "q-fastapi",
+      "label": "q-fastapi",
+      "max_possible": 1,
+      "mean_score": 0.42,
+      "normalized_mean": 0.42,
+      "zero_rate": 0.58,
+      "full_rate": 0.42,
+      "partial_rate": 0,
+      "completion_rate": 0.42,
+      "std_dev": 0.49,
+      "discriminative_proxy": 0.75,
+      "classification": "BINARY"
+    },
+    {
+      "id": "q-github-codespaces-devcontainer",
+      "label": "q-github-codespaces-devcontainer",
+      "max_possible": 1,
+      "mean_score": 0.34,
+      "normalized_mean": 0.34,
+      "zero_rate": 0.55,
+      "full_rate": 0,
+      "partial_rate": 0.45,
+      "completion_rate": 0.45,
+      "std_dev": 0.37,
+      "discriminative_proxy": 0.77,
+      "classification": "CALIBRATED"
+    },
+    {
+      "id": "q-github-action-cache",
+      "label": "q-github-action-cache",
+      "max_possible": 1,
+      "mean_score": 0.59,
+      "normalized_mean": 0.59,
+      "zero_rate": 0.41,
+      "full_rate": 0.59,
+      "partial_rate": 0,
+      "completion_rate": 0.59,
+      "std_dev": 0.49,
+      "discriminative_proxy": 0.7,
+      "classification": "CALIBRATED"
+    },
+    {
+      "id": "q-markdown-architecture",
+      "label": "q-markdown-architecture",
+      "max_possible": 1,
+      "mean_score": 0.51,
+      "normalized_mean": 0.51,
+      "zero_rate": 0.33,
+      "full_rate": 0,
+      "partial_rate": 0.67,
+      "completion_rate": 0.67,
+      "std_dev": 0.35,
+      "discriminative_proxy": 0.45,
+      "classification": "CALIBRATED"
+    },
+    {
+      "id": "q-github-action",
+      "label": "q-github-action",
+      "max_possible": 1,
+      "mean_score": 0.68,
+      "normalized_mean": 0.68,
+      "zero_rate": 0.32,
+      "full_rate": 0.68,
+      "partial_rate": 0,
+      "completion_rate": 0.68,
+      "std_dev": 0.47,
+      "discriminative_proxy": 0.61,
+      "classification": "CALIBRATED"
+    },
+    {
+      "id": "q-image-compression-dynamic",
+      "label": "q-image-compression-dynamic",
+      "max_possible": 1,
+      "mean_score": 0.51,
+      "normalized_mean": 0.51,
+      "zero_rate": 0.32,
+      "full_rate": 0,
+      "partial_rate": 0.68,
+      "completion_rate": 0.68,
+      "std_dev": 0.35,
+      "discriminative_proxy": 0.46,
+      "classification": "CALIBRATED"
+    },
+    {
+      "id": "q-colab-secrets-drive",
+      "label": "q-colab-secrets-drive",
+      "max_possible": 1,
+      "mean_score": 0.6,
+      "normalized_mean": 0.6,
+      "zero_rate": 0.2,
+      "full_rate": 0,
+      "partial_rate": 0.79,
+      "completion_rate": 0.8,
+      "std_dev": 0.3,
+      "discriminative_proxy": 0.49,
+      "classification": "CALIBRATED"
+    },
+    {
+      "id": "q-github-pages",
+      "label": "q-github-pages",
+      "max_possible": 1,
+      "mean_score": 0.4,
+      "normalized_mean": 0.4,
+      "zero_rate": 0.2,
+      "full_rate": 0,
+      "partial_rate": 0.8,
+      "completion_rate": 0.8,
+      "std_dev": 0.2,
+      "discriminative_proxy": 0.51,
+      "classification": "CALIBRATED"
+    }
+  ],
+  "timing": {
+    "skipped": false,
+    "skip_reason": null,
+    "deadline_ms": 1760910895898,
+    "early_gt6h": {
+      "count": 941,
+      "avg_score": 5.82
+    },
+    "mid_1_6h": {
+      "count": 0,
+      "avg_score": 0
+    },
+    "last_lt1h": {
+      "count": 1,
+      "avg_score": 0.75
+    },
+    "max_possible_total": 13.5
+  },
+  "roe_specific": null,
+  "project_specific": null,
+  "flags": [],
+  "observations": [],
+  "anomalies": {
+    "total_flagged_students": 24,
+    "anomaly_pct": 2.5,
+    "by_question": [
+      {
+        "question_id": "q-google-oauth-fastapi",
+        "label": "q-google-oauth-fastapi",
+        "flagged_count": 24,
+        "flagged_pct": 2.5,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 310,
+        "patterns": {
+          "empty_submission": 24,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-docker-hub-image",
+        "label": "q-docker-hub-image",
+        "flagged_count": 23,
+        "flagged_pct": 2.4,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 363,
+        "patterns": {
+          "empty_submission": 23,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-huggingface-docker",
+        "label": "q-huggingface-docker",
+        "flagged_count": 22,
+        "flagged_pct": 2.3,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 304,
+        "patterns": {
+          "empty_submission": 22,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-github-codespaces-devcontainer",
+        "label": "q-github-codespaces-devcontainer",
+        "flagged_count": 22,
+        "flagged_pct": 2.3,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 403,
+        "patterns": {
+          "empty_submission": 22,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-ollama",
+        "label": "q-ollama",
+        "flagged_count": 21,
+        "flagged_pct": 2.2,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 183,
+        "patterns": {
+          "empty_submission": 21,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-vercel-latency",
+        "label": "q-vercel-latency",
+        "flagged_count": 21,
+        "flagged_pct": 2.2,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 231,
+        "patterns": {
+          "empty_submission": 21,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-github-action-cache",
+        "label": "q-github-action-cache",
+        "flagged_count": 21,
+        "flagged_pct": 2.2,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 535,
+        "patterns": {
+          "empty_submission": 21,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-fastapi",
+        "label": "q-fastapi",
+        "flagged_count": 20,
+        "flagged_pct": 2.1,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 376,
+        "patterns": {
+          "empty_submission": 20,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-github-action",
+        "label": "q-github-action",
+        "flagged_count": 19,
+        "flagged_pct": 2,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 618,
+        "patterns": {
+          "empty_submission": 19,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-colab-secrets-drive",
+        "label": "q-colab-secrets-drive",
+        "flagged_count": 19,
+        "flagged_pct": 2,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 730,
+        "patterns": {
+          "empty_submission": 19,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-github-pages",
+        "label": "q-github-pages",
+        "flagged_count": 19,
+        "flagged_pct": 2,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 733,
+        "patterns": {
+          "empty_submission": 19,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-markdown-architecture",
+        "label": "q-markdown-architecture",
+        "flagged_count": 16,
+        "flagged_pct": 1.7,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 618,
+        "patterns": {
+          "empty_submission": 16,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-image-compression-dynamic",
+        "label": "q-image-compression-dynamic",
+        "flagged_count": 0,
+        "flagged_pct": 0,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 641,
+        "patterns": {
+          "empty_submission": 0,
+          "hacked_by_marker": 0
+        }
+      }
+    ],
+    "by_pattern": {
+      "empty_submission": 24,
+      "hacked_by_marker": 0
+    }
+  }
+}

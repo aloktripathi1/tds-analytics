@@ -1,0 +1,437 @@
+{
+  "file": "tds-2025-05-ga3.json",
+  "term": "2025-05",
+  "assignment": "GA3",
+  "type": "GA",
+  "post_term_addition": false,
+  "schema_notes": "",
+  "meta": {
+    "total_records": 1092,
+    "valid_records": 1092,
+    "unique_students": 1092,
+    "late_submissions": 0,
+    "max_possible_total": 10,
+    "question_max_total": 10,
+    "deadline_inferred": "2025-09-08T17:10:34.208Z",
+    "deadline_method": "latest_timestamp",
+    "data_cross_check": "ok"
+  },
+  "score_distribution": {
+    "mean": 7.02,
+    "median": 8.5,
+    "std_dev": 3.22,
+    "min": 0,
+    "max": 10,
+    "p10": 2,
+    "p25": 4,
+    "p50": 8.5,
+    "p75": 10,
+    "p90": 10,
+    "normalized_mean": 0.7,
+    "buckets": {
+      "0_20pct": 77,
+      "20_40pct": 187,
+      "40_60pct": 131,
+      "60_80pct": 93,
+      "80_100pct": 604
+    }
+  },
+  "questions": [
+    {
+      "id": "q-rag-typscript-book",
+      "label": "q-rag-typscript-book",
+      "max_possible": 1,
+      "mean_score": 0.52,
+      "normalized_mean": 0.52,
+      "zero_rate": 0.48,
+      "full_rate": 0.52,
+      "partial_rate": 0,
+      "completion_rate": 0.52,
+      "std_dev": 0.5,
+      "discriminative_proxy": 0.78,
+      "classification": "CALIBRATED"
+    },
+    {
+      "id": "q-llm-evals",
+      "label": "q-llm-evals",
+      "max_possible": 1,
+      "mean_score": 0.57,
+      "normalized_mean": 0.57,
+      "zero_rate": 0.43,
+      "full_rate": 0.57,
+      "partial_rate": 0,
+      "completion_rate": 0.57,
+      "std_dev": 0.5,
+      "discriminative_proxy": 0.82,
+      "classification": "CALIBRATED"
+    },
+    {
+      "id": "q-function-calling",
+      "label": "q-function-calling",
+      "max_possible": 1,
+      "mean_score": 0.62,
+      "normalized_mean": 0.62,
+      "zero_rate": 0.38,
+      "full_rate": 0.62,
+      "partial_rate": 0,
+      "completion_rate": 0.62,
+      "std_dev": 0.49,
+      "discriminative_proxy": 0.85,
+      "classification": "CALIBRATED"
+    },
+    {
+      "id": "q-get-llm-to-say-yes",
+      "label": "q-get-llm-to-say-yes",
+      "max_possible": 1,
+      "mean_score": 0.62,
+      "normalized_mean": 0.62,
+      "zero_rate": 0.38,
+      "full_rate": 0.62,
+      "partial_rate": 0,
+      "completion_rate": 0.62,
+      "std_dev": 0.49,
+      "discriminative_proxy": 0.72,
+      "classification": "CALIBRATED"
+    },
+    {
+      "id": "q-vector-databases",
+      "label": "q-vector-databases",
+      "max_possible": 1,
+      "mean_score": 0.63,
+      "normalized_mean": 0.63,
+      "zero_rate": 0.37,
+      "full_rate": 0.63,
+      "partial_rate": 0,
+      "completion_rate": 0.63,
+      "std_dev": 0.48,
+      "discriminative_proxy": 0.84,
+      "classification": "CALIBRATED"
+    },
+    {
+      "id": "q-generate-addresses-with-llms",
+      "label": "q-generate-addresses-with-llms",
+      "max_possible": 1,
+      "mean_score": 0.64,
+      "normalized_mean": 0.64,
+      "zero_rate": 0.36,
+      "full_rate": 0.64,
+      "partial_rate": 0,
+      "completion_rate": 0.64,
+      "std_dev": 0.48,
+      "discriminative_proxy": 0.68,
+      "classification": "CALIBRATED"
+    },
+    {
+      "id": "q-llm-multimodal-embeddings",
+      "label": "q-llm-multimodal-embeddings",
+      "max_possible": 0.5,
+      "mean_score": 0.33,
+      "normalized_mean": 0.67,
+      "zero_rate": 0.33,
+      "full_rate": 0.67,
+      "partial_rate": 0,
+      "completion_rate": 0.67,
+      "std_dev": 0.24,
+      "discriminative_proxy": 0.76,
+      "classification": "CALIBRATED"
+    },
+    {
+      "id": "q-llm-vision",
+      "label": "q-llm-vision",
+      "max_possible": 1,
+      "mean_score": 0.83,
+      "normalized_mean": 0.83,
+      "zero_rate": 0.17,
+      "full_rate": 0.83,
+      "partial_rate": 0,
+      "completion_rate": 0.83,
+      "std_dev": 0.38,
+      "discriminative_proxy": 0.57,
+      "classification": "EASY"
+    },
+    {
+      "id": "q-token-cost",
+      "label": "q-token-cost",
+      "max_possible": 0.5,
+      "mean_score": 0.43,
+      "normalized_mean": 0.86,
+      "zero_rate": 0.14,
+      "full_rate": 0.86,
+      "partial_rate": 0,
+      "completion_rate": 0.86,
+      "std_dev": 0.17,
+      "discriminative_proxy": 0.57,
+      "classification": "EASY"
+    },
+    {
+      "id": "q-llm-speech",
+      "label": "q-llm-speech",
+      "max_possible": 0.25,
+      "mean_score": 0.22,
+      "normalized_mean": 0.88,
+      "zero_rate": 0.12,
+      "full_rate": 0.88,
+      "partial_rate": 0,
+      "completion_rate": 0.88,
+      "std_dev": 0.08,
+      "discriminative_proxy": 0.49,
+      "classification": "EASY"
+    },
+    {
+      "id": "q-llm-image-generation",
+      "label": "q-llm-image-generation",
+      "max_possible": 0.25,
+      "mean_score": 0.22,
+      "normalized_mean": 0.89,
+      "zero_rate": 0.11,
+      "full_rate": 0.89,
+      "partial_rate": 0,
+      "completion_rate": 0.89,
+      "std_dev": 0.08,
+      "discriminative_proxy": 0.49,
+      "classification": "EASY"
+    },
+    {
+      "id": "q-embedding-similarity",
+      "label": "q-embedding-similarity",
+      "max_possible": 0.5,
+      "mean_score": 0.45,
+      "normalized_mean": 0.91,
+      "zero_rate": 0.09,
+      "full_rate": 0.91,
+      "partial_rate": 0,
+      "completion_rate": 0.91,
+      "std_dev": 0.14,
+      "discriminative_proxy": 0.49,
+      "classification": "EASY"
+    },
+    {
+      "id": "q-llm-embeddings",
+      "label": "q-llm-embeddings",
+      "max_possible": 0.5,
+      "mean_score": 0.47,
+      "normalized_mean": 0.94,
+      "zero_rate": 0.06,
+      "full_rate": 0.94,
+      "partial_rate": 0,
+      "completion_rate": 0.94,
+      "std_dev": 0.12,
+      "discriminative_proxy": 0.44,
+      "classification": "EASY"
+    },
+    {
+      "id": "q-llm-sentiment-analysis",
+      "label": "q-llm-sentiment-analysis",
+      "max_possible": 0.5,
+      "mean_score": 0.47,
+      "normalized_mean": 0.95,
+      "zero_rate": 0.05,
+      "full_rate": 0.95,
+      "partial_rate": 0,
+      "completion_rate": 0.95,
+      "std_dev": 0.11,
+      "discriminative_proxy": 0.16,
+      "classification": "EASY"
+    }
+  ],
+  "timing": {
+    "skipped": false,
+    "skip_reason": null,
+    "deadline_ms": 1757351434208,
+    "early_gt6h": {
+      "count": 1091,
+      "avg_score": 7.02
+    },
+    "mid_1_6h": {
+      "count": 0,
+      "avg_score": 0
+    },
+    "last_lt1h": {
+      "count": 1,
+      "avg_score": 10
+    },
+    "max_possible_total": 10
+  },
+  "roe_specific": null,
+  "project_specific": null,
+  "flags": [],
+  "observations": [],
+  "anomalies": {
+    "total_flagged_students": 7,
+    "anomaly_pct": 0.6,
+    "by_question": [
+      {
+        "question_id": "q-rag-typscript-book",
+        "label": "q-rag-typscript-book",
+        "flagged_count": 6,
+        "flagged_pct": 0.5,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 562,
+        "patterns": {
+          "empty_submission": 5,
+          "hacked_by_marker": 1
+        }
+      },
+      {
+        "question_id": "q-llm-evals",
+        "label": "q-llm-evals",
+        "flagged_count": 5,
+        "flagged_pct": 0.5,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 617,
+        "patterns": {
+          "empty_submission": 4,
+          "hacked_by_marker": 1
+        }
+      },
+      {
+        "question_id": "q-function-calling",
+        "label": "q-function-calling",
+        "flagged_count": 5,
+        "flagged_pct": 0.5,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 667,
+        "patterns": {
+          "empty_submission": 4,
+          "hacked_by_marker": 1
+        }
+      },
+      {
+        "question_id": "q-llm-multimodal-embeddings",
+        "label": "q-llm-multimodal-embeddings",
+        "flagged_count": 6,
+        "flagged_pct": 0.5,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 721,
+        "patterns": {
+          "empty_submission": 5,
+          "hacked_by_marker": 1
+        }
+      },
+      {
+        "question_id": "q-llm-vision",
+        "label": "q-llm-vision",
+        "flagged_count": 6,
+        "flagged_pct": 0.5,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 898,
+        "patterns": {
+          "empty_submission": 5,
+          "hacked_by_marker": 1
+        }
+      },
+      {
+        "question_id": "q-token-cost",
+        "label": "q-token-cost",
+        "flagged_count": 5,
+        "flagged_pct": 0.5,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 932,
+        "patterns": {
+          "empty_submission": 4,
+          "hacked_by_marker": 1
+        }
+      },
+      {
+        "question_id": "q-llm-speech",
+        "label": "q-llm-speech",
+        "flagged_count": 6,
+        "flagged_pct": 0.5,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 954,
+        "patterns": {
+          "empty_submission": 5,
+          "hacked_by_marker": 1
+        }
+      },
+      {
+        "question_id": "q-llm-image-generation",
+        "label": "q-llm-image-generation",
+        "flagged_count": 5,
+        "flagged_pct": 0.5,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 968,
+        "patterns": {
+          "empty_submission": 4,
+          "hacked_by_marker": 1
+        }
+      },
+      {
+        "question_id": "q-llm-embeddings",
+        "label": "q-llm-embeddings",
+        "flagged_count": 6,
+        "flagged_pct": 0.5,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 1017,
+        "patterns": {
+          "empty_submission": 5,
+          "hacked_by_marker": 1
+        }
+      },
+      {
+        "question_id": "q-vector-databases",
+        "label": "q-vector-databases",
+        "flagged_count": 4,
+        "flagged_pct": 0.4,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 687,
+        "patterns": {
+          "empty_submission": 3,
+          "hacked_by_marker": 1
+        }
+      },
+      {
+        "question_id": "q-llm-sentiment-analysis",
+        "label": "q-llm-sentiment-analysis",
+        "flagged_count": 4,
+        "flagged_pct": 0.4,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 1033,
+        "patterns": {
+          "empty_submission": 3,
+          "hacked_by_marker": 1
+        }
+      },
+      {
+        "question_id": "q-get-llm-to-say-yes",
+        "label": "q-get-llm-to-say-yes",
+        "flagged_count": 3,
+        "flagged_pct": 0.3,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 670,
+        "patterns": {
+          "empty_submission": 2,
+          "hacked_by_marker": 1
+        }
+      },
+      {
+        "question_id": "q-generate-addresses-with-llms",
+        "label": "q-generate-addresses-with-llms",
+        "flagged_count": 3,
+        "flagged_pct": 0.3,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 693,
+        "patterns": {
+          "empty_submission": 2,
+          "hacked_by_marker": 1
+        }
+      },
+      {
+        "question_id": "q-embedding-similarity",
+        "label": "q-embedding-similarity",
+        "flagged_count": 1,
+        "flagged_pct": 0.1,
+        "dominant_pattern": "hacked_by_marker",
+        "scored_zero_normally": 991,
+        "patterns": {
+          "empty_submission": 0,
+          "hacked_by_marker": 1
+        }
+      }
+    ],
+    "by_pattern": {
+      "empty_submission": 6,
+      "hacked_by_marker": 1
+    }
+  }
+}

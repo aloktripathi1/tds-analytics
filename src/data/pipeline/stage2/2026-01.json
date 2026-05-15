@@ -1,0 +1,181 @@
+{
+  "totalStudents": 770,
+  "retention": [
+    {
+      "assignment": "GA1",
+      "pct": 100,
+      "postTerm": false
+    },
+    {
+      "assignment": "GA2",
+      "pct": 10.5,
+      "postTerm": false
+    },
+    {
+      "assignment": "GA3",
+      "pct": 94.5,
+      "postTerm": false
+    },
+    {
+      "assignment": "GA4",
+      "pct": 100,
+      "postTerm": false
+    },
+    {
+      "assignment": "GA6",
+      "pct": 93.8,
+      "postTerm": false
+    },
+    {
+      "assignment": "GA7",
+      "pct": 86.1,
+      "postTerm": true
+    },
+    {
+      "assignment": "GA8",
+      "pct": 65.6,
+      "postTerm": true
+    },
+    {
+      "assignment": "P1",
+      "pct": 86.4,
+      "postTerm": false
+    },
+    {
+      "assignment": "P2",
+      "pct": 78.3,
+      "postTerm": false
+    },
+    {
+      "assignment": "ROE",
+      "pct": 54.8,
+      "postTerm": false
+    }
+  ],
+  "difficultyRanking": [
+    {
+      "assignment": "ROE",
+      "normalizedMean": 0.25,
+      "postTerm": false
+    },
+    {
+      "assignment": "GA2",
+      "normalizedMean": 0.43,
+      "postTerm": false
+    },
+    {
+      "assignment": "GA1",
+      "normalizedMean": 0.6,
+      "postTerm": false
+    },
+    {
+      "assignment": "GA3",
+      "normalizedMean": 0.71,
+      "postTerm": false
+    },
+    {
+      "assignment": "GA8",
+      "normalizedMean": 0.75,
+      "postTerm": true
+    },
+    {
+      "assignment": "P1",
+      "normalizedMean": 0.79,
+      "postTerm": false
+    },
+    {
+      "assignment": "GA4",
+      "normalizedMean": 0.83,
+      "postTerm": false
+    },
+    {
+      "assignment": "P2",
+      "normalizedMean": 0.87,
+      "postTerm": false
+    },
+    {
+      "assignment": "GA6",
+      "normalizedMean": 0.9,
+      "postTerm": false
+    },
+    {
+      "assignment": "GA7",
+      "normalizedMean": 0.9,
+      "postTerm": true
+    }
+  ],
+  "regularDifficultyRanking": [
+    {
+      "assignment": "ROE",
+      "normalizedMean": 0.25,
+      "postTerm": false
+    },
+    {
+      "assignment": "GA2",
+      "normalizedMean": 0.43,
+      "postTerm": false
+    },
+    {
+      "assignment": "GA1",
+      "normalizedMean": 0.6,
+      "postTerm": false
+    },
+    {
+      "assignment": "GA3",
+      "normalizedMean": 0.71,
+      "postTerm": false
+    },
+    {
+      "assignment": "P1",
+      "normalizedMean": 0.79,
+      "postTerm": false
+    },
+    {
+      "assignment": "GA4",
+      "normalizedMean": 0.83,
+      "postTerm": false
+    },
+    {
+      "assignment": "P2",
+      "normalizedMean": 0.87,
+      "postTerm": false
+    },
+    {
+      "assignment": "GA6",
+      "normalizedMean": 0.9,
+      "postTerm": false
+    }
+  ],
+  "combinedBuckets": {
+    "0_20": 485,
+    "20_40": 496,
+    "40_60": 613,
+    "60_80": 787,
+    "80_100": 3548
+  },
+  "anomaly_summary_by_assignment": {
+    "GA1": 0,
+    "GA2": 1.2,
+    "GA3": 2.5,
+    "GA4": 2.2,
+    "GA6": 4.3,
+    "GA7": 1.5,
+    "GA8": 45.9,
+    "P1": 1.5,
+    "P2": 0,
+    "ROE": 0.5
+  },
+  "hack_summary_by_assignment": {
+    "GA1": 0,
+    "GA2": 1.2,
+    "GA3": 2.5,
+    "GA4": 2.2,
+    "GA6": 4.3,
+    "GA7": 1.5,
+    "GA8": 45.9,
+    "P1": 1.5,
+    "P2": 0,
+    "ROE": 0.5
+  },
+  "post_term_note": "GA7 and GA8 were added after the term ended. Their completion rates reflect availability, not difficulty. Exclude from difficulty comparisons."
+}

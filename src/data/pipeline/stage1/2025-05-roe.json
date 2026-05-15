@@ -1,0 +1,333 @@
+{
+  "file": "tds-2025-05-roe.json",
+  "term": "2025-05",
+  "assignment": "ROE",
+  "type": "ROE",
+  "post_term_addition": false,
+  "schema_notes": "",
+  "meta": {
+    "total_records": 915,
+    "valid_records": 901,
+    "unique_students": 899,
+    "late_submissions": 0,
+    "max_possible_total": 10,
+    "question_max_total": 10,
+    "deadline_inferred": "2025-11-05T15:22:33.379Z",
+    "deadline_method": "latest_timestamp",
+    "data_cross_check": "ok"
+  },
+  "score_distribution": {
+    "mean": 2.9,
+    "median": 3,
+    "std_dev": 1.96,
+    "min": 0,
+    "max": 10,
+    "p10": 1,
+    "p25": 2,
+    "p50": 3,
+    "p75": 3,
+    "p90": 5,
+    "normalized_mean": 0.29,
+    "buckets": {
+      "0_20pct": 179,
+      "20_40pct": 507,
+      "40_60pct": 158,
+      "60_80pct": 13,
+      "80_100pct": 42
+    }
+  },
+  "questions": [
+    {
+      "id": "q-github-action-playwright",
+      "label": "q-github-action-playwright",
+      "max_possible": 1,
+      "mean_score": 0.06,
+      "normalized_mean": 0.06,
+      "zero_rate": 0.94,
+      "full_rate": 0.06,
+      "partial_rate": 0,
+      "completion_rate": 0.06,
+      "std_dev": 0.25,
+      "discriminative_proxy": 0.6,
+      "classification": "BROKEN"
+    },
+    {
+      "id": "q-fastapi-vision-translate-captcha",
+      "label": "q-fastapi-vision-translate-captcha",
+      "max_possible": 1,
+      "mean_score": 0.08,
+      "normalized_mean": 0.08,
+      "zero_rate": 0.92,
+      "full_rate": 0.08,
+      "partial_rate": 0,
+      "completion_rate": 0.08,
+      "std_dev": 0.27,
+      "discriminative_proxy": 0.6,
+      "classification": "BROKEN"
+    },
+    {
+      "id": "q-fastapi-llm-query",
+      "label": "q-fastapi-llm-query",
+      "max_possible": 1,
+      "mean_score": 0.09,
+      "normalized_mean": 0.09,
+      "zero_rate": 0.91,
+      "full_rate": 0.09,
+      "partial_rate": 0,
+      "completion_rate": 0.09,
+      "std_dev": 0.29,
+      "discriminative_proxy": 0.54,
+      "classification": "BROKEN"
+    },
+    {
+      "id": "q-fastapi-clean-csv",
+      "label": "q-fastapi-clean-csv",
+      "max_possible": 1,
+      "mean_score": 0.1,
+      "normalized_mean": 0.1,
+      "zero_rate": 0.9,
+      "full_rate": 0.1,
+      "partial_rate": 0,
+      "completion_rate": 0.1,
+      "std_dev": 0.3,
+      "discriminative_proxy": 0.57,
+      "classification": "BROKEN"
+    },
+    {
+      "id": "q-region-containing-point",
+      "label": "q-region-containing-point",
+      "max_possible": 1,
+      "mean_score": 0.12,
+      "normalized_mean": 0.12,
+      "zero_rate": 0.88,
+      "full_rate": 0.12,
+      "partial_rate": 0,
+      "completion_rate": 0.12,
+      "std_dev": 0.33,
+      "discriminative_proxy": 0.42,
+      "classification": "BROKEN"
+    },
+    {
+      "id": "q-pdf-table-fastapi",
+      "label": "q-pdf-table-fastapi",
+      "max_possible": 1,
+      "mean_score": 0.18,
+      "normalized_mean": 0.18,
+      "zero_rate": 0.82,
+      "full_rate": 0.18,
+      "partial_rate": 0,
+      "completion_rate": 0.18,
+      "std_dev": 0.38,
+      "discriminative_proxy": 0.48,
+      "classification": "BROKEN"
+    },
+    {
+      "id": "q-sql-correlation-github-pages",
+      "label": "q-sql-correlation-github-pages",
+      "max_possible": 1,
+      "mean_score": 0.24,
+      "normalized_mean": 0.24,
+      "zero_rate": 0.76,
+      "full_rate": 0.24,
+      "partial_rate": 0,
+      "completion_rate": 0.24,
+      "std_dev": 0.43,
+      "discriminative_proxy": 0.24,
+      "classification": "BROKEN"
+    },
+    {
+      "id": "q-shortest-path-between-cities",
+      "label": "q-shortest-path-between-cities",
+      "max_possible": 1,
+      "mean_score": 0.55,
+      "normalized_mean": 0.55,
+      "zero_rate": 0.45,
+      "full_rate": 0.55,
+      "partial_rate": 0,
+      "completion_rate": 0.55,
+      "std_dev": 0.5,
+      "discriminative_proxy": 0.29,
+      "classification": "CALIBRATED"
+    },
+    {
+      "id": "q-css-selectors-regression",
+      "label": "q-css-selectors-regression",
+      "max_possible": 1,
+      "mean_score": 0.63,
+      "normalized_mean": 0.63,
+      "zero_rate": 0.37,
+      "full_rate": 0.63,
+      "partial_rate": 0,
+      "completion_rate": 0.63,
+      "std_dev": 0.48,
+      "discriminative_proxy": 0.27,
+      "classification": "CALIBRATED"
+    },
+    {
+      "id": "q-compare-json-keys",
+      "label": "q-compare-json-keys",
+      "max_possible": 1,
+      "mean_score": 0.85,
+      "normalized_mean": 0.85,
+      "zero_rate": 0.15,
+      "full_rate": 0.85,
+      "partial_rate": 0,
+      "completion_rate": 0.85,
+      "std_dev": 0.36,
+      "discriminative_proxy": 0.16,
+      "classification": "EASY"
+    }
+  ],
+  "timing": {
+    "skipped": false,
+    "skip_reason": null,
+    "deadline_ms": 1762356153379,
+    "early_gt6h": {
+      "count": 898,
+      "avg_score": 2.9
+    },
+    "mid_1_6h": {
+      "count": 0,
+      "avg_score": 0
+    },
+    "last_lt1h": {
+      "count": 1,
+      "avg_score": 0
+    },
+    "max_possible_total": 10
+  },
+  "roe_specific": {},
+  "project_specific": null,
+  "flags": [],
+  "observations": [],
+  "anomalies": {
+    "total_flagged_students": 27,
+    "anomaly_pct": 3,
+    "by_question": [
+      {
+        "question_id": "q-github-action-playwright",
+        "label": "q-github-action-playwright",
+        "flagged_count": 27,
+        "flagged_pct": 3,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 31,
+        "patterns": {
+          "empty_submission": 27,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-fastapi-llm-query",
+        "label": "q-fastapi-llm-query",
+        "flagged_count": 27,
+        "flagged_pct": 3,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 54,
+        "patterns": {
+          "empty_submission": 27,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-fastapi-clean-csv",
+        "label": "q-fastapi-clean-csv",
+        "flagged_count": 27,
+        "flagged_pct": 3,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 63,
+        "patterns": {
+          "empty_submission": 27,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-region-containing-point",
+        "label": "q-region-containing-point",
+        "flagged_count": 26,
+        "flagged_pct": 2.9,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 83,
+        "patterns": {
+          "empty_submission": 26,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-pdf-table-fastapi",
+        "label": "q-pdf-table-fastapi",
+        "flagged_count": 26,
+        "flagged_pct": 2.9,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 136,
+        "patterns": {
+          "empty_submission": 26,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-fastapi-vision-translate-captcha",
+        "label": "q-fastapi-vision-translate-captcha",
+        "flagged_count": 25,
+        "flagged_pct": 2.8,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 44,
+        "patterns": {
+          "empty_submission": 25,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-sql-correlation-github-pages",
+        "label": "q-sql-correlation-github-pages",
+        "flagged_count": 25,
+        "flagged_pct": 2.8,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 192,
+        "patterns": {
+          "empty_submission": 25,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-shortest-path-between-cities",
+        "label": "q-shortest-path-between-cities",
+        "flagged_count": 25,
+        "flagged_pct": 2.8,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 468,
+        "patterns": {
+          "empty_submission": 25,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-compare-json-keys",
+        "label": "q-compare-json-keys",
+        "flagged_count": 25,
+        "flagged_pct": 2.8,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 739,
+        "patterns": {
+          "empty_submission": 25,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-css-selectors-regression",
+        "label": "q-css-selectors-regression",
+        "flagged_count": 24,
+        "flagged_pct": 2.7,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 540,
+        "patterns": {
+          "empty_submission": 24,
+          "hacked_by_marker": 0
+        }
+      }
+    ],
+    "by_pattern": {
+      "empty_submission": 27,
+      "hacked_by_marker": 0
+    }
+  }
+}

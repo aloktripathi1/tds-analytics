@@ -1,0 +1,411 @@
+{
+  "file": "tds-2025-09-ga5.json",
+  "term": "2025-09",
+  "assignment": "GA5",
+  "type": "GA",
+  "post_term_addition": false,
+  "schema_notes": "",
+  "meta": {
+    "total_records": 1039,
+    "valid_records": 1036,
+    "unique_students": 1036,
+    "late_submissions": 0,
+    "max_possible_total": 10,
+    "question_max_total": 10,
+    "deadline_inferred": "2025-10-29T08:56:48.391Z",
+    "deadline_method": "latest_timestamp",
+    "data_cross_check": "ok"
+  },
+  "score_distribution": {
+    "mean": 8.3,
+    "median": 10,
+    "std_dev": 2.63,
+    "min": 0,
+    "max": 10,
+    "p10": 3.88,
+    "p25": 7.69,
+    "p50": 10,
+    "p75": 10,
+    "p90": 10,
+    "normalized_mean": 0.83,
+    "buckets": {
+      "0_20pct": 50,
+      "20_40pct": 54,
+      "40_60pct": 73,
+      "60_80pct": 84,
+      "80_100pct": 775
+    }
+  },
+  "questions": [
+    {
+      "id": "q-pdf-to-markdown",
+      "label": "q-pdf-to-markdown",
+      "max_possible": 1,
+      "mean_score": 0.67,
+      "normalized_mean": 0.67,
+      "zero_rate": 0.33,
+      "full_rate": 0.67,
+      "partial_rate": 0,
+      "completion_rate": 0.67,
+      "std_dev": 0.47,
+      "discriminative_proxy": 0.66,
+      "classification": "CALIBRATED"
+    },
+    {
+      "id": "q-scheduled-github-actions",
+      "label": "q-scheduled-github-actions",
+      "max_possible": 1,
+      "mean_score": 0.74,
+      "normalized_mean": 0.74,
+      "zero_rate": 0.26,
+      "full_rate": 0.74,
+      "partial_rate": 0,
+      "completion_rate": 0.74,
+      "std_dev": 0.44,
+      "discriminative_proxy": 0.54,
+      "classification": "CALIBRATED"
+    },
+    {
+      "id": "q-crawl-html",
+      "label": "q-crawl-html",
+      "max_possible": 1,
+      "mean_score": 0.79,
+      "normalized_mean": 0.79,
+      "zero_rate": 0.21,
+      "full_rate": 0.79,
+      "partial_rate": 0,
+      "completion_rate": 0.79,
+      "std_dev": 0.41,
+      "discriminative_proxy": 0.75,
+      "classification": "CALIBRATED"
+    },
+    {
+      "id": "q-bbc-weather-api",
+      "label": "q-bbc-weather-api",
+      "max_possible": 0.5,
+      "mean_score": 0.42,
+      "normalized_mean": 0.84,
+      "zero_rate": 0.16,
+      "full_rate": 0.84,
+      "partial_rate": 0,
+      "completion_rate": 0.84,
+      "std_dev": 0.18,
+      "discriminative_proxy": 0.64,
+      "classification": "EASY"
+    },
+    {
+      "id": "q-hacker-news-search",
+      "label": "q-hacker-news-search",
+      "max_possible": 0.5,
+      "mean_score": 0.42,
+      "normalized_mean": 0.84,
+      "zero_rate": 0.16,
+      "full_rate": 0.84,
+      "partial_rate": 0,
+      "completion_rate": 0.84,
+      "std_dev": 0.18,
+      "discriminative_proxy": 0.71,
+      "classification": "EASY"
+    },
+    {
+      "id": "q-wikipedia-outline",
+      "label": "q-wikipedia-outline",
+      "max_possible": 0.5,
+      "mean_score": 0.42,
+      "normalized_mean": 0.84,
+      "zero_rate": 0.16,
+      "full_rate": 0.84,
+      "partial_rate": 0,
+      "completion_rate": 0.84,
+      "std_dev": 0.18,
+      "discriminative_proxy": 0.68,
+      "classification": "EASY"
+    },
+    {
+      "id": "q-find-newest-github-user",
+      "label": "q-find-newest-github-user",
+      "max_possible": 0.75,
+      "mean_score": 0.64,
+      "normalized_mean": 0.86,
+      "zero_rate": 0.14,
+      "full_rate": 0.86,
+      "partial_rate": 0,
+      "completion_rate": 0.86,
+      "std_dev": 0.26,
+      "discriminative_proxy": 0.73,
+      "classification": "EASY"
+    },
+    {
+      "id": "q-playwright-table",
+      "label": "q-playwright-table",
+      "max_possible": 1,
+      "mean_score": 0.86,
+      "normalized_mean": 0.86,
+      "zero_rate": 0.14,
+      "full_rate": 0.86,
+      "partial_rate": 0,
+      "completion_rate": 0.86,
+      "std_dev": 0.34,
+      "discriminative_proxy": 0.7,
+      "classification": "EASY"
+    },
+    {
+      "id": "q-nominatim-api",
+      "label": "q-nominatim-api",
+      "max_possible": 0.5,
+      "mean_score": 0.43,
+      "normalized_mean": 0.87,
+      "zero_rate": 0.13,
+      "full_rate": 0.87,
+      "partial_rate": 0,
+      "completion_rate": 0.87,
+      "std_dev": 0.17,
+      "discriminative_proxy": 0.63,
+      "classification": "EASY"
+    },
+    {
+      "id": "q-scrape-imdb-movies",
+      "label": "q-scrape-imdb-movies",
+      "max_possible": 1,
+      "mean_score": 0.88,
+      "normalized_mean": 0.88,
+      "zero_rate": 0.12,
+      "full_rate": 0.88,
+      "partial_rate": 0,
+      "completion_rate": 0.88,
+      "std_dev": 0.33,
+      "discriminative_proxy": 0.58,
+      "classification": "EASY"
+    },
+    {
+      "id": "q-extract-tables-from-pdf",
+      "label": "q-extract-tables-from-pdf",
+      "max_possible": 1,
+      "mean_score": 0.88,
+      "normalized_mean": 0.88,
+      "zero_rate": 0.12,
+      "full_rate": 0.88,
+      "partial_rate": 0,
+      "completion_rate": 0.88,
+      "std_dev": 0.32,
+      "discriminative_proxy": 0.64,
+      "classification": "EASY"
+    },
+    {
+      "id": "q-html-to-md-table",
+      "label": "q-html-to-md-table",
+      "max_possible": 1,
+      "mean_score": 0.89,
+      "normalized_mean": 0.89,
+      "zero_rate": 0.11,
+      "full_rate": 0.89,
+      "partial_rate": 0,
+      "completion_rate": 0.89,
+      "std_dev": 0.31,
+      "discriminative_proxy": 0.66,
+      "classification": "EASY"
+    },
+    {
+      "id": "g-google-sheets-importhtml",
+      "label": "g-google-sheets-importhtml",
+      "max_possible": 0.25,
+      "mean_score": 0.24,
+      "normalized_mean": 0.95,
+      "zero_rate": 0.05,
+      "full_rate": 0.95,
+      "partial_rate": 0,
+      "completion_rate": 0.95,
+      "std_dev": 0.05,
+      "discriminative_proxy": 0.39,
+      "classification": "EASY"
+    }
+  ],
+  "timing": {
+    "skipped": false,
+    "skip_reason": null,
+    "deadline_ms": 1761728208391,
+    "early_gt6h": {
+      "count": 1035,
+      "avg_score": 8.3
+    },
+    "mid_1_6h": {
+      "count": 0,
+      "avg_score": 0
+    },
+    "last_lt1h": {
+      "count": 1,
+      "avg_score": 8.5
+    },
+    "max_possible_total": 10
+  },
+  "roe_specific": null,
+  "project_specific": null,
+  "flags": [],
+  "observations": [],
+  "anomalies": {
+    "total_flagged_students": 30,
+    "anomaly_pct": 2.9,
+    "by_question": [
+      {
+        "question_id": "q-scheduled-github-actions",
+        "label": "q-scheduled-github-actions",
+        "flagged_count": 28,
+        "flagged_pct": 2.7,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 740,
+        "patterns": {
+          "empty_submission": 27,
+          "hacked_by_marker": 1
+        }
+      },
+      {
+        "question_id": "q-find-newest-github-user",
+        "label": "q-find-newest-github-user",
+        "flagged_count": 27,
+        "flagged_pct": 2.6,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 863,
+        "patterns": {
+          "empty_submission": 27,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-wikipedia-outline",
+        "label": "q-wikipedia-outline",
+        "flagged_count": 26,
+        "flagged_pct": 2.5,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 844,
+        "patterns": {
+          "empty_submission": 26,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-pdf-to-markdown",
+        "label": "q-pdf-to-markdown",
+        "flagged_count": 25,
+        "flagged_pct": 2.4,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 669,
+        "patterns": {
+          "empty_submission": 25,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-crawl-html",
+        "label": "q-crawl-html",
+        "flagged_count": 25,
+        "flagged_pct": 2.4,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 796,
+        "patterns": {
+          "empty_submission": 25,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-bbc-weather-api",
+        "label": "q-bbc-weather-api",
+        "flagged_count": 25,
+        "flagged_pct": 2.4,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 844,
+        "patterns": {
+          "empty_submission": 25,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-hacker-news-search",
+        "label": "q-hacker-news-search",
+        "flagged_count": 25,
+        "flagged_pct": 2.4,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 846,
+        "patterns": {
+          "empty_submission": 25,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-playwright-table",
+        "label": "q-playwright-table",
+        "flagged_count": 25,
+        "flagged_pct": 2.4,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 871,
+        "patterns": {
+          "empty_submission": 25,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-nominatim-api",
+        "label": "q-nominatim-api",
+        "flagged_count": 25,
+        "flagged_pct": 2.4,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 876,
+        "patterns": {
+          "empty_submission": 25,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-scrape-imdb-movies",
+        "label": "q-scrape-imdb-movies",
+        "flagged_count": 25,
+        "flagged_pct": 2.4,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 883,
+        "patterns": {
+          "empty_submission": 25,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-html-to-md-table",
+        "label": "q-html-to-md-table",
+        "flagged_count": 25,
+        "flagged_pct": 2.4,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 901,
+        "patterns": {
+          "empty_submission": 25,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-extract-tables-from-pdf",
+        "label": "q-extract-tables-from-pdf",
+        "flagged_count": 24,
+        "flagged_pct": 2.3,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 891,
+        "patterns": {
+          "empty_submission": 24,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "g-google-sheets-importhtml",
+        "label": "g-google-sheets-importhtml",
+        "flagged_count": 24,
+        "flagged_pct": 2.3,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 962,
+        "patterns": {
+          "empty_submission": 24,
+          "hacked_by_marker": 0
+        }
+      }
+    ],
+    "by_pattern": {
+      "empty_submission": 29,
+      "hacked_by_marker": 1
+    }
+  }
+}

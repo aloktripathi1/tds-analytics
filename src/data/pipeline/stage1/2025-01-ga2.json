@@ -1,0 +1,333 @@
+{
+  "file": "tds-2025-01-ga2.json",
+  "term": "2025-01",
+  "assignment": "GA2",
+  "type": "GA",
+  "post_term_addition": false,
+  "schema_notes": "",
+  "meta": {
+    "total_records": 1212,
+    "valid_records": 1212,
+    "unique_students": 1212,
+    "late_submissions": 0,
+    "max_possible_total": 11,
+    "question_max_total": 11,
+    "deadline_inferred": "2025-03-31T06:51:02.081Z",
+    "deadline_method": "latest_timestamp",
+    "data_cross_check": "ok"
+  },
+  "score_distribution": {
+    "mean": 6.17,
+    "median": 6.5,
+    "std_dev": 2.98,
+    "min": 0,
+    "max": 10,
+    "p10": 2,
+    "p25": 4,
+    "p50": 6.5,
+    "p75": 9,
+    "p90": 10,
+    "normalized_mean": 0.56,
+    "buckets": {
+      "0_20pct": 176,
+      "20_40pct": 202,
+      "40_60pct": 292,
+      "60_80pct": 190,
+      "80_100pct": 352
+    }
+  },
+  "questions": [
+    {
+      "id": "q-vercel-python",
+      "label": "q-vercel-python",
+      "max_possible": 1,
+      "mean_score": 0.31,
+      "normalized_mean": 0.31,
+      "zero_rate": 0.69,
+      "full_rate": 0.31,
+      "partial_rate": 0,
+      "completion_rate": 0.31,
+      "std_dev": 0.46,
+      "discriminative_proxy": 0.57,
+      "classification": "BINARY"
+    },
+    {
+      "id": "q-llamafile",
+      "label": "q-llamafile",
+      "max_possible": 1.5,
+      "mean_score": 0.59,
+      "normalized_mean": 0.39,
+      "zero_rate": 0.61,
+      "full_rate": 0.39,
+      "partial_rate": 0,
+      "completion_rate": 0.39,
+      "std_dev": 0.73,
+      "discriminative_proxy": 0.63,
+      "classification": "BINARY"
+    },
+    {
+      "id": "q-docker-hub-image",
+      "label": "q-docker-hub-image",
+      "max_possible": 1,
+      "mean_score": 0.42,
+      "normalized_mean": 0.42,
+      "zero_rate": 0.58,
+      "full_rate": 0.42,
+      "partial_rate": 0,
+      "completion_rate": 0.42,
+      "std_dev": 0.49,
+      "discriminative_proxy": 0.68,
+      "classification": "BINARY"
+    },
+    {
+      "id": "q-fastapi",
+      "label": "q-fastapi",
+      "max_possible": 1,
+      "mean_score": 0.44,
+      "normalized_mean": 0.44,
+      "zero_rate": 0.56,
+      "full_rate": 0.44,
+      "partial_rate": 0,
+      "completion_rate": 0.44,
+      "std_dev": 0.5,
+      "discriminative_proxy": 0.67,
+      "classification": "BINARY"
+    },
+    {
+      "id": "q-github-action",
+      "label": "q-github-action",
+      "max_possible": 1.5,
+      "mean_score": 1,
+      "normalized_mean": 0.66,
+      "zero_rate": 0.33,
+      "full_rate": 0.66,
+      "partial_rate": 0,
+      "completion_rate": 0.67,
+      "std_dev": 0.71,
+      "discriminative_proxy": 0.68,
+      "classification": "CALIBRATED"
+    },
+    {
+      "id": "q-github-pages",
+      "label": "q-github-pages",
+      "max_possible": 1,
+      "mean_score": 0.79,
+      "normalized_mean": 0.79,
+      "zero_rate": 0.21,
+      "full_rate": 0.79,
+      "partial_rate": 0,
+      "completion_rate": 0.79,
+      "std_dev": 0.41,
+      "discriminative_proxy": 0.61,
+      "classification": "CALIBRATED"
+    },
+    {
+      "id": "q-markdown",
+      "label": "q-markdown",
+      "max_possible": 1,
+      "mean_score": 0.85,
+      "normalized_mean": 0.85,
+      "zero_rate": 0.15,
+      "full_rate": 0.85,
+      "partial_rate": 0,
+      "completion_rate": 0.85,
+      "std_dev": 0.36,
+      "discriminative_proxy": 0.47,
+      "classification": "EASY"
+    },
+    {
+      "id": "q-image-compression",
+      "label": "q-image-compression",
+      "max_possible": 1,
+      "mean_score": 0.85,
+      "normalized_mean": 0.85,
+      "zero_rate": 0.15,
+      "full_rate": 0.85,
+      "partial_rate": 0,
+      "completion_rate": 0.85,
+      "std_dev": 0.36,
+      "discriminative_proxy": 0.46,
+      "classification": "EASY"
+    },
+    {
+      "id": "q-use-colab-image-library",
+      "label": "q-use-colab-image-library",
+      "max_possible": 1,
+      "mean_score": 0.46,
+      "normalized_mean": 0.46,
+      "zero_rate": 0.08,
+      "full_rate": 0,
+      "partial_rate": 0.92,
+      "completion_rate": 0.92,
+      "std_dev": 0.14,
+      "discriminative_proxy": 0.42,
+      "classification": "CALIBRATED"
+    },
+    {
+      "id": "q-use-colab",
+      "label": "q-use-colab",
+      "max_possible": 1,
+      "mean_score": 0.47,
+      "normalized_mean": 0.47,
+      "zero_rate": 0.06,
+      "full_rate": 0,
+      "partial_rate": 0.94,
+      "completion_rate": 0.94,
+      "std_dev": 0.12,
+      "discriminative_proxy": 0.37,
+      "classification": "CALIBRATED"
+    }
+  ],
+  "timing": {
+    "skipped": false,
+    "skip_reason": null,
+    "deadline_ms": 1743403862081,
+    "early_gt6h": {
+      "count": 1211,
+      "avg_score": 6.17
+    },
+    "mid_1_6h": {
+      "count": 0,
+      "avg_score": 0
+    },
+    "last_lt1h": {
+      "count": 1,
+      "avg_score": 1
+    },
+    "max_possible_total": 11
+  },
+  "roe_specific": null,
+  "project_specific": null,
+  "flags": [],
+  "observations": [],
+  "anomalies": {
+    "total_flagged_students": 1,
+    "anomaly_pct": 0.1,
+    "by_question": [
+      {
+        "question_id": "q-vercel-python",
+        "label": "q-vercel-python",
+        "flagged_count": 1,
+        "flagged_pct": 0.1,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 379,
+        "patterns": {
+          "empty_submission": 1,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-docker-hub-image",
+        "label": "q-docker-hub-image",
+        "flagged_count": 1,
+        "flagged_pct": 0.1,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 504,
+        "patterns": {
+          "empty_submission": 1,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-github-action",
+        "label": "q-github-action",
+        "flagged_count": 1,
+        "flagged_pct": 0.1,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 805,
+        "patterns": {
+          "empty_submission": 1,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-github-pages",
+        "label": "q-github-pages",
+        "flagged_count": 1,
+        "flagged_pct": 0.1,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 953,
+        "patterns": {
+          "empty_submission": 1,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-markdown",
+        "label": "q-markdown",
+        "flagged_count": 1,
+        "flagged_pct": 0.1,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 1025,
+        "patterns": {
+          "empty_submission": 1,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-use-colab-image-library",
+        "label": "q-use-colab-image-library",
+        "flagged_count": 1,
+        "flagged_pct": 0.1,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 1114,
+        "patterns": {
+          "empty_submission": 1,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-use-colab",
+        "label": "q-use-colab",
+        "flagged_count": 1,
+        "flagged_pct": 0.1,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 1137,
+        "patterns": {
+          "empty_submission": 1,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-llamafile",
+        "label": "q-llamafile",
+        "flagged_count": 0,
+        "flagged_pct": 0,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 476,
+        "patterns": {
+          "empty_submission": 0,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-fastapi",
+        "label": "q-fastapi",
+        "flagged_count": 0,
+        "flagged_pct": 0,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 534,
+        "patterns": {
+          "empty_submission": 0,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-image-compression",
+        "label": "q-image-compression",
+        "flagged_count": 0,
+        "flagged_pct": 0,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 1027,
+        "patterns": {
+          "empty_submission": 0,
+          "hacked_by_marker": 0
+        }
+      }
+    ],
+    "by_pattern": {
+      "empty_submission": 1,
+      "hacked_by_marker": 0
+    }
+  }
+}

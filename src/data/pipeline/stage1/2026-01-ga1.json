@@ -1,0 +1,72 @@
+{
+  "file": "tds-2026-01-ga1.json.csv",
+  "term": "2026-01",
+  "assignment": "GA1",
+  "type": "GA",
+  "post_term_addition": false,
+  "schema_notes": "CSV columns: time, quiz, email, total, max. No per-question answer data available.",
+  "meta": {
+    "total_records": 770,
+    "valid_records": 770,
+    "unique_students": 770,
+    "late_submissions": 0,
+    "max_possible_total": 29.8,
+    "question_max_total": 0,
+    "deadline_inferred": "2026-02-18T18:29:57.743Z",
+    "deadline_method": "latest_timestamp",
+    "data_cross_check": "ok"
+  },
+  "score_distribution": {
+    "mean": 17.74,
+    "median": 18.3,
+    "std_dev": 8.27,
+    "min": 0,
+    "max": 29.8,
+    "p10": 5,
+    "p25": 12.3,
+    "p50": 18.3,
+    "p75": 24.18,
+    "p90": 29.8,
+    "normalized_mean": 0.6,
+    "buckets": {
+      "0_20pct": 94,
+      "20_40pct": 87,
+      "40_60pct": 187,
+      "60_80pct": 209,
+      "80_100pct": 193
+    }
+  },
+  "questions": [],
+  "timing": {
+    "skipped": true,
+    "skip_reason": "CSV format - no per-question timestamps or answers",
+    "deadline_ms": 1771439397743,
+    "early_gt6h": {
+      "count": 0,
+      "avg_score": 0
+    },
+    "mid_1_6h": {
+      "count": 0,
+      "avg_score": 0
+    },
+    "last_lt1h": {
+      "count": 0,
+      "avg_score": 0
+    }
+  },
+  "roe_specific": null,
+  "project_specific": null,
+  "flags": [],
+  "observations": [],
+  "anomalies": {
+    "total_flagged_students": 0,
+    "anomaly_pct": 0,
+    "by_question": [],
+    "by_pattern": {
+      "empty_submission": 0,
+      "hacked_by_marker": 0
+    },
+    "unavailable": true,
+    "reason": "hack percentage unavailable - CSV format has no per-question answers"
+  }
+}

@@ -1,0 +1,827 @@
+{
+  "file": "tds-2025-05-ga1.json",
+  "term": "2025-05",
+  "assignment": "GA1",
+  "type": "GA",
+  "post_term_addition": false,
+  "schema_notes": "",
+  "meta": {
+    "total_records": 1138,
+    "valid_records": 1138,
+    "unique_students": 1138,
+    "late_submissions": 0,
+    "max_possible_total": 19.5,
+    "question_max_total": 19.5,
+    "deadline_inferred": "2025-10-30T14:11:42.936Z",
+    "deadline_method": "latest_timestamp",
+    "data_cross_check": "ok"
+  },
+  "score_distribution": {
+    "mean": 7.38,
+    "median": 8.5,
+    "std_dev": 2.96,
+    "min": 0,
+    "max": 10,
+    "p10": 2.5,
+    "p25": 5.5,
+    "p50": 8.5,
+    "p75": 10,
+    "p90": 10,
+    "normalized_mean": 0.38,
+    "buckets": {
+      "0_20pct": 183,
+      "20_40pct": 296,
+      "40_60pct": 659,
+      "60_80pct": 0,
+      "80_100pct": 0
+    }
+  },
+  "questions": [
+    {
+      "id": "q-fastapi-proxy",
+      "label": "q-fastapi-proxy",
+      "max_possible": 1,
+      "mean_score": 0,
+      "normalized_mean": 0,
+      "zero_rate": 1,
+      "full_rate": 0,
+      "partial_rate": 0,
+      "completion_rate": 0,
+      "std_dev": 0.03,
+      "discriminative_proxy": 0.02,
+      "classification": "BROKEN"
+    },
+    {
+      "id": "q-stackoverflow-common-tags",
+      "label": "q-stackoverflow-common-tags",
+      "max_possible": 1,
+      "mean_score": 0,
+      "normalized_mean": 0,
+      "zero_rate": 1,
+      "full_rate": 0,
+      "partial_rate": 0,
+      "completion_rate": 0,
+      "std_dev": 0.03,
+      "discriminative_proxy": 0.02,
+      "classification": "BROKEN"
+    },
+    {
+      "id": "q-least-unique-subjects-from-csv",
+      "label": "q-least-unique-subjects-from-csv",
+      "max_possible": 1,
+      "mean_score": 0,
+      "normalized_mean": 0,
+      "zero_rate": 1,
+      "full_rate": 0,
+      "partial_rate": 0,
+      "completion_rate": 0,
+      "std_dev": 0.03,
+      "discriminative_proxy": 0.02,
+      "classification": "BROKEN"
+    },
+    {
+      "id": "q-extract-tables-from-pdf",
+      "label": "q-extract-tables-from-pdf",
+      "max_possible": 1,
+      "mean_score": 0,
+      "normalized_mean": 0,
+      "zero_rate": 1,
+      "full_rate": 0,
+      "partial_rate": 0,
+      "completion_rate": 0,
+      "std_dev": 0.03,
+      "discriminative_proxy": 0.02,
+      "classification": "BROKEN"
+    },
+    {
+      "id": "q-duckdb-sales-over-time",
+      "label": "q-duckdb-sales-over-time",
+      "max_possible": 1,
+      "mean_score": 0,
+      "normalized_mean": 0,
+      "zero_rate": 1,
+      "full_rate": 0,
+      "partial_rate": 0,
+      "completion_rate": 0,
+      "std_dev": 0.03,
+      "discriminative_proxy": 0.02,
+      "classification": "BROKEN"
+    },
+    {
+      "id": "q-llm-embeddings",
+      "label": "q-llm-embeddings",
+      "max_possible": 1,
+      "mean_score": 0,
+      "normalized_mean": 0,
+      "zero_rate": 1,
+      "full_rate": 0,
+      "partial_rate": 0,
+      "completion_rate": 0,
+      "std_dev": 0.03,
+      "discriminative_proxy": 0.02,
+      "classification": "BROKEN"
+    },
+    {
+      "id": "q-region-containing-point",
+      "label": "q-region-containing-point",
+      "max_possible": 1,
+      "mean_score": 0,
+      "normalized_mean": 0,
+      "zero_rate": 1,
+      "full_rate": 0,
+      "partial_rate": 0,
+      "completion_rate": 0,
+      "std_dev": 0.03,
+      "discriminative_proxy": 0.02,
+      "classification": "BROKEN"
+    },
+    {
+      "id": "q-shortest-path-between-cities",
+      "label": "q-shortest-path-between-cities",
+      "max_possible": 1,
+      "mean_score": 0,
+      "normalized_mean": 0,
+      "zero_rate": 1,
+      "full_rate": 0,
+      "partial_rate": 0,
+      "completion_rate": 0,
+      "std_dev": 0.03,
+      "discriminative_proxy": 0.02,
+      "classification": "BROKEN"
+    },
+    {
+      "id": "q-calculate-correlation",
+      "label": "q-calculate-correlation",
+      "max_possible": 1,
+      "mean_score": 0,
+      "normalized_mean": 0,
+      "zero_rate": 1,
+      "full_rate": 0,
+      "partial_rate": 0,
+      "completion_rate": 0,
+      "std_dev": 0.03,
+      "discriminative_proxy": 0.02,
+      "classification": "BROKEN"
+    },
+    {
+      "id": "q-llm-embed",
+      "label": "q-llm-embed",
+      "max_possible": 0.5,
+      "mean_score": 0.21,
+      "normalized_mean": 0.42,
+      "zero_rate": 0.58,
+      "full_rate": 0.42,
+      "partial_rate": 0,
+      "completion_rate": 0.42,
+      "std_dev": 0.25,
+      "discriminative_proxy": 0.54,
+      "classification": "BINARY"
+    },
+    {
+      "id": "q-move-rename-files",
+      "label": "q-move-rename-files",
+      "max_possible": 1,
+      "mean_score": 0.27,
+      "normalized_mean": 0.27,
+      "zero_rate": 0.47,
+      "full_rate": 0,
+      "partial_rate": 0.53,
+      "completion_rate": 0.53,
+      "std_dev": 0.25,
+      "discriminative_proxy": 0.7,
+      "classification": "CALIBRATED"
+    },
+    {
+      "id": "q-list-files-attributes",
+      "label": "q-list-files-attributes",
+      "max_possible": 0.5,
+      "mean_score": 0.28,
+      "normalized_mean": 0.55,
+      "zero_rate": 0.45,
+      "full_rate": 0.55,
+      "partial_rate": 0,
+      "completion_rate": 0.55,
+      "std_dev": 0.25,
+      "discriminative_proxy": 0.72,
+      "classification": "CALIBRATED"
+    },
+    {
+      "id": "q-npx-prettier",
+      "label": "q-npx-prettier",
+      "max_possible": 0.5,
+      "mean_score": 0.33,
+      "normalized_mean": 0.65,
+      "zero_rate": 0.35,
+      "full_rate": 0.65,
+      "partial_rate": 0,
+      "completion_rate": 0.65,
+      "std_dev": 0.24,
+      "discriminative_proxy": 0.69,
+      "classification": "CALIBRATED"
+    },
+    {
+      "id": "q-css-selectors-sum",
+      "label": "q-css-selectors-sum",
+      "max_possible": 0.5,
+      "mean_score": 0.32,
+      "normalized_mean": 0.65,
+      "zero_rate": 0.35,
+      "full_rate": 0.65,
+      "partial_rate": 0,
+      "completion_rate": 0.65,
+      "std_dev": 0.24,
+      "discriminative_proxy": 0.73,
+      "classification": "CALIBRATED"
+    },
+    {
+      "id": "q-replace-across-files",
+      "label": "q-replace-across-files",
+      "max_possible": 0.75,
+      "mean_score": 0.49,
+      "normalized_mean": 0.65,
+      "zero_rate": 0.35,
+      "full_rate": 0.65,
+      "partial_rate": 0,
+      "completion_rate": 0.65,
+      "std_dev": 0.36,
+      "discriminative_proxy": 0.76,
+      "classification": "CALIBRATED"
+    },
+    {
+      "id": "q-unicode-data",
+      "label": "q-unicode-data",
+      "max_possible": 0.75,
+      "mean_score": 0.5,
+      "normalized_mean": 0.67,
+      "zero_rate": 0.33,
+      "full_rate": 0.67,
+      "partial_rate": 0,
+      "completion_rate": 0.67,
+      "std_dev": 0.35,
+      "discriminative_proxy": 0.74,
+      "classification": "CALIBRATED"
+    },
+    {
+      "id": "q-use-github",
+      "label": "q-use-github",
+      "max_possible": 0.5,
+      "mean_score": 0.36,
+      "normalized_mean": 0.72,
+      "zero_rate": 0.28,
+      "full_rate": 0.72,
+      "partial_rate": 0,
+      "completion_rate": 0.72,
+      "std_dev": 0.23,
+      "discriminative_proxy": 0.77,
+      "classification": "CALIBRATED"
+    },
+    {
+      "id": "q-sort-filter-json",
+      "label": "q-sort-filter-json",
+      "max_possible": 0.5,
+      "mean_score": 0.38,
+      "normalized_mean": 0.76,
+      "zero_rate": 0.24,
+      "full_rate": 0.76,
+      "partial_rate": 0,
+      "completion_rate": 0.76,
+      "std_dev": 0.21,
+      "discriminative_proxy": 0.69,
+      "classification": "CALIBRATED"
+    },
+    {
+      "id": "q-multi-cursor-json",
+      "label": "q-multi-cursor-json",
+      "max_possible": 0.5,
+      "mean_score": 0.38,
+      "normalized_mean": 0.76,
+      "zero_rate": 0.24,
+      "full_rate": 0.76,
+      "partial_rate": 0,
+      "completion_rate": 0.76,
+      "std_dev": 0.21,
+      "discriminative_proxy": 0.78,
+      "classification": "CALIBRATED"
+    },
+    {
+      "id": "q-use-devtools",
+      "label": "q-use-devtools",
+      "max_possible": 0.5,
+      "mean_score": 0.38,
+      "normalized_mean": 0.77,
+      "zero_rate": 0.23,
+      "full_rate": 0.77,
+      "partial_rate": 0,
+      "completion_rate": 0.77,
+      "std_dev": 0.21,
+      "discriminative_proxy": 0.68,
+      "classification": "CALIBRATED"
+    },
+    {
+      "id": "q-compare-json",
+      "label": "q-compare-json",
+      "max_possible": 0.75,
+      "mean_score": 0.6,
+      "normalized_mean": 0.79,
+      "zero_rate": 0.21,
+      "full_rate": 0.79,
+      "partial_rate": 0,
+      "completion_rate": 0.79,
+      "std_dev": 0.3,
+      "discriminative_proxy": 0.74,
+      "classification": "CALIBRATED"
+    },
+    {
+      "id": "q-sql-order-average",
+      "label": "q-sql-order-average",
+      "max_possible": 0.75,
+      "mean_score": 0.63,
+      "normalized_mean": 0.83,
+      "zero_rate": 0.17,
+      "full_rate": 0.83,
+      "partial_rate": 0,
+      "completion_rate": 0.83,
+      "std_dev": 0.28,
+      "discriminative_proxy": 0.61,
+      "classification": "EASY"
+    },
+    {
+      "id": "q-extract-json-zip",
+      "label": "q-extract-json-zip",
+      "max_possible": 0.25,
+      "mean_score": 0.22,
+      "normalized_mean": 0.86,
+      "zero_rate": 0.14,
+      "full_rate": 0.86,
+      "partial_rate": 0,
+      "completion_rate": 0.86,
+      "std_dev": 0.09,
+      "discriminative_proxy": 0.71,
+      "classification": "EASY"
+    },
+    {
+      "id": "q-count-weekends",
+      "label": "q-count-weekends",
+      "max_possible": 0.5,
+      "mean_score": 0.44,
+      "normalized_mean": 0.88,
+      "zero_rate": 0.12,
+      "full_rate": 0.88,
+      "partial_rate": 0,
+      "completion_rate": 0.88,
+      "std_dev": 0.16,
+      "discriminative_proxy": 0.64,
+      "classification": "EASY"
+    },
+    {
+      "id": "q-uv-http-post",
+      "label": "q-uv-http-post",
+      "max_possible": 0.75,
+      "mean_score": 0.67,
+      "normalized_mean": 0.89,
+      "zero_rate": 0.11,
+      "full_rate": 0.89,
+      "partial_rate": 0,
+      "completion_rate": 0.89,
+      "std_dev": 0.23,
+      "discriminative_proxy": 0.53,
+      "classification": "EASY"
+    },
+    {
+      "id": "q-use-excel",
+      "label": "q-use-excel",
+      "max_possible": 0.25,
+      "mean_score": 0.23,
+      "normalized_mean": 0.92,
+      "zero_rate": 0.08,
+      "full_rate": 0.92,
+      "partial_rate": 0,
+      "completion_rate": 0.92,
+      "std_dev": 0.07,
+      "discriminative_proxy": 0.57,
+      "classification": "EASY"
+    },
+    {
+      "id": "q-use-google-sheets",
+      "label": "q-use-google-sheets",
+      "max_possible": 0.25,
+      "mean_score": 0.23,
+      "normalized_mean": 0.94,
+      "zero_rate": 0.06,
+      "full_rate": 0.94,
+      "partial_rate": 0,
+      "completion_rate": 0.94,
+      "std_dev": 0.06,
+      "discriminative_proxy": 0.54,
+      "classification": "EASY"
+    },
+    {
+      "id": "q-vs-code-version",
+      "label": "q-vs-code-version",
+      "max_possible": 0.25,
+      "mean_score": 0.24,
+      "normalized_mean": 0.95,
+      "zero_rate": 0.05,
+      "full_rate": 0.95,
+      "partial_rate": 0,
+      "completion_rate": 0.95,
+      "std_dev": 0.06,
+      "discriminative_proxy": 0.34,
+      "classification": "EASY"
+    },
+    {
+      "id": "q-github-copilot",
+      "label": "q-github-copilot",
+      "max_possible": 0.25,
+      "mean_score": 0.24,
+      "normalized_mean": 0.95,
+      "zero_rate": 0.05,
+      "full_rate": 0.95,
+      "partial_rate": 0,
+      "completion_rate": 0.95,
+      "std_dev": 0.05,
+      "discriminative_proxy": 0.4,
+      "classification": "EASY"
+    }
+  ],
+  "timing": {
+    "skipped": false,
+    "skip_reason": null,
+    "deadline_ms": 1761833502936,
+    "early_gt6h": {
+      "count": 1137,
+      "avg_score": 7.39
+    },
+    "mid_1_6h": {
+      "count": 0,
+      "avg_score": 0
+    },
+    "last_lt1h": {
+      "count": 1,
+      "avg_score": 0
+    },
+    "max_possible_total": 19.5
+  },
+  "roe_specific": null,
+  "project_specific": null,
+  "flags": [],
+  "observations": [],
+  "anomalies": {
+    "total_flagged_students": 3,
+    "anomaly_pct": 0.3,
+    "by_question": [
+      {
+        "question_id": "q-fastapi-proxy",
+        "label": "q-fastapi-proxy",
+        "flagged_count": 1,
+        "flagged_pct": 0.1,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 0,
+        "patterns": {
+          "empty_submission": 1,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-stackoverflow-common-tags",
+        "label": "q-stackoverflow-common-tags",
+        "flagged_count": 1,
+        "flagged_pct": 0.1,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 0,
+        "patterns": {
+          "empty_submission": 1,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-least-unique-subjects-from-csv",
+        "label": "q-least-unique-subjects-from-csv",
+        "flagged_count": 1,
+        "flagged_pct": 0.1,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 0,
+        "patterns": {
+          "empty_submission": 1,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-extract-tables-from-pdf",
+        "label": "q-extract-tables-from-pdf",
+        "flagged_count": 1,
+        "flagged_pct": 0.1,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 0,
+        "patterns": {
+          "empty_submission": 1,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-duckdb-sales-over-time",
+        "label": "q-duckdb-sales-over-time",
+        "flagged_count": 1,
+        "flagged_pct": 0.1,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 0,
+        "patterns": {
+          "empty_submission": 1,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-llm-embeddings",
+        "label": "q-llm-embeddings",
+        "flagged_count": 1,
+        "flagged_pct": 0.1,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 0,
+        "patterns": {
+          "empty_submission": 1,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-region-containing-point",
+        "label": "q-region-containing-point",
+        "flagged_count": 1,
+        "flagged_pct": 0.1,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 0,
+        "patterns": {
+          "empty_submission": 1,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-shortest-path-between-cities",
+        "label": "q-shortest-path-between-cities",
+        "flagged_count": 1,
+        "flagged_pct": 0.1,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 0,
+        "patterns": {
+          "empty_submission": 1,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-calculate-correlation",
+        "label": "q-calculate-correlation",
+        "flagged_count": 1,
+        "flagged_pct": 0.1,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 0,
+        "patterns": {
+          "empty_submission": 1,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-move-rename-files",
+        "label": "q-move-rename-files",
+        "flagged_count": 1,
+        "flagged_pct": 0.1,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 605,
+        "patterns": {
+          "empty_submission": 1,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-vs-code-version",
+        "label": "q-vs-code-version",
+        "flagged_count": 1,
+        "flagged_pct": 0.1,
+        "dominant_pattern": "hacked_by_marker",
+        "scored_zero_normally": 1075,
+        "patterns": {
+          "empty_submission": 0,
+          "hacked_by_marker": 1
+        }
+      },
+      {
+        "question_id": "q-github-copilot",
+        "label": "q-github-copilot",
+        "flagged_count": 1,
+        "flagged_pct": 0.1,
+        "dominant_pattern": "hacked_by_marker",
+        "scored_zero_normally": 1085,
+        "patterns": {
+          "empty_submission": 0,
+          "hacked_by_marker": 1
+        }
+      },
+      {
+        "question_id": "q-llm-embed",
+        "label": "q-llm-embed",
+        "flagged_count": 0,
+        "flagged_pct": 0,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 476,
+        "patterns": {
+          "empty_submission": 0,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-list-files-attributes",
+        "label": "q-list-files-attributes",
+        "flagged_count": 0,
+        "flagged_pct": 0,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 626,
+        "patterns": {
+          "empty_submission": 0,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-npx-prettier",
+        "label": "q-npx-prettier",
+        "flagged_count": 0,
+        "flagged_pct": 0,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 740,
+        "patterns": {
+          "empty_submission": 0,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-css-selectors-sum",
+        "label": "q-css-selectors-sum",
+        "flagged_count": 0,
+        "flagged_pct": 0,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 735,
+        "patterns": {
+          "empty_submission": 0,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-replace-across-files",
+        "label": "q-replace-across-files",
+        "flagged_count": 0,
+        "flagged_pct": 0,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 738,
+        "patterns": {
+          "empty_submission": 0,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-unicode-data",
+        "label": "q-unicode-data",
+        "flagged_count": 0,
+        "flagged_pct": 0,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 763,
+        "patterns": {
+          "empty_submission": 0,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-use-github",
+        "label": "q-use-github",
+        "flagged_count": 0,
+        "flagged_pct": 0,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 814,
+        "patterns": {
+          "empty_submission": 0,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-sort-filter-json",
+        "label": "q-sort-filter-json",
+        "flagged_count": 0,
+        "flagged_pct": 0,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 869,
+        "patterns": {
+          "empty_submission": 0,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-multi-cursor-json",
+        "label": "q-multi-cursor-json",
+        "flagged_count": 0,
+        "flagged_pct": 0,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 868,
+        "patterns": {
+          "empty_submission": 0,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-use-devtools",
+        "label": "q-use-devtools",
+        "flagged_count": 0,
+        "flagged_pct": 0,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 873,
+        "patterns": {
+          "empty_submission": 0,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-compare-json",
+        "label": "q-compare-json",
+        "flagged_count": 0,
+        "flagged_pct": 0,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 904,
+        "patterns": {
+          "empty_submission": 0,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-sql-order-average",
+        "label": "q-sql-order-average",
+        "flagged_count": 0,
+        "flagged_pct": 0,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 950,
+        "patterns": {
+          "empty_submission": 0,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-extract-json-zip",
+        "label": "q-extract-json-zip",
+        "flagged_count": 0,
+        "flagged_pct": 0,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 980,
+        "patterns": {
+          "empty_submission": 0,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-count-weekends",
+        "label": "q-count-weekends",
+        "flagged_count": 0,
+        "flagged_pct": 0,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 998,
+        "patterns": {
+          "empty_submission": 0,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-uv-http-post",
+        "label": "q-uv-http-post",
+        "flagged_count": 0,
+        "flagged_pct": 0,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 1013,
+        "patterns": {
+          "empty_submission": 0,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-use-excel",
+        "label": "q-use-excel",
+        "flagged_count": 0,
+        "flagged_pct": 0,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 1043,
+        "patterns": {
+          "empty_submission": 0,
+          "hacked_by_marker": 0
+        }
+      },
+      {
+        "question_id": "q-use-google-sheets",
+        "label": "q-use-google-sheets",
+        "flagged_count": 0,
+        "flagged_pct": 0,
+        "dominant_pattern": "empty_submission",
+        "scored_zero_normally": 1069,
+        "patterns": {
+          "empty_submission": 0,
+          "hacked_by_marker": 0
+        }
+      }
+    ],
+    "by_pattern": {
+      "empty_submission": 1,
+      "hacked_by_marker": 2
+    }
+  }
+}
