@@ -121,3 +121,116 @@ export function difficultyBarColor(normalizedMean) {
   if (normalizedMean < 0.65) return 'var(--color-warn)';
   return 'var(--color-ok)';
 }
+
+export function classifyDistributionShape(mean, median, stdDev, buckets) {
+  const skewness = stdDev > 0 ? (mean - median) / stdDev : 0;
+  const total = Object.values(buckets).reduce((s, v) => s + v, 0);
+  const bottomPct = total > 0 ? (buckets['0_20'] ?? buckets['0_20pct'] ?? 0) / total * 100 : 0;
+  const topPct = total > 0 ? (buckets['80_100'] ?? buckets['80_100pct'] ?? 0) / total * 100 : 0;
+  let shape;
+  if (skewness > 0.2) shape = 'right-skewed';
+  else if (skewness < -0.2) shape = 'left-skewed';
+  else shape = 'roughly symmetric';
+  const vals = Object.values(buckets);
+  const bimodal = vals.length >= 4 && (() => {
+    const mid = vals.slice(1, -1);
+    const midMin = Math.min(...mid);
+    const edgeMax = Math.max(vals[0], vals[vals.length - 1]);
+    return midMin < edgeMax * 0.4;
+  })();
+  return { skewness, shape, bottomPct, topPct, bimodal };
+}
+
+export function computeSurpriseScores(questions) {
+  if (!questions.length) return [];
+  const byMarks = [...questions].sort((a, b) => (b.maxPossible ?? 0) - (a.maxPossible ?? 0));
+  const byCompletion = [...questions].sort((a, b) => a.completionRate - b.completionRate);
+  return questions.map(q => {
+    const expectedRank = byMarks.findIndex(x => x.id === q.id);
+    const actualRank = byCompletion.findIndex(x => x.id === q.id);
+    const surpriseScore = Math.abs(expectedRank - actualRank);
+    return { ...q, surpriseScore, surpriseFlag: surpriseScore > 3 };
+  });
+}
+
+export function computePartialCreditDepth(questions) {
+  return questions.map(q => ({
+    ...q,
+    fullScorerPct: Math.round((q.full_rate ?? 0) * 100),
+    partialScorerPct: Math.round((q.partial_rate ?? 0) * 100),
+    zeroScorerPct: Math.round((q.zero_rate ?? 0) * 100),
+  }));
+}
+
+export function computeMarkUtilization(questions, uniqueStudents) {
+  if (!questions.length || !uniqueStudents) return { overall: 0, byQuestion: {} };
+  let totalEarned = 0, totalPossible = 0;
+  const byQuestion = {};
+  for (const q of questions) {
+    const maxP = q.maxPossible ?? 0;
+    const earned = (q.meanScore ?? 0) * uniqueStudents;
+    const possible = maxP * uniqueStudents;
+    totalEarned += earned;
+    totalPossible += possible;
+    byQuestion[q.id] = possible > 0 ? earned / possible : 0;
+  }
+  return { overall: totalPossible > 0 ? totalEarned / totalPossible : 0, byQuestion };
+}
+
+export function computeCrossTermDrift(questionId, allTermsData) {
+  const byTerm = {};
+  for (const { term, questions } of allTermsData) {
+    const q = questions.find(x => x.id === questionId);
+    if (q) byTerm[term] = q.completionRate ?? 0;
+  }
+  const terms = Object.keys(byTerm).sort();
+  if (terms.length < 2) return { questionId, drift: 0, classification: 'stable', byTerm };
+  const drift = byTerm[terms[terms.length - 1]] - byTerm[terms[0]];
+  return { questionId, drift, classification: drift > 10 ? 'improving' : drift < -10 ? 'declining' : 'stable', byTerm };
+}
+
+export function computeAllCrossTermDrifts(allTermsData) {
+  const allIds = new Set();
+  for (const { questions } of allTermsData) {
+    for (const q of questions) allIds.add(q.id);
+  }
+  return [...allIds]
+    .map(id => computeCrossTermDrift(id, allTermsData))
+    .filter(d => Object.keys(d.byTerm).length > 1);
+}
+
+export function computeSubmissionConcentration(timingData) {
+  if (!timingData || timingData.skipped) {
+    return { buckets: Array(12).fill(0), peakBucket: 0, deadlineConcentration: 0, total: 0 };
+  }
+  const early = timingData?.earlyGt6h?.count ?? 0;
+  const mid = timingData?.mid1To6h?.count ?? 0;
+  const late = timingData?.lastLt1h?.count ?? 0;
+  const total = early + mid + late;
+  const buckets = Array(12).fill(0);
+  if (total > 0) {
+    for (let i = 0; i < 4; i++) buckets[i] = early / 4;
+    for (let i = 4; i < 10; i++) buckets[i] = mid / 6;
+    for (let i = 10; i < 12; i++) buckets[i] = late / 2;
+  }
+  const peakBucket = buckets.indexOf(Math.max(...buckets));
+  const deadlineConcentration = total > 0 ? ((buckets[10] + buckets[11]) / total) * 100 : 0;
+  return { buckets, peakBucket, deadlineConcentration, total };
+}
+
+export function computeSkillTaxonomy(q) {
+  const crFrac = (q.completionRate ?? 0) / 100;
+  const fullRate = q.full_rate ?? 0;
+  const partialRate = q.partial_rate ?? 0;
+  const zeroRate = q.zero_rate ?? 0;
+  const maxPossible = q.maxPossible ?? 0;
+  if (crFrac >= 0.20 && crFrac <= 0.50 && zeroRate > 0.40 && partialRate < 0.10 && maxPossible >= 5)
+    return 'collaboration-type';
+  if (crFrac > 0.50 && fullRate > 0.40 && partialRate < 0.20)
+    return 'tool-execution';
+  if (partialRate > 0.25 && fullRate < 0.40)
+    return 'iterative-effort';
+  if (crFrac < 0.15 && zeroRate > 0.85)
+    return 'high-barrier';
+  return 'standard';
+}

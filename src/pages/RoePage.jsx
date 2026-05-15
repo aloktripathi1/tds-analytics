@@ -6,9 +6,76 @@ import BarRow           from '../components/shared/BarRow.jsx';
 import MiniDistribution from '../components/shared/MiniDistribution.jsx';
 import ObsBox           from '../components/shared/ObsBox.jsx';
 import QuestionHeatmap  from '../components/charts/QuestionHeatmap.jsx';
-import { roeCorrelationObs, completionObs, spreadObs } from '../utils/observations.js';
-import { toFixed } from '../utils/format-numbers.js';
+import {
+  roeCorrelationObs, completionObs, spreadObs,
+  distributionShapeObs, surpriseObs, partialCreditObs,
+  markUtilizationObs, crossTermDriftObs, submissionConcentrationObs,
+  skillTaxonomyObs,
+} from '../utils/observations.js';
+import {
+  classifyDistributionShape, computeSurpriseScores, computePartialCreditDepth,
+  computeMarkUtilization, computeAllCrossTermDrifts, computeSubmissionConcentration,
+  computeSkillTaxonomy,
+} from '../utils/transforms.js';
+import { toFixed, toPercent } from '../utils/format-numbers.js';
 import styles from './RoePage.module.css';
+
+function SubmissionTimeline({ concentration }) {
+  const { buckets, total } = concentration;
+  const max = Math.max(...buckets, 1);
+  return (
+    <div className={styles.timeline}>
+      {buckets.map((count, i) => {
+        const height = Math.round((count / max) * 40);
+        const isDeadline = i >= 10;
+        return (
+          <div key={i} className={styles.timelineBucket}>
+            <div
+              className={styles.timelineBar}
+              style={{
+                height: `${height}px`,
+                background: isDeadline ? 'var(--amber)' : 'var(--blue)',
+                opacity: count === 0 ? 0.15 : 0.85,
+              }}
+              title={`Bucket ${i + 1}: ~${Math.round(count)} submissions`}
+            />
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+function CrossTermDriftChart({ drifts }) {
+  if (!drifts.length) return null;
+  return (
+    <div className={styles.driftTable}>
+      {drifts.slice(0, 10).map(d => {
+        const terms = Object.keys(d.byTerm).sort();
+        const color = d.classification === 'improving'
+          ? 'var(--green)'
+          : d.classification === 'declining'
+            ? 'var(--red)'
+            : 'var(--text-muted)';
+        return (
+          <div key={d.questionId} className={styles.driftRow}>
+            <div className={styles.driftLabel}>{d.questionId.replace('q-', '').replace(/-/g, ' ')}</div>
+            <div className={styles.driftSparkline}>
+              {terms.map(t => (
+                <span key={t} className={styles.driftDot} style={{ opacity: 0.4 + (d.byTerm[t] / 100) * 0.6 }}>
+                  {Math.round(d.byTerm[t])}%
+                </span>
+              ))}
+            </div>
+            <div className={styles.driftBadge} style={{ color }}>
+              {d.classification === 'improving' ? '↑' : d.classification === 'declining' ? '↓' : '→'} {d.drift > 0 ? '+' : ''}{Math.round(d.drift)}pp
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
 
 export default function RoePage() {
   const { term } = useParams();
@@ -16,28 +83,51 @@ export default function RoePage() {
 
   const roe = data.byAssignment?.[term]?.ROE;
   if (!roe) {
-    return (
-      <div className={styles.empty}>
-        No ROE data found for term <strong>{term}</strong>.
-      </div>
-    );
+    return <div className={styles.empty}>No ROE data found for term <strong>{term}</strong>.</div>;
   }
 
-  const { meta, scoreDistribution: dist, questions = [], roeGaCorrelation, gaQuartileRoeScores } = roe;
+  const { meta, scoreDistribution: dist, questions: rawQuestions = [], roeGaCorrelation, gaQuartileRoeScores } = roe;
   const maxP = meta.maxPossible;
-
   const corr = roeGaCorrelation?.r ?? 0;
   const quartile = gaQuartileRoeScores ?? {};
 
+  // Enrich questions with all analytical layers
+  const questionsWithPartial = computePartialCreditDepth(rawQuestions);
+  const questionsWithSurprise = computeSurpriseScores(questionsWithPartial);
+  const questions = questionsWithSurprise.map(q => ({ ...q, skillTaxonomy: computeSkillTaxonomy(q) }));
+
+  // Distribution shape
+  const distShape = dist ? classifyDistributionShape(dist.mean, dist.median, dist.stdDev, dist.buckets) : null;
+
+  // Mark utilization
+  const utilization = computeMarkUtilization(questions, meta.uniqueStudents ?? meta.validRecords);
+
+  // Submission concentration
+  const concentration = computeSubmissionConcentration(roe.timing);
+
+  // Cross-term drift — gather all ROE data across terms
+  const allRoeTermsData = Object.entries(data.byAssignment ?? {})
+    .filter(([, assignments]) => assignments.ROE)
+    .map(([t, assignments]) => ({ term: t, questions: computePartialCreditDepth(assignments.ROE.questions ?? []) }));
+  const crossTermDrifts = computeAllCrossTermDrifts(allRoeTermsData);
+  const multiTermDrifts = crossTermDrifts.filter(d => Object.keys(d.byTerm).length > 1);
+
+  // Observations
+  const distObs = distShape
+    ? distributionShapeObs(distShape.bimodal ? 'bimodal' : distShape.shape, distShape.bottomPct, distShape.topPct, `ROE ${term}`)
+    : null;
+  const surpriseText = surpriseObs(questions);
+  const partialText = partialCreditObs(questions);
+  const utilObs = markUtilizationObs(utilization.overall);
+  const driftObs = crossTermDriftObs(multiTermDrifts);
+  const concObs = submissionConcentrationObs(concentration);
+  const taxObs = skillTaxonomyObs(questions);
+
   return (
     <div className={styles.page}>
-      {/* Row 1 — KPIs */}
-      <div className={styles.kpiGrid}>
-        <KpiCard
-          label="Valid submissions"
-          value={meta.validRecords}
-          sub="unique students"
-        />
+      {/* 1. KPI row — 5 cards */}
+      <div className={styles.kpiGrid5}>
+        <KpiCard label="Unique students" value={meta.uniqueStudents ?? meta.validRecords} sub="best submission per student" />
         <KpiCard
           label="Mean score"
           value={`${toFixed(dist.mean, 1)}/${maxP}`}
@@ -45,8 +135,14 @@ export default function RoePage() {
           accentColor="var(--amber)"
         />
         <KpiCard
+          label="Marks utilization"
+          value={toPercent(utilization.overall * 100, 1)}
+          sub="of available marks earned"
+          accentColor="var(--blue)"
+        />
+        <KpiCard
           label="GA correlation"
-          value={toFixed(corr, 2)}
+          value={corr !== 0 ? toFixed(corr, 2) : '—'}
           sub="Pearson r vs GA avg"
           accentColor="var(--blue)"
         />
@@ -58,78 +154,96 @@ export default function RoePage() {
         />
       </div>
 
-      {/* Row 2 — Heatmap (3 columns for ROE) */}
-      <SectionCard
-        title="Question heatmap"
-        sub="completion rate per ROE section — hardest → easiest"
-      >
-        <QuestionHeatmap questions={questions} columns={3} />
+      {/* 2. Heatmap with enriched cells */}
+      <SectionCard title="Question heatmap" sub="completion rate per ROE section — hardest → easiest">
+        <QuestionHeatmap questions={questions} columns={3} showPartialCredit showTaxonomy />
       </SectionCard>
 
-      {/* Row 3 — two-column */}
-      <div className={styles.twoCol}>
-        {/* Distribution */}
-        <SectionCard
-          title="Score distribution"
-          sub="submission counts per score bracket"
-        >
-          <MiniDistribution buckets={dist.buckets} />
-          <div className={styles.statRow}>
-            {[
-              ['mean',   toFixed(dist.mean, 1)],
-              ['median', toFixed(dist.median, 1)],
-              ['σ',      toFixed(dist.stdDev, 2)],
-              ['min',    dist.min],
-              ['max',    dist.max],
-            ].map(([lbl, val]) => (
-              <div key={lbl} className={styles.statItem}>
-                <span className={styles.statLabel}>{lbl}</span>
-                <span className={styles.statValue}>{val}</span>
+      {/* 3. Cross-term drift — only if recurring questions exist */}
+      {multiTermDrifts.length > 0 && (
+        <SectionCard title="Cross-term question drift" sub="questions appearing in multiple terms — completion rate over time">
+          <CrossTermDriftChart drifts={multiTermDrifts} />
+        </SectionCard>
+      )}
+
+      {/* 4. Distribution with shape classification */}
+      <SectionCard title="Score distribution" sub="submission counts per score bracket">
+        {distShape && (
+          <div className={styles.shapeTags}>
+            <span className={styles.shapeTag}>{distShape.bimodal ? 'bimodal' : distShape.shape}</span>
+            {distShape.bottomPct > 40 && <span className={styles.shapeTagWarn}>bottom-heavy</span>}
+            {distShape.topPct > 40 && <span className={styles.shapeTagGood}>top-heavy</span>}
+          </div>
+        )}
+        <MiniDistribution buckets={dist.buckets} />
+        <div className={styles.statRow}>
+          {[['mean', toFixed(dist.mean, 1)], ['median', toFixed(dist.median, 1)], ['σ', toFixed(dist.stdDev, 2)], ['min', dist.min], ['max', dist.max]].map(([lbl, val]) => (
+            <div key={lbl} className={styles.statItem}>
+              <span className={styles.statLabel}>{lbl}</span>
+              <span className={styles.statValue}>{val}</span>
+            </div>
+          ))}
+        </div>
+      </SectionCard>
+
+      {/* 5. Submission concentration timeline */}
+      <SectionCard
+        title="Submission activity across exam window"
+        sub={`${concentration.deadlineConcentration.toFixed(0)}% of submissions in final sixth — amber = deadline buckets`}
+      >
+        <SubmissionTimeline concentration={concentration} />
+      </SectionCard>
+
+      {/* 6. GA correlation section */}
+      {corr !== 0 ? (
+        <SectionCard title="GA performance as predictor" sub="avg ROE score by GA performance quartile">
+          <BarRow label="GA top 25%" value={quartile.top25 ?? 0} color="green" displayValue={`${quartile.top25 ?? 0}%`} />
+          <BarRow label="GA mid 50%" value={quartile.mid50 ?? 0} color="amber" displayValue={`${quartile.mid50 ?? 0}%`} />
+          <BarRow label="GA bottom 25%" value={quartile.bottom25 ?? 0} color="red" displayValue={`${quartile.bottom25 ?? 0}%`} />
+          <div className={styles.corrNote}>Pearson r = {toFixed(corr, 2)} (GA avg ↔ ROE score)</div>
+        </SectionCard>
+      ) : (
+        <SectionCard title="ROE vs GA comparison" sub="avg ROE score by GA performance quartile">
+          <div className={styles.noDataNote}>
+            Per-student GA data not available for this term — correlation requires matching student identifiers across assignments.
+          </div>
+        </SectionCard>
+      )}
+
+      {/* 7. Surprise factor */}
+      {questions.some(q => q.surpriseFlag) && (
+        <SectionCard title="Surprise factor" sub="questions where marks weight and completion rate diverge">
+          <div className={styles.surpriseTable}>
+            {questions.filter(q => q.surpriseFlag).map(q => (
+              <div key={q.id} className={styles.surpriseRow}>
+                <div className={styles.surpriseLabel}>{q.label}</div>
+                <div className={styles.surpriseMeta}>
+                  <span>{(q.maxPossible ?? 0).toFixed(1)} marks</span>
+                  <span>{(q.completionRate ?? 0).toFixed(0)}% completion</span>
+                  <span className={styles.surpriseScore}>surprise score: {q.surpriseScore}</span>
+                </div>
               </div>
             ))}
           </div>
         </SectionCard>
+      )}
 
-        {/* ROE vs GA comparison */}
-        <SectionCard
-          title="ROE vs GA comparison"
-          sub="avg ROE score by GA performance quartile"
-        >
-          <BarRow
-            label="GA top 25%"
-            value={quartile.top25 ?? 0}
-            color="green"
-            displayValue={`${quartile.top25 ?? 0}%`}
-          />
-          <BarRow
-            label="GA mid 50%"
-            value={quartile.mid50 ?? 0}
-            color="amber"
-            displayValue={`${quartile.mid50 ?? 0}%`}
-          />
-          <BarRow
-            label="GA bottom 25%"
-            value={quartile.bottom25 ?? 0}
-            color="red"
-            displayValue={`${quartile.bottom25 ?? 0}%`}
-          />
-          <div className={styles.corrNote}>
-            Pearson r = {toFixed(corr, 2)} (GA avg ↔ ROE score)
-          </div>
-        </SectionCard>
-      </div>
-
-      {/* Row 4 — Observations */}
-      <SectionCard title="Observed patterns" sub="generated from ROE submission data">
-        <ObsBox tag="question completion">
-          {completionObs(questions)}
-        </ObsBox>
-        <ObsBox tag="score spread">
-          {spreadObs(dist)}
-        </ObsBox>
-        <ObsBox tag="ga correlation">
-          {roeCorrelationObs(corr, quartile.top25 ?? 0, quartile.mid50 ?? 0, quartile.bottom25 ?? 0)}
-        </ObsBox>
+      {/* 8. Observed patterns */}
+      <SectionCard title="Observed patterns" sub="generated from ROE submission data — all analytical lenses">
+        <ObsBox tag="question completion">{completionObs(questions)}</ObsBox>
+        <ObsBox tag="score spread">{spreadObs(dist)}</ObsBox>
+        {distObs && <ObsBox tag="distribution shape">{distObs}</ObsBox>}
+        <ObsBox tag="marks utilization">{utilObs}</ObsBox>
+        {surpriseText && <ObsBox tag="surprise factor">{surpriseText}</ObsBox>}
+        {partialText && <ObsBox tag="partial credit">{partialText}</ObsBox>}
+        {driftObs && <ObsBox tag="cross-term drift">{driftObs}</ObsBox>}
+        {concObs && <ObsBox tag="submission concentration">{concObs}</ObsBox>}
+        <ObsBox tag="skill taxonomy">{taxObs}</ObsBox>
+        {corr !== 0 && (
+          <ObsBox tag="ga correlation">
+            {roeCorrelationObs(corr, quartile.top25 ?? 0, quartile.mid50 ?? 0, quartile.bottom25 ?? 0)}
+          </ObsBox>
+        )}
       </SectionCard>
     </div>
   );

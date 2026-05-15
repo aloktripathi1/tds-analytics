@@ -130,6 +130,7 @@ function normalizeAssignment(ga) {
   }
   if (ga.meta) {
     if (ga.meta.valid_records !== undefined) ga.meta.validRecords = ga.meta.valid_records;
+    if (ga.meta.unique_students !== undefined) ga.meta.uniqueStudents = ga.meta.unique_students;
     if (ga.meta.max_possible_total !== undefined) ga.meta.maxPossible = ga.meta.max_possible_total;
   }
   if (ga.score_distribution) {
