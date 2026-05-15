@@ -45,10 +45,12 @@ React · Vite · Recharts
 
 ## Run locally
 
+```
 git clone https://github.com/[username]/tds-analytics
 cd tds-analytics
 npm install
 npm run dev
+```
 
 ---
 
