@@ -52,3 +52,23 @@
   font-family: var(--font-mono);
   color: var(--text-muted);
 }
+
+.partial {
+  font-size: 9px;
+  font-family: var(--font-mono);
+  margin-top: 3px;
+  opacity: 0.85;
+  line-height: 1.3;
+}
+
+.taxTag {
+  display: inline-block;
+  margin-top: 4px;
+  font-size: 8px;
+  font-family: var(--font-mono);
+  padding: 1px 5px;
+  border-radius: 3px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}

@@ -259,7 +259,6 @@ export default function AnomalyPage() {
         </SectionCard>
       )}
 
-      <ObsBox tag="data caveat">{DISCLAIMER}</ObsBox>
     </div>
   );
 }

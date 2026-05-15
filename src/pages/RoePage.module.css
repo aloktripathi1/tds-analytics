@@ -1,4 +1,4 @@
-.page { display: flex; flex-direction: column; }
+.page { display: flex; flex-direction: column; gap: 8px; }
 
 .empty {
   padding: 2rem;
@@ -6,9 +6,9 @@
   color: var(--text-secondary);
 }
 
-.kpiGrid {
+.kpiGrid5 {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: 8px;
   margin-bottom: .875rem;
 }
@@ -48,7 +48,145 @@
   border-top: 0.5px solid var(--border);
 }
 
+.noDataNote {
+  font-size: 12px;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  padding: 12px 0;
+  font-style: italic;
+}
+
+.shapeTags {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+.shapeTag {
+  font-size: 10px;
+  font-family: var(--font-mono);
+  background: var(--gray-bg);
+  color: var(--text-secondary);
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-weight: 500;
+}
+.shapeTagWarn {
+  font-size: 10px;
+  font-family: var(--font-mono);
+  background: var(--amber-bg);
+  color: var(--amber-text);
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-weight: 500;
+}
+.shapeTagGood {
+  font-size: 10px;
+  font-family: var(--font-mono);
+  background: var(--green-bg);
+  color: var(--green-text);
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+/* Submission timeline */
+.timeline {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 52px;
+  padding: 4px 0;
+}
+.timelineBucket {
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+}
+.timelineBar {
+  width: 100%;
+  border-radius: 2px 2px 0 0;
+  min-height: 2px;
+  transition: height 0.2s;
+}
+
+/* Cross-term drift */
+.driftTable {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.driftRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 12px;
+  padding: 4px 0;
+  border-bottom: 0.5px solid var(--border);
+}
+.driftLabel {
+  flex: 1;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-primary);
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.driftSparkline {
+  display: flex;
+  gap: 8px;
+}
+.driftDot {
+  font-size: 10px;
+  font-family: var(--font-mono);
+  color: var(--text-secondary);
+}
+.driftBadge {
+  font-size: 11px;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* Surprise factor */
+.surpriseTable {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.surpriseRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 6px 8px;
+  background: var(--gray-bg);
+  border-radius: 4px;
+  font-size: 12px;
+}
+.surpriseLabel {
+  flex: 1;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-primary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.surpriseMeta {
+  display: flex;
+  gap: 12px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-muted);
+}
+.surpriseScore {
+  color: var(--amber-text);
+  font-weight: 600;
+}
+
 @media (max-width: 900px) {
-  .kpiGrid { grid-template-columns: repeat(2, 1fr); }
-  .twoCol  { grid-template-columns: 1fr; }
+  .kpiGrid5 { grid-template-columns: repeat(3, 1fr); }
+  .twoCol   { grid-template-columns: 1fr; }
 }
