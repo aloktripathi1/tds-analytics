@@ -103,7 +103,7 @@ export default function Overview() {
               fontFamily: 'var(--font-mono)',
               color: 'var(--text-muted)',
             }}>
-              * Post-term assignments (GA7/GA8) included for visibility.
+              * Post-term addition — added after the term ended.
             </div>
           )}
         </SectionCard>

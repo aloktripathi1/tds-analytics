@@ -6,6 +6,59 @@
   color: var(--text-secondary);
 }
 
+/* Issue 4: post-term banner */
+.postTermBanner {
+  background: var(--amber-bg);
+  color: var(--amber-text);
+  border: 0.5px solid var(--amber-text);
+  border-radius: var(--radius-md);
+  padding: 10px 14px;
+  font-size: 12px;
+  font-family: var(--font-mono);
+  line-height: 1.5;
+}
+
+/* Issue 3: cross-term context note (shown on missing-data screen) */
+.crossTermNote {
+  margin-top: 1rem;
+  border-left: 3px solid var(--amber-text);
+  padding: 10px 14px;
+  background: var(--amber-bg);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+}
+.crossTermTag {
+  font-size: 10px;
+  font-family: var(--font-mono);
+  color: var(--amber-text);
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.crossTermText {
+  font-size: 13px;
+  color: var(--text-primary);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Issue 2: CSV totals-only notice in heatmap section */
+.csvNote {
+  font-size: 12px;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  padding: 8px 0;
+  margin: 0;
+}
+
+.distNote {
+  font-size: 11px;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  margin: 8px 0 0;
+  font-style: italic;
+}
+
 .kpiGrid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -104,60 +157,142 @@
 .timeline {
   display: flex;
   align-items: flex-end;
-  gap: 3px;
-  height: 52px;
-  padding: 4px 0;
+  gap: 4px;
+  height: 110px;
+  padding: 8px 0 4px;
+  position: relative;
 }
 .timelineBucket {
   flex: 1;
   display: flex;
   align-items: flex-end;
+  position: relative;
 }
 .timelineBar {
   width: 100%;
-  border-radius: 2px 2px 0 0;
+  border-radius: 3px 3px 0 0;
   min-height: 2px;
-  transition: height 0.2s;
+  transition: height 0.3s ease;
+}
+.timelineAxis {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 10px;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  border-top: 1px solid var(--border);
+  padding-top: 6px;
+  margin-top: 2px;
+  letter-spacing: 0.02em;
+}
+.timelineAxisDeadline {
+  color: var(--amber-text);
+  font-weight: 600;
+}
+.timelineLegend {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 8px;
+  font-size: 11px;
+  font-family: var(--font-mono);
+  color: var(--text-secondary);
+}
+.timelineLegendItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.timelineLegendSwatch {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  display: inline-block;
 }
 
 /* Cross-term drift */
 .driftTable {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 0;
 }
 .driftRow {
-  display: flex;
+  display: grid;
+  grid-template-columns: 180px 1fr 70px;
   align-items: center;
-  gap: 12px;
-  font-size: 12px;
-  padding: 4px 0;
+  gap: 16px;
+  padding: 10px 0;
   border-bottom: 0.5px solid var(--border);
 }
+.driftRow:last-child {
+  border-bottom: none;
+}
 .driftLabel {
-  flex: 1;
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 12px;
   color: var(--text-primary);
   min-width: 0;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-.driftSparkline {
+.driftTrack {
+  position: relative;
+  height: 28px;
   display: flex;
-  gap: 8px;
+  align-items: center;
 }
-.driftDot {
-  font-size: 10px;
+.driftConnector {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 1px;
+  background: var(--border);
+  z-index: 0;
+}
+.driftStop {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  z-index: 1;
+}
+.driftStopDot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid var(--bg-primary);
+  box-shadow: 0 0 0 0.5px var(--border);
+}
+.driftStopLabel {
+  position: absolute;
+  top: 14px;
+  font-size: 9px;
   font-family: var(--font-mono);
-  color: var(--text-secondary);
+  color: var(--text-muted);
+  white-space: nowrap;
+  letter-spacing: 0.02em;
 }
-.driftBadge {
+.driftStopValue {
+  position: absolute;
+  bottom: 14px;
   font-size: 11px;
   font-family: var(--font-mono);
   font-weight: 600;
+  color: var(--text-primary);
+}
+.driftBadge {
+  font-size: 13px;
+  font-family: var(--font-mono);
+  font-weight: 700;
   white-space: nowrap;
+  text-align: right;
+  letter-spacing: 0.02em;
 }
 
 /* Surprise factor */

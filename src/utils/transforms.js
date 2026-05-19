@@ -95,6 +95,52 @@ export function round(val, n = 2) {
 }
 
 /**
+ * Sanity-checked max score for display. Cleans float noise and
+ * returns null if the value is implausibly large vs the mean
+ * (a tell of a corrupted aggregate).
+ */
+export function sanitizedMax(rawMax, mean) {
+  if (rawMax == null || !Number.isFinite(rawMax)) return null;
+  const cleaned = Math.round(rawMax * 100) / 100;
+  if (Number.isFinite(mean) && mean > 0 && cleaned > mean * 20) {
+    // eslint-disable-next-line no-console
+    console.warn('[sanitizedMax] implausible max score detected', { rawMax, mean });
+    return null;
+  }
+  return cleaned;
+}
+
+/**
+ * Find the most recent prior term that has data for the same assignment.
+ */
+export function previousTermFor(byAssignment, term, assignmentKey) {
+  if (!byAssignment) return null;
+  const terms = Object.keys(byAssignment).sort();
+  const idx = terms.indexOf(term);
+  for (let i = idx - 1; i >= 0; i--) {
+    if (byAssignment[terms[i]]?.[assignmentKey]) return terms[i];
+  }
+  return null;
+}
+
+/**
+ * Build a comparison descriptor for a percentage-point metric:
+ * returns { text, color } or { text: 'first term', color: muted } when no prior data.
+ */
+export function ppComparison(currentPct, previousPct, prevTerm) {
+  if (prevTerm == null) {
+    return { text: 'first term', color: 'var(--text-muted)' };
+  }
+  const delta = Math.round((currentPct - previousPct) * 10) / 10;
+  if (Math.abs(delta) < 2) {
+    return { text: `similar to ${prevTerm}`, color: 'var(--text-muted)' };
+  }
+  const arrow = delta > 0 ? '↑' : '↓';
+  const color = delta > 0 ? 'var(--green-text)' : 'var(--red-text)';
+  return { text: `${arrow} ${Math.abs(delta).toFixed(1)}pp from ${prevTerm}`, color };
+}
+
+/**
  * Get trend arrow character
  */
 export function trendArrow(trend) {
@@ -196,7 +242,9 @@ export function computeAllCrossTermDrifts(allTermsData) {
   }
   return [...allIds]
     .map(id => computeCrossTermDrift(id, allTermsData))
-    .filter(d => Object.keys(d.byTerm).length > 1);
+    .filter(d => Object.keys(d.byTerm).length > 1)
+    .filter(d => Object.values(d.byTerm).some(value => value > 0))
+    .sort((a, b) => Math.abs(b.drift) - Math.abs(a.drift));
 }
 
 export function computeSubmissionConcentration(timingData) {

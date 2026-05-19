@@ -3,7 +3,7 @@
   "term": "2026-01",
   "assignment": "GA8",
   "type": "GA",
-  "post_term_addition": true,
+  "post_term_addition": false,
   "schema_notes": "",
   "meta": {
     "total_records": 511,

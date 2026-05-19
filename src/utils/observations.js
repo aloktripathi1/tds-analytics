@@ -1,123 +1,198 @@
-/**
- * Observation generators — neutral language only.
- * Rules: no should/must/needs/broken/easy/hard/bad
- * Use: observed, shows, ranged, averaged, suggests
- * Every sentence must contain at least one number.
- * Max 2 sentences per function.
- */
+import { clean, formatScore } from './format-numbers.js';
 
-export function timingObs(timing, maxPossible) {
-  const diff = (timing.earlyGt6h.avgScore - timing.lastLt1h.avgScore).toFixed(1);
-  return (
-    `Students who submitted more than 6 hours before the deadline averaged ` +
-    `${timing.earlyGt6h.avgScore.toFixed(1)}/${maxPossible}, compared to ` +
-    `${timing.lastLt1h.avgScore.toFixed(1)}/${maxPossible} for last-minute submitters ` +
-    `— a difference of ${diff} points.`
+function questionLabel(q) {
+  return String(q?.label || q?.id || 'question')
+    .replace(/^q-/, '')
+    .replace(/-/g, ' ');
+}
+
+function pct(value) {
+  return `${Math.round(clean(value))}%`;
+}
+
+function pp(value) {
+  const rounded = Math.round(clean(value));
+  return `${rounded > 0 ? '+' : ''}${rounded}pp`;
+}
+
+// ── Compute average question gap across the whole dashboard ──────────────
+export function averageQuestionGap(byAssignment) {
+  const gaps = [];
+  for (const assignments of Object.values(byAssignment ?? {})) {
+    for (const assignment of Object.values(assignments ?? {})) {
+      const questions = assignment?.questions ?? [];
+      if (questions.length < 2) continue;
+      const values = questions.map(q => clean(q.completionRate ?? 0));
+      gaps.push(Math.max(...values) - Math.min(...values));
+    }
+  }
+  if (!gaps.length) return 0;
+  return clean(gaps.reduce((sum, value) => sum + value, 0) / gaps.length);
+}
+
+// ── Individual observation generators ───────────────────────────────────
+
+// RULE 5a: a question with 0% completion is an actionable finding — name it
+function zeroCompletionObservation(questions) {
+  const zeros = questions.filter(q => clean(q.completionRate ?? 0) === 0);
+  if (!zeros.length) return null;
+  const label = questionLabel(zeros[0]);
+  const extra = zeros.length > 1 ? `, and ${zeros.length - 1} other item(s) similarly` : '';
+  return {
+    tag: 'question completion',
+    text: `"${label}" recorded 0% completion${extra} — worth investigating as a setup problem, missing prerequisite, or grading error before treating it as difficulty.`,
+    priority: 100,
+  };
+}
+
+// RULE 5b: top bucket > all others combined is non-obvious and actionable
+function topBucketObservation(dist) {
+  const buckets = dist?.buckets ?? {};
+  const top = buckets['80_100'] ?? 0;
+  const others = (buckets['0_20'] ?? 0) + (buckets['20_40'] ?? 0) +
+                 (buckets['40_60'] ?? 0) + (buckets['60_80'] ?? 0);
+  if (top <= others || top === 0) return null;
+  return {
+    tag: 'score distribution',
+    text: `${top} students landed in the top bracket vs ${others} across the other four combined — the distribution is heavily ceiling-compressed, so the score spread reflects who was left behind more than who excelled.`,
+    priority: 90,
+  };
+}
+
+// RULE 4: compare question gap to dashboard average, skip if unremarkable
+function questionGapObservation(questions, averageGap) {
+  if (questions.length < 2 || !averageGap) return null;
+  const sorted = [...questions].sort(
+    (a, b) => clean(a.completionRate ?? 0) - clean(b.completionRate ?? 0)
   );
+  const hardest = sorted[0];
+  const easiest = sorted[sorted.length - 1];
+  const gap = clean((easiest.completionRate ?? 0) - (hardest.completionRate ?? 0));
+  if (Math.abs(gap - averageGap) < 5) return null;
+  const relation = gap > averageGap ? 'wider' : 'narrower';
+  const implication = gap > averageGap
+    ? 'a subset of students cleared the easy items but hit a wall on the harder ones'
+    : 'no single item is dramatically out of step with the rest of the set'
+  return {
+    tag: 'question spread',
+    text: `"${questionLabel(easiest)}" cleared ${pct(easiest.completionRate)} while "${questionLabel(hardest)}" sat at ${pct(hardest.completionRate)} — a ${Math.round(gap)}pp gap, ${relation} than the ${Math.round(averageGap)}pp dashboard average. ${implication[0].toUpperCase() + implication.slice(1)}.`,
+    priority: 80,
+  };
 }
 
-export function completionObs(questions) {
-  if (!questions?.length) return 'No per-question completion data is available for this assignment.';
-  const sorted = [...questions].sort((a, b) => a.completionRate - b.completionRate);
-  const hardest = sorted.slice(0, 3).map(q => q.label).join(', ');
-  const low = sorted[0].completionRate.toFixed(1);
-  const high = sorted[sorted.length - 1].completionRate.toFixed(1);
-  return (
-    `Completion rates ranged from ${low}% to ${high}% across ${questions.length} questions. ` +
-    `The 3 lowest-completion questions were: ${hardest}.`
-  );
+// RULE 5c: partial credit is only interesting when it's a strong pattern on a specific item
+function partialCreditObservation(questions) {
+  const partial = [...questions]
+    .filter(q => clean(q.partialScorerPct ?? 0) >= 20)
+    .sort((a, b) => clean(b.partialScorerPct ?? 0) - clean(a.partialScorerPct ?? 0))[0];
+  if (!partial) return null;
+  return {
+    tag: 'partial credit',
+    text: `"${questionLabel(partial)}" split ${pct(partial.partialScorerPct)} partial vs ${pct(partial.fullScorerPct)} full — most students who attempted it got partway, which is more useful as a diagnostic than a binary pass/fail would be.`,
+    priority: 75,
+  };
 }
 
-export function spreadObs(dist) {
-  const range = (dist.max - dist.min).toFixed(1);
-  return (
-    `Score distribution shows a mean of ${dist.mean.toFixed(1)} ` +
-    `(median ${dist.median.toFixed(1)}) with a standard deviation of ${dist.stdDev.toFixed(1)}. ` +
-    `Scores ranged across ${range} points (${dist.min}–${dist.max}).`
-  );
+// RULE 5d: cross-term drift >15pp is a genuine signal — name the question and the move
+function crossTermObservation(drifts) {
+  const drift = [...(drifts ?? [])]
+    .filter(d => Math.abs(clean(d.drift ?? 0)) > 15)
+    .sort((a, b) => Math.abs(clean(b.drift ?? 0)) - Math.abs(clean(a.drift ?? 0)))[0];
+  if (!drift) return null;
+  const terms = Object.keys(drift.byTerm ?? {}).sort();
+  const first = terms[0];
+  const last  = terms[terms.length - 1];
+  const direction = clean(drift.drift) > 0 ? 'improved' : 'declined';
+  return {
+    tag: 'cross-term drift',
+    text: `"${questionLabel({ id: drift.questionId })}" ${direction} ${pp(drift.drift)} from ${first} to ${last} (${pct(drift.byTerm[first])} → ${pct(drift.byTerm[last])}) — a shift that size points to a changed prompt, new tooling, or a different student population.`,
+    priority: 70,
+  };
 }
 
-export function roeCorrelationObs(r, top, mid, bottom) {
-  return (
-    `The correlation between GA scores and ROE performance observed a Pearson r of ${r.toFixed(2)}. ` +
-    `Students in the top GA quartile averaged ${top}% on the ROE, ` +
-    `mid-tier students averaged ${mid}%, and the bottom quartile averaged ${bottom}%.`
-  );
+// RULE 3: skip timing if mid=0 and late≤1 (degenerate / artifact)
+// RULE 2: only emit if the score gap between early and late is meaningful (≥10% of max)
+function timingObservation(timing, maxPossible) {
+  if (!timing || timing.skipped) return null;
+  const early = timing.earlyGt6h ?? {};
+  const mid   = timing.mid1To6h  ?? {};
+  const late  = timing.lastLt1h  ?? {};
+  // Rule 3 guard
+  if ((mid.count ?? 0) === 0 && (late.count ?? 0) <= 1) return null;
+  // Need usable samples on both sides
+  if ((early.count ?? 0) <= 1 || (late.count ?? 0) <= 1) return null;
+
+  const diff      = clean((early.avgScore ?? 0) - (late.avgScore ?? 0));
+  const threshold = Math.max(2, clean(maxPossible) * 0.10);
+  if (Math.abs(diff) < threshold) return null;
+
+  const direction = diff > 0 ? 'outscored' : 'underscored';
+  const absDiff   = formatScore(Math.abs(diff));
+  return {
+    tag: 'submission timing',
+    text: `Early submitters ${direction} last-minute submitters by ${absDiff} pts (${early.count} vs ${late.count} students) — a gap that size with samples on both ends is more likely preparedness than luck.`,
+    priority: 65,
+  };
 }
 
-export function distributionShapeObs(shape, bottomPct, topPct, assignmentName) {
-  return (
-    `Score distribution for ${assignmentName} is ${shape}. ` +
-    `${bottomPct.toFixed(0)}% of students scored in the bottom 20% of the score range, ` +
-    `and ${topPct.toFixed(0)}% scored in the top 20%.`
-  );
+// Deadline concentration — only noteworthy when extremely high
+function deadlineConcentrationObservation(concentration, timing) {
+  if (!concentration || clean(concentration.deadlineConcentration ?? 0) <= 55) return null;
+  // If all submissions are in the last bucket with no early/mid, it's just an exam window — not a finding
+  if (
+    timing && !timing.skipped &&
+    (timing.earlyGt6h?.count ?? 0) === 0 &&
+    (timing.mid1To6h?.count ?? 0) === 0
+  ) return null;
+  return {
+    tag: 'submission concentration',
+    text: `${pct(concentration.deadlineConcentration)} of submissions landed in the final sixth of the window — high enough that any timing-based score comparison will be skewed by deadline pressure rather than preparation habits.`,
+    priority: 55,
+  };
 }
 
-export function surpriseObs(questions) {
-  const surprising = questions.filter(q => q.surpriseFlag);
-  if (!surprising.length) return null;
-  const q = surprising[0];
-  const cr = (q.completionRate ?? 0).toFixed(0);
-  const marks = (q.maxPossible ?? 0).toFixed(1);
-  return (
-    `${surprising.length} question(s) showed unexpected completion rates given their marks weight. ` +
-    `${q.label} (worth ${marks} marks) observed a ${cr}% completion rate.`
-  );
-}
-
-export function partialCreditObs(questions) {
-  const withPartial = questions.filter(q => (q.partialScorerPct ?? 0) > 20);
-  if (!withPartial.length) return null;
-  const q = withPartial[0];
-  return (
-    `${withPartial.length} question(s) showed meaningful partial credit distribution. ` +
-    `${q.label} observed ${q.fullScorerPct}% full scores and ${q.partialScorerPct}% partial scores.`
-  );
-}
-
-export function markUtilizationObs(utilization) {
-  const pct = (utilization * 100).toFixed(1);
-  return `Cohort-wide marks utilization averaged ${pct}% of available marks earned across all questions.`;
-}
-
-export function crossTermDriftObs(drifts) {
-  const notable = drifts.filter(d => Math.abs(d.drift) > 10);
-  if (!notable.length) return null;
-  const d = notable[0];
-  const terms = Object.keys(d.byTerm).sort();
-  const from = (d.byTerm[terms[0]] ?? 0).toFixed(0);
-  const to = (d.byTerm[terms[terms.length - 1]] ?? 0).toFixed(0);
-  return (
-    `${notable.length} question(s) showed notable completion rate drift across terms. ` +
-    `${d.questionId} moved from ${from}% (${terms[0]}) to ${to}% (${terms[terms.length - 1]}).`
-  );
-}
-
-export function submissionConcentrationObs(concentration) {
-  if (!concentration || concentration.deadlineConcentration <= 40) return null;
-  return (
-    `${concentration.deadlineConcentration.toFixed(0)}% of submissions occurred in the final sixth of the submission window. ` +
-    `${concentration.total} total submissions were observed across the exam window.`
-  );
-}
-
-export function skillTaxonomyObs(questions) {
+// ROE-specific: named skill cluster is only interesting if it's dominant
+function skillTaxonomyObservation(questions) {
   const counts = {};
   for (const q of questions) {
-    const t = q.skillTaxonomy ?? 'standard';
-    counts[t] = (counts[t] ?? 0) + 1;
+    const taxonomy = q.skillTaxonomy;
+    if (!taxonomy || taxonomy === 'standard') continue;
+    counts[taxonomy] = (counts[taxonomy] ?? 0) + 1;
   }
-  const entries = Object.entries(counts).sort((a, b) => b[1] - a[1]);
-  const top = entries.slice(0, 3).map(([t, n]) => `${n} ${t}`).join(', ');
-  return `Across ${questions.length} ROE questions, skill taxonomy classification observed: ${top}.`;
+  const [top] = Object.entries(counts).sort((a, b) => b[1] - a[1]);
+  if (!top || top[1] < 3) return null;
+  return {
+    tag: 'skill taxonomy',
+    text: `${top[1]} of ${questions.length} questions classify as "${top[0]}" — the ROE is testing a concentrated skill pattern, not a broad mix, which limits how far the results generalise across the full course.`,
+    priority: 45,
+  };
 }
 
-export function gaPredictiveObs(predictiveCount, notPredictiveCount) {
-  const total = predictiveCount + notPredictiveCount;
-  if (total === 0) return null;
-  return (
-    `${predictiveCount} of ${total} questions showed a completion rate difference greater than 20 points ` +
-    `between high-GA and low-GA students. ` +
-    `${notPredictiveCount} questions observed similar rates across GA performance groups.`
-  );
+// ── Public entry point ───────────────────────────────────────────────────
+export function buildObservations({
+  questions = [],
+  dist,
+  timing,
+  maxPossible,
+  drifts = [],
+  concentration,
+  averageGap = 0,
+  includeSkillTaxonomy = false,
+}) {
+  const candidates = [
+    zeroCompletionObservation(questions),
+    topBucketObservation(dist),
+    questionGapObservation(questions, averageGap),
+    partialCreditObservation(questions),
+    crossTermObservation(drifts),
+    timingObservation(timing, maxPossible),
+    deadlineConcentrationObservation(concentration, timing),
+    includeSkillTaxonomy ? skillTaxonomyObservation(questions) : null,
+  ].filter(Boolean);
+
+  // RULE 6: max 4, sorted by priority (most actionable first)
+  return candidates
+    .sort((a, b) => b.priority - a.priority)
+    .slice(0, 4)
+    .map(({ tag, text }) => ({ tag, text }));
 }

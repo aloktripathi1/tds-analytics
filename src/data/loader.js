@@ -6,6 +6,8 @@ const USE_MOCK = false;
 
 let _data = null;
 
+const clean = val => Math.round(Number(val || 0) * 100) / 100;
+
 function parseCsvLine(line) {
   const cells = [];
   let value = '';
@@ -123,19 +125,22 @@ function parseStage1Csv(raw, term, assignment) {
 function normalizeAssignment(ga) {
   if (ga.questions) {
     ga.questions.forEach(q => {
-      if (q.completion_rate !== undefined) q.completionRate = q.completion_rate * 100;
-      if (q.mean_score !== undefined) q.meanScore = q.mean_score;
-      if (q.max_possible !== undefined) q.maxPossible = q.max_possible;
+      if (q.completion_rate !== undefined) q.completionRate = clean(q.completion_rate * 100);
+      if (q.mean_score !== undefined) q.meanScore = clean(q.mean_score);
+      if (q.max_possible !== undefined) q.maxPossible = clean(q.max_possible);
     });
   }
   if (ga.meta) {
     if (ga.meta.valid_records !== undefined) ga.meta.validRecords = ga.meta.valid_records;
     if (ga.meta.unique_students !== undefined) ga.meta.uniqueStudents = ga.meta.unique_students;
-    if (ga.meta.max_possible_total !== undefined) ga.meta.maxPossible = ga.meta.max_possible_total;
+    if (ga.meta.max_possible_total !== undefined) ga.meta.maxPossible = clean(ga.meta.max_possible_total);
   }
   if (ga.score_distribution) {
     ga.scoreDistribution = ga.score_distribution;
-    ga.scoreDistribution.stdDev = ga.score_distribution.std_dev;
+    for (const key of ['mean', 'median', 'min', 'max', 'p10', 'p25', 'p50', 'p75', 'p90']) {
+      if (ga.scoreDistribution[key] !== undefined) ga.scoreDistribution[key] = clean(ga.scoreDistribution[key]);
+    }
+    ga.scoreDistribution.stdDev = clean(ga.score_distribution.std_dev);
     if (ga.score_distribution.buckets) {
       ga.scoreDistribution.buckets = {
         "0_20": ga.score_distribution.buckets["0_20pct"] || 0,
@@ -147,9 +152,9 @@ function normalizeAssignment(ga) {
     }
   }
   if (ga.timing) {
-    ga.timing.earlyGt6h = { count: ga.timing.early_gt6h?.count || 0, avgScore: ga.timing.early_gt6h?.avg_score || 0 };
-    ga.timing.mid1To6h = { count: ga.timing.mid_1_6h?.count || 0, avgScore: ga.timing.mid_1_6h?.avg_score || 0 };
-    ga.timing.lastLt1h = { count: ga.timing.last_lt1h?.count || 0, avgScore: ga.timing.last_lt1h?.avg_score || 0 };
+    ga.timing.earlyGt6h = { count: ga.timing.early_gt6h?.count || 0, avgScore: clean(ga.timing.early_gt6h?.avg_score || 0) };
+    ga.timing.mid1To6h = { count: ga.timing.mid_1_6h?.count || 0, avgScore: clean(ga.timing.mid_1_6h?.avg_score || 0) };
+    ga.timing.lastLt1h = { count: ga.timing.last_lt1h?.count || 0, avgScore: clean(ga.timing.last_lt1h?.avg_score || 0) };
   }
   return ga;
 }

@@ -14,7 +14,6 @@ import {
 } from 'recharts';
 import { useDashboard } from '../context/DashboardContext.jsx';
 import KpiCard from '../components/shared/KpiCard.jsx';
-import ObsBox from '../components/shared/ObsBox.jsx';
 import QuestionHeatmap from '../components/charts/QuestionHeatmap.jsx';
 import SectionCard from '../components/shared/SectionCard.jsx';
 import styles from './AnomalyPage.module.css';
@@ -23,8 +22,6 @@ const PATTERN_LABELS = {
   empty_submission: 'Scored on empty answer',
   hacked_by_marker: 'Scored on hack marker',
 };
-
-const DISCLAIMER = 'Hack % counts students whose best submission received marks for at least one question where the submitted answer was empty or contained a hack marker such as "hacked by". This is a data-quality signal from submissions and scores; review the underlying records before taking any action.';
 
 function colorForPct(value) {
   if (value > 20) return 'var(--red)';
@@ -98,9 +95,6 @@ export default function AnomalyPage() {
     .sort((a, b) => b.anomalyPct - a.anomalyPct);
 
   const highest = assignmentBars[0];
-  const mostCommonPattern = Object.entries(totals.patterns)
-    .sort((a, b) => b[1] - a[1])[0];
-
   const patternData = Object.keys(PATTERN_LABELS).map(key => ({
     pattern: PATTERN_LABELS[key],
     count: rows.reduce((sum, row) => sum + (row.anomalies?.by_pattern?.[key] || 0), 0),
@@ -113,16 +107,30 @@ export default function AnomalyPage() {
     flaggedCount: q.flagged_count,
   })));
 
-  const POST_TERM_EXCLUDED = ['GA7', 'GA8'];
+  // Derive post-term exclusions per (term, assignment) from the actual data
+  // rather than hardcoding a name list — assignments labeled GA7/GA8 in some terms
+  // are regular in others.
+  const isPostTerm = (term, assignment) =>
+    Boolean(data.byAssignment?.[term]?.[assignment]?.post_term_addition);
 
-  const crossTermAssignments = assignmentOptions.filter(a => !POST_TERM_EXCLUDED.includes(a));
+  const crossTermAssignments = assignmentOptions.filter(a =>
+    // Include the assignment if at least one term treats it as a regular assignment
+    data.terms.some(t => data.assignmentsByTerm[t]?.includes(a) && !isPostTerm(t, a)),
+  );
 
+  // Track which (term, assignment) pairs are excluded — used for the footnote
+  const excludedPairs = [];
   const crossTermData = data.terms.map(term => {
     const entry = { term };
     const summary = data.overview[term]?.hack_summary_by_assignment
       ?? data.overview[term]?.anomaly_summary_by_assignment
       ?? {};
     for (const assignment of crossTermAssignments) {
+      if (isPostTerm(term, assignment)) {
+        excludedPairs.push(`${term} ${assignment}`);
+        entry[assignment] = null;
+        continue;
+      }
       entry[assignment] = summary[assignment] ?? null;
     }
     return entry;
@@ -273,9 +281,11 @@ export default function AnomalyPage() {
               </LineChart>
             </ResponsiveContainer>
           </div>
-          <div style={{ fontSize: 11, fontFamily: 'var(--font-mono)', color: 'var(--text-muted)', marginTop: 8 }}>
-            GA7 and GA8 excluded — added after term completion.
-          </div>
+          {excludedPairs.length > 0 && (
+            <div style={{ fontSize: 11, fontFamily: 'var(--font-mono)', color: 'var(--text-muted)', marginTop: 8 }}>
+              Excluded — added after term completion: {excludedPairs.join(', ')}.
+            </div>
+          )}
         </SectionCard>
       )}
 

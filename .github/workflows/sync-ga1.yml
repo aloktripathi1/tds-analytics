@@ -1,0 +1,40 @@
+name: Sync GA1 Data
+
+on:
+  schedule:
+    - cron: '17 */6 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-ga1
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Sync GA1 stage1 data
+        run: npm run sync:ga1
+
+      - name: Commit updated aggregates
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: 'Update GA1 aggregates'
+          file_pattern: 'src/data/pipeline/stage1/2026-01-ga1.json src/data/pipeline/stage2/2026-01.json'

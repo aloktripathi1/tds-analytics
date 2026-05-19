@@ -29,12 +29,12 @@
     {
       "assignment": "GA7",
       "pct": 86.1,
-      "postTerm": true
+      "postTerm": false
     },
     {
       "assignment": "GA8",
       "pct": 65.6,
-      "postTerm": true
+      "postTerm": false
     },
     {
       "assignment": "P1",
@@ -60,7 +60,7 @@
     },
     {
       "assignment": "GA2",
-      "normalizedMean": 0.43,
+      "normalizedMean": 0.528,
       "postTerm": false
     },
     {
@@ -76,7 +76,7 @@
     {
       "assignment": "GA8",
       "normalizedMean": 0.75,
-      "postTerm": true
+      "postTerm": false
     },
     {
       "assignment": "P1",
@@ -101,7 +101,7 @@
     {
       "assignment": "GA7",
       "normalizedMean": 0.9,
-      "postTerm": true
+      "postTerm": false
     }
   ],
   "regularDifficultyRanking": [
@@ -112,7 +112,7 @@
     },
     {
       "assignment": "GA2",
-      "normalizedMean": 0.43,
+      "normalizedMean": 0.528,
       "postTerm": false
     },
     {
@@ -123,6 +123,11 @@
     {
       "assignment": "GA3",
       "normalizedMean": 0.71,
+      "postTerm": false
+    },
+    {
+      "assignment": "GA8",
+      "normalizedMean": 0.75,
       "postTerm": false
     },
     {
@@ -144,18 +149,23 @@
       "assignment": "GA6",
       "normalizedMean": 0.9,
       "postTerm": false
+    },
+    {
+      "assignment": "GA7",
+      "normalizedMean": 0.9,
+      "postTerm": false
     }
   ],
   "combinedBuckets": {
-    "0_20": 485,
-    "20_40": 496,
-    "40_60": 613,
-    "60_80": 787,
-    "80_100": 3548
+    "0_20": 563,
+    "20_40": 588,
+    "40_60": 778,
+    "60_80": 893,
+    "80_100": 3684
   },
   "anomaly_summary_by_assignment": {
     "GA1": 0,
-    "GA2": 1.2,
+    "GA2": 0,
     "GA3": 2.5,
     "GA4": 2.2,
     "GA6": 4.3,
@@ -167,7 +177,7 @@
   },
   "hack_summary_by_assignment": {
     "GA1": 0,
-    "GA2": 1.2,
+    "GA2": 0,
     "GA3": 2.5,
     "GA4": 2.2,
     "GA6": 4.3,
@@ -176,6 +186,5 @@
     "P1": 1.5,
     "P2": 0,
     "ROE": 0.5
-  },
-  "post_term_note": "GA7 and GA8 were added after the term ended. Their completion rates reflect availability, not difficulty. Exclude from difficulty comparisons."
+  }
 }

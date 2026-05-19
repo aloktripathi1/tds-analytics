@@ -1,4 +1,5 @@
 import { heatColor } from '../../utils/heat-color.js';
+import { formatScore } from '../../utils/format-numbers.js';
 import styles from './QuestionHeatmap.module.css';
 
 const LEGEND_COLORS = ['#E24B4A', '#F0997B', '#EF9F27', '#97C459', '#1D9E75'];
@@ -24,9 +25,18 @@ function roundPct(value) {
   return Math.round(value);
 }
 
+function tierLabel(completionRate) {
+  if (completionRate == null || Number.isNaN(completionRate)) return null;
+  if (completionRate >= 80) return 'accessible';
+  if (completionRate >= 60) return 'moderate';
+  if (completionRate >= 40) return 'challenging';
+  if (completionRate >= 20) return 'difficult';
+  return 'very few';
+}
+
 function roundAvg(value) {
   if (value == null || Number.isNaN(value)) return '-';
-  return Number(value.toFixed(2));
+  return formatScore(value);
 }
 
 export default function QuestionHeatmap({ questions = [], columns = 4, mode = 'completion', showPartialCredit = false, showTaxonomy = false }) {
@@ -40,13 +50,21 @@ export default function QuestionHeatmap({ questions = [], columns = 4, mode = 'c
       <div className={styles.grid} style={{ gridTemplateColumns: `repeat(auto-fill, minmax(${columns <= 3 ? 172 : 142}px, 1fr))` }}>
         {sorted.map((q) => {
           const rawPct = mode === 'anomaly' ? q.anomalyPct : q.completionRate;
-          const colors = mode === 'anomaly' ? heatColor(100 - rawPct) : heatColor(rawPct);
+          // "no submissions" cell: 0% completion AND 0 mean score AND non-anomaly mode
+          const noSubmissions = mode !== 'anomaly'
+            && (rawPct ?? 0) === 0
+            && (q.meanScore ?? 0) === 0;
+          const colors = noSubmissions
+            ? { bg: '#3a3a3a', border: '#3a3a3a', text: '#cfcfcf' }
+            : mode === 'anomaly' ? heatColor(100 - rawPct) : heatColor(rawPct);
           const pct = roundPct(rawPct);
           const mean = roundAvg(q.meanScore);
           const max = roundAvg(q.maxPossible);
           const tooltip = mode === 'anomaly'
             ? `${q.id} - ${pct}% hack rate - ${q.flaggedCount ?? 0} students`
-            : `${q.id} - ${pct}% students scored - avg ${mean} / ${max}`;
+            : noSubmissions
+              ? `${q.id} - no submissions recorded`
+              : `${q.id} - ${pct}% students scored - avg ${mean} / ${max}`;
           const taxonomy = q.skillTaxonomy;
           const taxLabel = taxonomy ? TAXONOMY_LABELS[taxonomy] : '';
 
@@ -62,7 +80,12 @@ export default function QuestionHeatmap({ questions = [], columns = 4, mode = 'c
               <div className={styles.avg} style={{ color: colors.text }}>
                 {mode === 'anomaly' ? `${q.flaggedCount ?? 0} students` : `avg ${mean}/${max}`}
               </div>
-              {showPartialCredit && q.partialScorerPct > 0 && (
+              {noSubmissions && (
+                <div className={styles.noData} style={{ color: colors.text }}>
+                  no submissions recorded
+                </div>
+              )}
+              {showPartialCredit && !noSubmissions && q.partialScorerPct > 0 && (
                 <div className={styles.partial} style={{ color: colors.text }}>
                   {q.fullScorerPct}% full · {q.partialScorerPct}% partial · {q.zeroScorerPct}% zero
                 </div>
@@ -71,6 +94,9 @@ export default function QuestionHeatmap({ questions = [], columns = 4, mode = 'c
                 <div className={styles.taxTag} style={{ background: TAXONOMY_COLORS[taxonomy] ?? 'transparent', color: colors.text }}>
                   {taxLabel}
                 </div>
+              )}
+              {mode !== 'anomaly' && !noSubmissions && tierLabel(rawPct) && (
+                <div className={styles.tier} style={{ color: colors.text }}>{tierLabel(rawPct)}</div>
               )}
             </div>
           );

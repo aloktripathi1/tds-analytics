@@ -8,6 +8,7 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
+    "sync:ga1": "node scripts/sync-ga1-stage1.cjs",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
   },

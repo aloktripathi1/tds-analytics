@@ -1,6 +1,6 @@
 import styles from './KpiCard.module.css';
 
-export default function KpiCard({ label, value, sub, accentColor }) {
+export default function KpiCard({ label, value, sub, accentColor, comparison }) {
   return (
     <div className={styles.card}>
       <div className={styles.label}>{label}</div>
@@ -8,6 +8,11 @@ export default function KpiCard({ label, value, sub, accentColor }) {
         {value}
       </div>
       {sub && <div className={styles.sub}>{sub}</div>}
+      {comparison && (
+        <div className={styles.comparison} style={comparison.color ? { color: comparison.color } : {}}>
+          {comparison.text}
+        </div>
+      )}
     </div>
   );
 }

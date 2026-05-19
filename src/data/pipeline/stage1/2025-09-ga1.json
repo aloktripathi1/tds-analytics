@@ -21,7 +21,7 @@
     "median": 9.3,
     "std_dev": 2.66,
     "min": 0,
-    "max": 10.000000000000004,
+    "max": 10,
     "p10": 3.76,
     "p25": 7.1,
     "p50": 9.3,
@@ -347,8 +347,8 @@
     }
   ],
   "timing": {
-    "skipped": false,
-    "skip_reason": null,
+    "skipped": true,
+    "skip_reason": "single-submission-per-student data: all students appear early relative to the last submitter — not meaningful for timing analysis",
     "deadline_ms": 1761925389263,
     "early_gt6h": {
       "count": 1496,
@@ -361,8 +361,7 @@
     "last_lt1h": {
       "count": 1,
       "avg_score": 4
-    },
-    "max_possible_total": 9.999999999999998
+    }
   },
   "roe_specific": null,
   "project_specific": null,

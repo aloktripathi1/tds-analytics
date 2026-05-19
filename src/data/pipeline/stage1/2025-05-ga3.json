@@ -235,8 +235,8 @@
     }
   ],
   "timing": {
-    "skipped": false,
-    "skip_reason": null,
+    "skipped": true,
+    "skip_reason": "single-submission-per-student data: all students appear early relative to the last submitter — not meaningful for timing analysis",
     "deadline_ms": 1757351434208,
     "early_gt6h": {
       "count": 1091,
@@ -249,8 +249,7 @@
     "last_lt1h": {
       "count": 1,
       "avg_score": 10
-    },
-    "max_possible_total": 10
+    }
   },
   "roe_specific": null,
   "project_specific": null,
