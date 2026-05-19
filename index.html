@@ -21,6 +21,15 @@
         }
       }(window.location))
     </script>
+    <script>
+      (function() {
+        try {
+          var stored = localStorage.getItem('tds-theme');
+          var theme = stored || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+          document.documentElement.setAttribute('data-theme', theme);
+        } catch (e) {}
+      })();
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -32,8 +41,8 @@
       gtag('js', new Date());
       gtag('config', 'G-8SLG319659');
     </script>
-    <script type="module" crossorigin src="/tds-analytics/assets/index-Dtqc4X7m.js"></script>
-    <link rel="stylesheet" crossorigin href="/tds-analytics/assets/index-Q29Tows7.css">
+    <script type="module" crossorigin src="/tds-analytics/assets/index-Dsqb4ycr.js"></script>
+    <link rel="stylesheet" crossorigin href="/tds-analytics/assets/index-OarhM25J.css">
   </head>
   <body>
     <div id="root"></div>
