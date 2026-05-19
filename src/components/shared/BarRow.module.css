@@ -15,17 +15,60 @@
   text-overflow: ellipsis;
   flex-shrink: 0;
 }
-.track {
+.flame {
+  color: var(--red);
+  margin-right: 3px;
+}
+.trackWrap {
   flex: 1;
-  background: var(--bg-secondary);
-  border-radius: 3px;
+  position: relative;
   height: 7px;
+}
+.trackBg {
+  position: absolute;
+  inset: 0;
+  border-radius: 3px;
+  opacity: 0.4;
+}
+.track {
+  position: relative;
+  height: 7px;
+  border-radius: 3px;
   overflow: hidden;
 }
 .bar {
   height: 7px;
   border-radius: 3px;
   transition: width .3s ease;
+}
+.refLine {
+  position: absolute;
+  top: -5px;
+  bottom: -5px;
+  width: 1.5px;
+  background: var(--text-muted);
+  opacity: 0.5;
+  z-index: 2;
+  pointer-events: none;
+}
+.refLabel {
+  position: absolute;
+  top: -14px;
+  left: 3px;
+  font-size: 9px;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+.retentionBand {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  border-radius: 3px;
+  background: var(--green);
+  opacity: 0.07;
+  z-index: 1;
+  pointer-events: none;
 }
 .display {
   font-size: 12px;

@@ -4,8 +4,10 @@ import KpiCard          from '../components/shared/KpiCard.jsx';
 import SectionCard      from '../components/shared/SectionCard.jsx';
 import BarRow           from '../components/shared/BarRow.jsx';
 import MiniDistribution from '../components/shared/MiniDistribution.jsx';
+import PercentileBox    from '../components/shared/PercentileBox.jsx';
 import ObsBox           from '../components/shared/ObsBox.jsx';
 import QuestionHeatmap  from '../components/charts/QuestionHeatmap.jsx';
+import SparklineDrift   from '../components/charts/SparklineDrift.jsx';
 import { averageQuestionGap, buildObservations } from '../utils/observations.js';
 import {
   classifyDistributionShape, computeSurpriseScores, computePartialCreditDepth,
@@ -59,58 +61,6 @@ function SubmissionTimeline({ concentration }) {
           </span>
         )}
       </div>
-    </div>
-  );
-}
-
-function driftDotColor(value) {
-  const v = clean(value);
-  if (v < 40) return 'var(--red)';
-  if (v <= 65) return 'var(--amber)';
-  return 'var(--green)';
-}
-
-function CrossTermDriftChart({ drifts }) {
-  if (!drifts.length) return null;
-  return (
-    <div className={styles.driftTable}>
-      {drifts.slice(0, 10).map(d => {
-        const terms = Object.keys(d.byTerm).sort();
-        const driftValue = clean(d.drift);
-        const isNearZero = Math.abs(driftValue) < 2;
-        const badgeColor = isNearZero
-          ? 'var(--text-muted)'
-          : driftValue > 0 ? 'var(--green-text)' : 'var(--red-text)';
-        const sign = isNearZero ? '~' : driftValue > 0 ? '+' : '';
-        const value = isNearZero ? '0' : toFixed(Math.abs(driftValue), 0);
-        return (
-          <div key={d.questionId} className={styles.driftRow}>
-            <div className={styles.driftLabel}>{d.questionId.replace('q-', '').replace(/-/g, ' ')}</div>
-            <div className={styles.driftTrack}>
-              <span className={styles.driftConnector} />
-              {terms.map((t, i) => {
-                const pos = terms.length === 1 ? 50 : (i / (terms.length - 1)) * 100;
-                const v = d.byTerm[t];
-                return (
-                  <span
-                    key={t}
-                    className={styles.driftStop}
-                    style={{ left: `${pos}%` }}
-                    title={`${t}: ${toFixed(v, 0)}%`}
-                  >
-                    <span className={styles.driftStopValue}>{toFixed(v, 0)}%</span>
-                    <span className={styles.driftStopDot} style={{ background: driftDotColor(v) }} />
-                    <span className={styles.driftStopLabel}>{t}</span>
-                  </span>
-                );
-              })}
-            </div>
-            <div className={styles.driftBadge} style={{ color: badgeColor }}>
-              {driftValue < 0 ? `-${value}` : `${sign}${value}`}pp
-            </div>
-          </div>
-        );
-      })}
     </div>
   );
 }
@@ -170,8 +120,6 @@ export default function GaPage() {
     concentration,
     averageGap: averageQuestionGap(data.byAssignment),
   });
-  const percentiles = ['p10', 'p25', 'p50', 'p75', 'p90'];
-
   // Previous-term comparison for percentage-point KPI cards
   const prevTerm = previousTermFor(data.byAssignment, term, gaKey);
   const prevGa = prevTerm ? data.byAssignment[prevTerm][gaKey] : null;
@@ -200,7 +148,7 @@ export default function GaPage() {
       )}
 
       <div className={styles.kpiGrid}>
-        <KpiCard label="Unique students" value={meta.uniqueStudents ?? meta.validRecords} sub="best submission per student" />
+        <KpiCard label="Students" value={meta.uniqueStudents ?? meta.validRecords} sub="best submission per student" />
         <KpiCard
           label="Mean score"
           value={`${toFixed(dist.mean, 1)}/${formatScore(maxP)}`}
@@ -233,19 +181,16 @@ export default function GaPage() {
 
       {multiTermDrifts.length > 0 && (
         <SectionCard title="Cross-term question drift" sub="questions appearing in multiple terms: completion rate over time">
-          <CrossTermDriftChart drifts={multiTermDrifts} />
+          <SparklineDrift drifts={multiTermDrifts} />
         </SectionCard>
       )}
 
       <SectionCard title="Score distribution" sub="count of submissions per score bracket">
-        {distShape && (
-          <div className={styles.shapeTags}>
-            <span className={styles.shapeTag}>{distShape.bimodal ? 'bimodal' : distShape.shape}</span>
-            {distShape.bottomPct > 40 && <span className={styles.shapeTagWarn}>bottom-heavy</span>}
-            {distShape.topPct > 40 && <span className={styles.shapeTagGood}>top-heavy</span>}
-          </div>
-        )}
-        <MiniDistribution buckets={dist.buckets} />
+        <MiniDistribution
+          buckets={dist.buckets}
+          distShape={distShape}
+          medianPct={maxP > 0 ? (clean(dist.median ?? 0) / maxP) * 100 : null}
+        />
         {(dist.buckets?.['80_100'] ?? 0) === 0 && (
           <p className={styles.distNote}>No students scored in the top 20% of the score range in this assignment.</p>
         )}
@@ -263,12 +208,22 @@ export default function GaPage() {
             </div>
           ))}
         </div>
-        {percentiles.map(p => {
-          const raw = clean(dist[p] ?? 0);
-          return (
-            <BarRow key={p} label={p.toUpperCase()} value={(raw / maxP) * 100} color="blue" displayValue={formatScore(raw)} />
-          );
-        })}
+        {dist.p10 != null && (
+          <PercentileBox
+            p10={clean(dist.p10)}
+            p25={clean(dist.p25 ?? 0)}
+            p50={clean(dist.p50 ?? dist.median ?? 0)}
+            p75={clean(dist.p75 ?? 0)}
+            p90={clean(dist.p90 ?? 0)}
+            maxScore={maxP}
+            color={(() => {
+              const nm = (dist.normalized_mean ?? 0);
+              if (nm < 0.45) return 'red';
+              if (nm < 0.65) return 'amber';
+              return 'green';
+            })()}
+          />
+        )}
       </SectionCard>
 
       {timing && !timing.skipped && (
@@ -277,38 +232,143 @@ export default function GaPage() {
           sub={`${toFixed(concentration.deadlineConcentration, 0)}% of submissions in final sixth; amber = deadline buckets`}
         >
           <SubmissionTimeline concentration={concentration} />
-          <div className={styles.timingCells}>
-            {[
-              { label: 'Early (>6h)', data: timing.earlyGt6h, color: 'var(--green-bg)', text: 'var(--green-text)' },
-              { label: 'Mid (1-6h)', data: timing.mid1To6h, color: 'var(--amber-bg)', text: 'var(--amber-text)' },
-              { label: 'Last-min (<1h)', data: timing.lastLt1h, color: 'var(--red-bg)', text: 'var(--red-text)' },
-            ].map(({ label, data: t, color, text }) => (
-              <div key={label} className={styles.timingCell} style={{ background: color }}>
-                <div className={styles.timingLabel} style={{ color: text }}>{label}</div>
-                <div className={styles.timingCount} style={{ color: text }}>{t.count}</div>
-                <div className={styles.timingAvg} style={{ color: text }}>avg {toFixed(t.avgScore, 1)}/{formatScore(maxP)}</div>
+          {(() => {
+            const early = timing.earlyGt6h;
+            const mid   = timing.mid1To6h;
+            const last  = timing.lastLt1h;
+            const totalCount = (early?.count ?? 0) + (mid?.count ?? 0) + (last?.count ?? 0);
+            const isDegenerate = (mid?.count ?? 0) === 0 && (last?.count ?? 0) <= 1;
+
+            if (isDegenerate || totalCount === 0) {
+              return (
+                <p className={styles.timingUnavailable}>
+                  Timing breakdown unavailable — deadline could not be reliably inferred from this dataset.
+                </p>
+              );
+            }
+
+            const segments = [
+              { label: 'Early (>6h)',    data: early, bg: 'var(--green)',  text: '#fff' },
+              { label: 'Mid (1–6h)',     data: mid,   bg: 'var(--blue)',   text: '#fff' },
+              { label: 'Last-min (<1h)', data: last,  bg: 'var(--amber)',  text: '#fff' },
+            ];
+
+            const earlyAvg  = clean(early?.avgScore ?? 0);
+            const lastAvg   = clean(last?.avgScore ?? 0);
+            const scoreDiff = earlyAvg - lastAvg;
+
+            return (
+              <div style={{ marginTop: 14 }}>
+                {/* Proportional bar */}
+                <div style={{ display: 'flex', height: 44, borderRadius: 6, overflow: 'hidden', boxShadow: '0 1px 0 rgba(0,0,0,0.06), inset 0 0 0 0.5px rgba(0,0,0,0.04)' }}>
+                  {segments.map(({ label, data: t, bg, text }) => {
+                    const pct = totalCount > 0 ? (t.count / totalCount) * 100 : 0;
+                    if (pct === 0) return null;
+                    const showLabel = pct >= 16;
+                    return (
+                      <div
+                        key={label}
+                        title={`${label}: ${t.count} students, avg ${toFixed(t.avgScore, 1)}/${formatScore(maxP)}`}
+                        style={{
+                          width: `${pct}%`,
+                          background: bg,
+                          display: 'flex',
+                          flexDirection: 'column',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          color: text,
+                          fontSize: 11,
+                          fontFamily: 'var(--font-mono)',
+                          fontWeight: 600,
+                          overflow: 'hidden',
+                          whiteSpace: 'nowrap',
+                          minWidth: 0,
+                          padding: '0 4px',
+                          transition: 'width 0.35s ease',
+                        }}
+                      >
+                        {showLabel && (
+                          <>
+                            <span>{t.count}</span>
+                            <span style={{ fontSize: 9, fontWeight: 400, opacity: 0.85 }}>{label}</span>
+                          </>
+                        )}
+                      </div>
+                    );
+                  })}
+                </div>
+
+                {/* Stat cards below */}
+                <div className={styles.timingCells} style={{ marginTop: 10 }}>
+                  {segments.map(({ label, data: t, bg }) => (
+                    <div key={label} className={styles.timingCell} style={{ background: bg + '22', border: `1px solid ${bg}44` }}>
+                      <div className={styles.timingLabel}>{label}</div>
+                      <div className={styles.timingCount}>{t.count}</div>
+                      <div className={styles.timingAvg}>avg {toFixed(t.avgScore, 1)}/{formatScore(maxP)}</div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Score diff annotation */}
+                {Math.abs(scoreDiff) > 2 && (
+                  <div className={styles.timingScoreDiff}>
+                    {scoreDiff > 0
+                      ? `↑ Early submitters scored ${toFixed(scoreDiff, 1)} pts higher on average than last-minute ones`
+                      : `↓ Last-minute submitters scored ${toFixed(Math.abs(scoreDiff), 1)} pts higher than early ones`}
+                  </div>
+                )}
               </div>
-            ))}
-          </div>
+            );
+          })()}
         </SectionCard>
       )}
 
-      {questions.some(q => q.surpriseFlag) && (
-        <SectionCard title="Surprise factor" sub="questions where marks weight and completion rate diverge">
-          <div className={styles.surpriseTable}>
-            {questions.filter(q => q.surpriseFlag).map(q => (
-              <div key={q.id} className={styles.surpriseRow}>
-                <div className={styles.surpriseLabel}>{q.label}</div>
-                <div className={styles.surpriseMeta}>
-                  <span>{formatScore(q.maxPossible ?? 0)} marks</span>
-                  <span>{toFixed(q.completionRate ?? 0, 0)}% completion</span>
-                  <span className={styles.surpriseScore}>surprise score: {q.surpriseScore}</span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </SectionCard>
-      )}
+      {(() => {
+        const surprisingQs = questions.filter(q => q.surpriseFlag && q.surpriseScore >= 5);
+        if (!surprisingQs.length) return null;
+        const maxMarks = Math.max(...questions.map(q => q.maxPossible ?? 0), 1);
+        return (
+          <SectionCard title="Surprise factor" sub="questions where marks weight and completion rate diverge">
+            <div className={styles.surpriseTable}>
+              {surprisingQs.map(q => {
+                const marksW = ((q.maxPossible ?? 0) / maxMarks) * 100;
+                const compW = clean(q.completionRate ?? 0);
+                const isHard = compW < marksW;
+                const label = q.surpriseScore >= 10 ? 'very unexpected' : 'somewhat unexpected';
+                const explanation = isHard
+                  ? `Worth ${formatScore(q.maxPossible ?? 0)} marks but only ${toFixed(compW, 0)}% of students completed it — harder than its weight suggests`
+                  : `Worth ${formatScore(q.maxPossible ?? 0)} marks and ${toFixed(compW, 0)}% completed it — easier than its weight suggests`;
+                return (
+                  <div key={q.id} className={styles.surpriseRow}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 6 }}>
+                      <div className={styles.surpriseLabel}>{q.label?.replace(/^q-/i, '').replace(/-/g, ' ')}</div>
+                      <span className={`${styles.surpriseBadge} ${q.surpriseScore >= 10 ? styles.surpriseBadgeHigh : styles.surpriseBadgeMed}`}>{label}</span>
+                    </div>
+                    {/* Two-bar comparison */}
+                    <div className={styles.surpriseCompare}>
+                      <div className={styles.surpriseCompareRow}>
+                        <span className={styles.surpriseCompareLabel}>by weight</span>
+                        <div className={styles.surpriseTrack}>
+                          <div className={styles.surpriseBar} style={{ width: `${marksW}%`, background: 'var(--blue)' }} />
+                        </div>
+                        <span className={styles.surpriseCompareVal}>{formatScore(q.maxPossible ?? 0)} marks</span>
+                      </div>
+                      <div className={styles.surpriseCompareRow}>
+                        <span className={styles.surpriseCompareLabel}>completion</span>
+                        <div className={styles.surpriseTrack}>
+                          <div className={styles.surpriseBar} style={{ width: `${compW}%`, background: isHard ? 'var(--red)' : 'var(--green)' }} />
+                        </div>
+                        <span className={styles.surpriseCompareVal}>{toFixed(compW, 0)}%</span>
+                      </div>
+                    </div>
+                    <div className={styles.surpriseExplanation}>{explanation}</div>
+                  </div>
+                );
+              })}
+            </div>
+          </SectionCard>
+        );
+      })()}
 
       <SectionCard title="Observed patterns" sub="what the data actually shows">
         {observations.length

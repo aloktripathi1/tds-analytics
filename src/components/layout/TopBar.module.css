@@ -12,10 +12,33 @@
   font-weight: 500;
   color: var(--text-primary);
 }
+.right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
 .pills {
   display: flex;
   align-items: center;
   gap: 6px;
+}
+.themeToggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  border: 0.5px solid var(--border-strong);
+  background: transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: background .15s, color .15s, border-color .15s;
+}
+.themeToggle:hover {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  border-color: var(--text-muted);
 }
 .pill {
   font-size: 12px;

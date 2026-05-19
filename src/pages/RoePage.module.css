@@ -44,104 +44,71 @@
   font-style: italic;
 }
 
-/* Cross-term ROE difficulty comparison */
-.crossTermUtil {
-  display: flex;
-  flex-direction: column;
+/* Cross-term ROE difficulty — arc cards */
+.arcGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   gap: 12px;
 }
-.utilRow {
-  display: grid;
-  grid-template-columns: 160px 1fr 110px;
+.arcCard {
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 14px;
-  font-size: 13px;
+  gap: 8px;
+  padding: 16px 12px 12px;
+  border-radius: var(--radius-md);
+  background: var(--bg-secondary);
+  border: 1.5px solid var(--border);
 }
-.utilLabel {
+.arcCardCurrent {
+  border-color: var(--green);
+  background: var(--green-bg);
+}
+.arcTerm {
+  font-size: 11px;
   font-family: var(--font-mono);
-  color: var(--text-secondary);
-  font-size: 12px;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
 }
-.utilLabelCurrent {
-  color: var(--text-primary);
+.arcSvgWrap {
+  position: relative;
+  width: 96px;
+  height: 96px;
+}
+.arcNumber {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.arcPct {
+  font-size: 22px;
+  font-family: var(--font-mono);
   font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1;
+}
+.arcPctSymbol {
   font-size: 13px;
+  font-weight: 400;
+  color: var(--text-muted);
 }
-.utilBarTrack {
-  position: relative;
-  background: var(--gray-bg);
-  height: 28px;
-  border-radius: 4px;
-  overflow: visible;
-}
-.utilMidpointLine {
-  position: absolute;
-  left: 50%;
-  top: -6px;
-  bottom: -6px;
-  width: 2px;
-  background: var(--text-primary);
-  opacity: 0.45;
-  z-index: 1;
-  pointer-events: none;
-}
-.utilMidpointLine::after {
-  content: '50%';
-  position: absolute;
-  top: -16px;
-  left: 4px;
-  font-size: 10px;
-  font-family: var(--font-mono);
-  font-weight: 600;
-  color: var(--text-secondary);
-  white-space: nowrap;
-}
-.utilBar {
-  position: relative;
-  height: 100%;
-  border-radius: 4px 4px 4px 4px;
-  transition: width .35s ease;
-  z-index: 0;
-  box-shadow: 0 1px 0 rgba(0,0,0,0.05);
-}
-.utilBarCurrent {
-  outline: 2px solid var(--amber-text);
-  outline-offset: 1px;
-}
-.utilAxis {
-  display: grid;
-  grid-template-columns: 160px 1fr 110px;
-  gap: 14px;
-  padding: 4px 0 0;
+.arcMeta {
   font-size: 10px;
   font-family: var(--font-mono);
   color: var(--text-muted);
+  text-align: center;
+  line-height: 1.4;
 }
-.utilAxisTicks {
-  display: flex;
-  justify-content: space-between;
-  letter-spacing: 0.02em;
-}
-.utilValue {
-  font-family: var(--font-mono);
-  font-size: 14px;
+.arcMetaCurrent {
+  color: var(--green-text);
   font-weight: 600;
-  color: var(--text-primary);
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  white-space: nowrap;
 }
-.utilOutlierTag {
-  font-size: 9px;
-  font-family: var(--font-mono);
-  background: var(--red-bg);
-  color: var(--red-text);
-  padding: 2px 6px;
-  border-radius: 3px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: .03em;
+
+@media (max-width: 700px) {
+  .arcGrid { grid-template-columns: repeat(2, 1fr); }
 }
 
 .kpiGrid5 {
@@ -374,36 +341,83 @@
 .surpriseTable {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 10px;
 }
 .surpriseRow {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 6px 8px;
+  padding: 10px 12px;
   background: var(--gray-bg);
-  border-radius: 4px;
-  font-size: 12px;
+  border-radius: 6px;
 }
 .surpriseLabel {
-  flex: 1;
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 12px;
+  font-weight: 600;
   color: var(--text-primary);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  flex: 1;
 }
-.surpriseMeta {
-  display: flex;
-  gap: 12px;
-  font-family: var(--font-mono);
+.surpriseBadge {
   font-size: 10px;
-  color: var(--text-muted);
-}
-.surpriseScore {
-  color: var(--amber-text);
+  font-family: var(--font-mono);
   font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 20px;
+  flex-shrink: 0;
+}
+.surpriseBadgeHigh {
+  background: var(--red-bg);
+  color: var(--red-text);
+}
+.surpriseBadgeMed {
+  background: var(--amber-bg);
+  color: var(--amber-text);
+}
+.surpriseCompare {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin: 8px 0 6px;
+}
+.surpriseCompareRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.surpriseCompareLabel {
+  font-size: 10px;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  width: 60px;
+  text-align: right;
+  flex-shrink: 0;
+}
+.surpriseTrack {
+  flex: 1;
+  height: 6px;
+  background: var(--bg-tertiary);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.surpriseBar {
+  height: 6px;
+  border-radius: 3px;
+  transition: width .3s ease;
+}
+.surpriseCompareVal {
+  font-size: 11px;
+  font-family: var(--font-mono);
+  color: var(--text-secondary);
+  width: 56px;
+  flex-shrink: 0;
+}
+.surpriseExplanation {
+  font-size: 11px;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  font-style: italic;
+  line-height: 1.4;
 }
 
 @media (max-width: 900px) {

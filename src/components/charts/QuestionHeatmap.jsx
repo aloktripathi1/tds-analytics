@@ -25,6 +25,27 @@ function roundPct(value) {
   return Math.round(value);
 }
 
+function formatCellLabel(rawLabel, questionId) {
+  // Use the question's label field, but strip q- prefix and replace hyphens with spaces
+  const src = rawLabel || questionId || '';
+  return src.replace(/^q-/i, '').replace(/-/g, ' ');
+}
+
+function leftBorderWidth(completionRate) {
+  if (completionRate == null) return 0;
+  if (completionRate < 20) return 4;
+  if (completionRate < 40) return 3;
+  if (completionRate < 60) return 2;
+  return 0;
+}
+
+function leftBorderColor(completionRate, colors) {
+  if (completionRate < 20) return colors.border;
+  if (completionRate < 40) return colors.border;
+  if (completionRate < 60) return colors.border;
+  return 'transparent';
+}
+
 function tierLabel(completionRate) {
   if (completionRate == null || Number.isNaN(completionRate)) return null;
   if (completionRate >= 80) return 'accessible';
@@ -55,7 +76,7 @@ export default function QuestionHeatmap({ questions = [], columns = 4, mode = 'c
             && (rawPct ?? 0) === 0
             && (q.meanScore ?? 0) === 0;
           const colors = noSubmissions
-            ? { bg: '#3a3a3a', border: '#3a3a3a', text: '#cfcfcf' }
+            ? { bg: 'var(--bg-tertiary)', border: 'var(--border-strong)', text: 'var(--text-muted)' }
             : mode === 'anomaly' ? heatColor(100 - rawPct) : heatColor(rawPct);
           const pct = roundPct(rawPct);
           const mean = roundAvg(q.meanScore);
@@ -68,14 +89,22 @@ export default function QuestionHeatmap({ questions = [], columns = 4, mode = 'c
           const taxonomy = q.skillTaxonomy;
           const taxLabel = taxonomy ? TAXONOMY_LABELS[taxonomy] : '';
 
+          const borderW = noSubmissions ? 0 : leftBorderWidth(rawPct);
+          const borderC = noSubmissions ? 'transparent' : colors.border;
+
           return (
             <div
               key={q.id}
               className={styles.cell}
               title={tooltip}
-              style={{ background: colors.bg, '--cell-border': colors.border }}
+              style={{
+                background: colors.bg,
+                '--cell-border': colors.border,
+                borderLeft: borderW > 0 ? `${borderW}px solid ${borderC}` : undefined,
+              }}
             >
-              <div className={styles.label} style={{ color: colors.text }}>{q.label}</div>
+              {!noSubmissions && rawPct < 20 && <span className={styles.dangerDot} />}
+              <div className={styles.label} style={{ color: colors.text }}>{formatCellLabel(q.label, q.id)}</div>
               <div className={styles.pct} style={{ color: colors.text }}>{pct}%</div>
               <div className={styles.avg} style={{ color: colors.text }}>
                 {mode === 'anomaly' ? `${q.flaggedCount ?? 0} students` : `avg ${mean}/${max}`}

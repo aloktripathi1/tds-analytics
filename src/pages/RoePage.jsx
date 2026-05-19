@@ -5,111 +5,67 @@ import SectionCard      from '../components/shared/SectionCard.jsx';
 import MiniDistribution from '../components/shared/MiniDistribution.jsx';
 import ObsBox           from '../components/shared/ObsBox.jsx';
 import QuestionHeatmap  from '../components/charts/QuestionHeatmap.jsx';
+import SparklineDrift   from '../components/charts/SparklineDrift.jsx';
 import { averageQuestionGap, buildObservations } from '../utils/observations.js';
 import {
   classifyDistributionShape, computeSurpriseScores, computePartialCreditDepth,
-  computeMarkUtilization, computeAllCrossTermDrifts, computeSubmissionConcentration,
+  computeMarkUtilization, computeAllCrossTermDrifts,
   computeSkillTaxonomy, sanitizedMax, previousTermFor, ppComparison,
 } from '../utils/transforms.js';
 import { clean, formatScore, toFixed, toPercent } from '../utils/format-numbers.js';
 import styles from './RoePage.module.css';
 
-function SubmissionTimeline({ concentration }) {
-  const { buckets, total } = concentration;
-  const ceiling = Math.max(...buckets, 1) * 1.2;
-  return (
-    <div>
-      <div className={styles.timeline}>
-        {buckets.map((count, i) => {
-          const heightPct = (count / ceiling) * 100;
-          const isDeadline = i >= 10;
-          return (
-            <div key={i} className={styles.timelineBucket}>
-              <div
-                className={styles.timelineBar}
-                style={{
-                  height: `${heightPct}%`,
-                  background: isDeadline ? 'var(--amber)' : 'var(--blue)',
-                  opacity: count === 0 ? 0.15 : 0.9,
-                }}
-                title={`Bucket ${i + 1}: ~${Math.round(count)} submissions`}
-              />
-            </div>
-          );
-        })}
-      </div>
-      <div className={styles.timelineAxis}>
-        <span>window opens</span>
-        <span>mid-window</span>
-        <span className={styles.timelineAxisDeadline}>deadline →</span>
-      </div>
-      <div className={styles.timelineLegend}>
-        <span className={styles.timelineLegendItem}>
-          <span className={styles.timelineLegendSwatch} style={{ background: 'var(--blue)' }} />
-          earlier in window
-        </span>
-        <span className={styles.timelineLegendItem}>
-          <span className={styles.timelineLegendSwatch} style={{ background: 'var(--amber)' }} />
-          final sixth before deadline
-        </span>
-        {typeof total === 'number' && total > 0 && (
-          <span style={{ marginLeft: 'auto', color: 'var(--text-muted)' }}>
-            {total.toLocaleString()} submissions total
-          </span>
-        )}
-      </div>
-    </div>
-  );
-}
+// SVG arc progress card for cross-term ROE comparison
+const ARC_R = 36;
+const ARC_CX = 48;
+const ARC_CY = 48;
+const ARC_CIRCUMFERENCE = 2 * Math.PI * ARC_R;
 
-function driftDotColor(value) {
-  const v = clean(value);
-  if (v < 40) return 'var(--red)';
-  if (v <= 65) return 'var(--amber)';
+function arcColor(util) {
+  if (util < 35) return 'var(--red)';
+  if (util < 50) return 'var(--amber)';
   return 'var(--green)';
 }
 
-function CrossTermDriftChart({ drifts }) {
-  if (!drifts.length) return null;
+function ArcCard({ term, utilization, students, questionCount, isCurrent }) {
+  const clampedUtil = Math.min(100, Math.max(0, utilization));
+  const filled = (clampedUtil / 100) * ARC_CIRCUMFERENCE;
+  const stroke = arcColor(utilization);
+
   return (
-    <div className={styles.driftTable}>
-      {drifts.slice(0, 10).map(d => {
-        const terms = Object.keys(d.byTerm).sort();
-        const driftValue = clean(d.drift);
-        const isNearZero = Math.abs(driftValue) < 2;
-        const badgeColor = isNearZero
-          ? 'var(--text-muted)'
-          : driftValue > 0 ? 'var(--green-text)' : 'var(--red-text)';
-        const sign = isNearZero ? '~' : driftValue > 0 ? '+' : '';
-        const value = isNearZero ? '0' : toFixed(Math.abs(driftValue), 0);
-        return (
-          <div key={d.questionId} className={styles.driftRow}>
-            <div className={styles.driftLabel}>{d.questionId.replace('q-', '').replace(/-/g, ' ')}</div>
-            <div className={styles.driftTrack}>
-              <span className={styles.driftConnector} />
-              {terms.map((t, i) => {
-                const pos = terms.length === 1 ? 50 : (i / (terms.length - 1)) * 100;
-                const v = d.byTerm[t];
-                return (
-                  <span
-                    key={t}
-                    className={styles.driftStop}
-                    style={{ left: `${pos}%` }}
-                    title={`${t}: ${toFixed(v, 0)}%`}
-                  >
-                    <span className={styles.driftStopValue}>{toFixed(v, 0)}%</span>
-                    <span className={styles.driftStopDot} style={{ background: driftDotColor(v) }} />
-                    <span className={styles.driftStopLabel}>{t}</span>
-                  </span>
-                );
-              })}
-            </div>
-            <div className={styles.driftBadge} style={{ color: badgeColor }}>
-              {driftValue < 0 ? `-${value}` : `${sign}${value}`}pp
-            </div>
-          </div>
-        );
-      })}
+    <div className={`${styles.arcCard}${isCurrent ? ' ' + styles.arcCardCurrent : ''}`}>
+      <div className={styles.arcTerm}>{term}</div>
+      <div className={styles.arcSvgWrap}>
+        <svg width="96" height="96" viewBox="0 0 96 96" style={{ display: 'block' }}>
+          {/* Track */}
+          <circle
+            cx={ARC_CX} cy={ARC_CY} r={ARC_R}
+            fill="none"
+            stroke="var(--border-strong)"
+            strokeWidth="7"
+          />
+          {/* Progress arc — starts at 12 o'clock */}
+          <circle
+            cx={ARC_CX} cy={ARC_CY} r={ARC_R}
+            fill="none"
+            stroke={stroke}
+            strokeWidth="7"
+            strokeDasharray={`${filled} ${ARC_CIRCUMFERENCE - filled}`}
+            strokeDashoffset={ARC_CIRCUMFERENCE / 4}
+            strokeLinecap="round"
+          />
+        </svg>
+        <div className={styles.arcNumber}>
+          <span className={styles.arcPct}>
+            {utilization.toFixed(0)}<span className={styles.arcPctSymbol}>%</span>
+          </span>
+        </div>
+      </div>
+      <div className={`${styles.arcMeta}${isCurrent ? ' ' + styles.arcMetaCurrent : ''}`}>
+        {students > 0 && <div>{students.toLocaleString()} students</div>}
+        {questionCount > 0 && <div>{questionCount} questions</div>}
+        {isCurrent && <div>← this term</div>}
+      </div>
     </div>
   );
 }
@@ -130,7 +86,6 @@ export default function RoePage() {
   const questions = questionsWithSurprise.map(q => ({ ...q, skillTaxonomy: computeSkillTaxonomy(q) }));
   const distShape = dist ? classifyDistributionShape(dist.mean, dist.median, dist.stdDev, dist.buckets) : null;
   const utilization = computeMarkUtilization(questions, meta.uniqueStudents ?? meta.validRecords);
-  const concentration = computeSubmissionConcentration(roe.timing);
 
   const allRoeTermsData = Object.entries(data.byAssignment ?? {})
     .filter(([, assignments]) => assignments.ROE)
@@ -159,7 +114,6 @@ export default function RoePage() {
     timing: roe.timing,
     maxPossible: maxP,
     drifts: multiTermDrifts,
-    concentration,
     averageGap: averageQuestionGap(data.byAssignment),
     includeSkillTaxonomy: true,
   });
@@ -204,7 +158,7 @@ export default function RoePage() {
       )}
 
       <div className={styles.kpiGrid5}>
-        <KpiCard label="Unique students" value={meta.uniqueStudents ?? meta.validRecords} sub="best submission per student" />
+        <KpiCard label="Students" value={meta.uniqueStudents ?? meta.validRecords} sub="best submission per student" />
         <KpiCard
           label="Mean score"
           value={`${toFixed(dist.mean, 1)}/${formatScore(maxP)}`}
@@ -234,65 +188,40 @@ export default function RoePage() {
       {crossTermUtil.length > 1 && (
         <SectionCard
           title="Cross-term ROE difficulty"
-          sub="marks utilization across all terms — same evaluation, very different difficulty"
+          sub="marks utilization — same evaluation, very different difficulty across terms"
         >
-          <div className={styles.crossTermUtil}>
+          <div className={styles.arcGrid}>
             {crossTermUtil.map(row => {
-              const isCurrent = row.term === term;
-              const isOutlier = outlier && row.term === outlier.term;
-              const width = Math.max(0, Math.min(100, row.utilization));
-              const fill = isOutlier
-                ? 'var(--red)'
-                : isCurrent ? 'var(--amber-text)' : '#9d9b94';
+              const roeData = data.byAssignment?.[row.term]?.ROE;
+              const students = roeData?.meta?.uniqueStudents ?? roeData?.meta?.validRecords ?? 0;
+              const questionCount = computePartialCreditDepth(roeData?.questions ?? []).length;
               return (
-                <div key={row.term} className={styles.utilRow}>
-                  <div className={`${styles.utilLabel}${isCurrent ? ' ' + styles.utilLabelCurrent : ''}`}>
-                    {row.term}{isCurrent ? ' (this term)' : ''}
-                  </div>
-                  <div className={styles.utilBarTrack}>
-                    <span className={styles.utilMidpointLine} />
-                    <div
-                      className={`${styles.utilBar}${isCurrent ? ' ' + styles.utilBarCurrent : ''}`}
-                      style={{ width: `${width}%`, background: fill }}
-                    />
-                  </div>
-                  <div className={styles.utilValue}>
-                    {row.utilization.toFixed(1)}%
-                    {isOutlier && <span className={styles.utilOutlierTag}>outlier</span>}
-                  </div>
-                </div>
+                <ArcCard
+                  key={row.term}
+                  term={row.term}
+                  utilization={row.utilization}
+                  students={students}
+                  questionCount={questionCount}
+                  isCurrent={row.term === term}
+                />
               );
             })}
-            <div className={styles.utilAxis}>
-              <span />
-              <span className={styles.utilAxisTicks}>
-                <span>0%</span>
-                <span>25%</span>
-                <span>50%</span>
-                <span>75%</span>
-                <span>100%</span>
-              </span>
-              <span />
-            </div>
           </div>
         </SectionCard>
       )}
 
       {multiTermDrifts.length > 0 && (
         <SectionCard title="Cross-term question drift" sub="questions appearing in multiple terms: completion rate over time">
-          <CrossTermDriftChart drifts={multiTermDrifts} />
+          <SparklineDrift drifts={multiTermDrifts} />
         </SectionCard>
       )}
 
       <SectionCard title="Score distribution" sub="submission counts per score bracket">
-        {distShape && (
-          <div className={styles.shapeTags}>
-            <span className={styles.shapeTag}>{distShape.bimodal ? 'bimodal' : distShape.shape}</span>
-            {distShape.bottomPct > 40 && <span className={styles.shapeTagWarn}>bottom-heavy</span>}
-            {distShape.topPct > 40 && <span className={styles.shapeTagGood}>top-heavy</span>}
-          </div>
-        )}
-        <MiniDistribution buckets={dist.buckets} />
+        <MiniDistribution
+          buckets={dist.buckets}
+          distShape={distShape}
+          medianPct={maxP > 0 ? (clean(dist.median ?? 0) / maxP) * 100 : null}
+        />
         {(dist.buckets?.['80_100'] ?? 0) === 0 && (
           <p className={styles.distNote}>No students scored in the top 20% of the score range in this assignment.</p>
         )}
@@ -312,29 +241,52 @@ export default function RoePage() {
         </div>
       </SectionCard>
 
-      <SectionCard
-        title="Submission activity across exam window"
-        sub={`${toFixed(concentration.deadlineConcentration, 0)}% of submissions in final sixth; amber = deadline buckets`}
-      >
-        <SubmissionTimeline concentration={concentration} />
-      </SectionCard>
 
-      {questions.some(q => q.surpriseFlag) && (
-        <SectionCard title="Surprise factor" sub="questions where marks weight and completion rate diverge">
-          <div className={styles.surpriseTable}>
-            {questions.filter(q => q.surpriseFlag).map(q => (
-              <div key={q.id} className={styles.surpriseRow}>
-                <div className={styles.surpriseLabel}>{q.label}</div>
-                <div className={styles.surpriseMeta}>
-                  <span>{formatScore(q.maxPossible ?? 0)} marks</span>
-                  <span>{toFixed(q.completionRate ?? 0, 0)}% completion</span>
-                  <span className={styles.surpriseScore}>surprise score: {q.surpriseScore}</span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </SectionCard>
-      )}
+      {(() => {
+        const surprisingQs = questions.filter(q => q.surpriseFlag && q.surpriseScore >= 5);
+        if (!surprisingQs.length) return null;
+        const maxMarks = Math.max(...questions.map(q => q.maxPossible ?? 0), 1);
+        return (
+          <SectionCard title="Surprise factor" sub="questions where marks weight and completion rate diverge">
+            <div className={styles.surpriseTable}>
+              {surprisingQs.map(q => {
+                const marksW = ((q.maxPossible ?? 0) / maxMarks) * 100;
+                const compW = clean(q.completionRate ?? 0);
+                const isHard = compW < marksW;
+                const label = q.surpriseScore >= 10 ? 'very unexpected' : 'somewhat unexpected';
+                const explanation = isHard
+                  ? `Worth ${formatScore(q.maxPossible ?? 0)} marks but only ${toFixed(compW, 0)}% of students completed it — harder than its weight suggests`
+                  : `Worth ${formatScore(q.maxPossible ?? 0)} marks and ${toFixed(compW, 0)}% completed it — easier than its weight suggests`;
+                return (
+                  <div key={q.id} className={styles.surpriseRow}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 6 }}>
+                      <div className={styles.surpriseLabel}>{q.label?.replace(/^q-/i, '').replace(/-/g, ' ')}</div>
+                      <span className={`${styles.surpriseBadge} ${q.surpriseScore >= 10 ? styles.surpriseBadgeHigh : styles.surpriseBadgeMed}`}>{label}</span>
+                    </div>
+                    <div className={styles.surpriseCompare}>
+                      <div className={styles.surpriseCompareRow}>
+                        <span className={styles.surpriseCompareLabel}>by weight</span>
+                        <div className={styles.surpriseTrack}>
+                          <div className={styles.surpriseBar} style={{ width: `${marksW}%`, background: 'var(--blue)' }} />
+                        </div>
+                        <span className={styles.surpriseCompareVal}>{formatScore(q.maxPossible ?? 0)} marks</span>
+                      </div>
+                      <div className={styles.surpriseCompareRow}>
+                        <span className={styles.surpriseCompareLabel}>completion</span>
+                        <div className={styles.surpriseTrack}>
+                          <div className={styles.surpriseBar} style={{ width: `${compW}%`, background: isHard ? 'var(--red)' : 'var(--green)' }} />
+                        </div>
+                        <span className={styles.surpriseCompareVal}>{toFixed(compW, 0)}%</span>
+                      </div>
+                    </div>
+                    <div className={styles.surpriseExplanation}>{explanation}</div>
+                  </div>
+                );
+              })}
+            </div>
+          </SectionCard>
+        );
+      })()}
 
       <SectionCard title="Observed patterns" sub="what the data actually shows">
         {observations.length

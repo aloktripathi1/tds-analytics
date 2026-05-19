@@ -92,6 +92,20 @@
   color: var(--text-primary);
 }
 
+.timingUnavailable {
+  font-size: 12px;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  margin: 12px 0 0;
+  font-style: italic;
+}
+.timingScoreDiff {
+  margin-top: 8px;
+  font-size: 12px;
+  font-family: var(--font-mono);
+  color: var(--text-secondary);
+  font-style: italic;
+}
 .timingCells {
   display: flex;
   gap: 8px;
@@ -107,16 +121,19 @@
   font-family: var(--font-mono);
   margin-bottom: 4px;
   font-weight: 500;
+  color: var(--text-secondary);
 }
 .timingCount {
   font-size: 18px;
   font-weight: 500;
   line-height: 1;
+  color: var(--text-primary);
 }
 .timingAvg {
   font-size: 10px;
   margin-top: 3px;
   opacity: .8;
+  color: var(--text-secondary);
 }
 
 .shapeTags {
@@ -299,36 +316,83 @@
 .surpriseTable {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 10px;
 }
 .surpriseRow {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 6px 8px;
+  padding: 10px 12px;
   background: var(--gray-bg);
-  border-radius: 4px;
-  font-size: 12px;
+  border-radius: 6px;
 }
 .surpriseLabel {
-  flex: 1;
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 12px;
+  font-weight: 600;
   color: var(--text-primary);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  flex: 1;
 }
-.surpriseMeta {
-  display: flex;
-  gap: 12px;
-  font-family: var(--font-mono);
+.surpriseBadge {
   font-size: 10px;
-  color: var(--text-muted);
-}
-.surpriseScore {
-  color: var(--amber-text);
+  font-family: var(--font-mono);
   font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 20px;
+  flex-shrink: 0;
+}
+.surpriseBadgeHigh {
+  background: var(--red-bg);
+  color: var(--red-text);
+}
+.surpriseBadgeMed {
+  background: var(--amber-bg);
+  color: var(--amber-text);
+}
+.surpriseCompare {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin: 8px 0 6px;
+}
+.surpriseCompareRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.surpriseCompareLabel {
+  font-size: 10px;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  width: 60px;
+  text-align: right;
+  flex-shrink: 0;
+}
+.surpriseTrack {
+  flex: 1;
+  height: 6px;
+  background: var(--bg-tertiary);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.surpriseBar {
+  height: 6px;
+  border-radius: 3px;
+  transition: width .3s ease;
+}
+.surpriseCompareVal {
+  font-size: 11px;
+  font-family: var(--font-mono);
+  color: var(--text-secondary);
+  width: 56px;
+  flex-shrink: 0;
+}
+.surpriseExplanation {
+  font-size: 11px;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  font-style: italic;
+  line-height: 1.4;
 }
 
 @media (max-width: 900px) {

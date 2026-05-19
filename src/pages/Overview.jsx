@@ -60,13 +60,16 @@ export default function Overview() {
         title="Assignment difficulty"
         sub="normalised mean score — sorted hardest → easiest"
       >
-        {difficulty.map(d => (
+        {difficulty.map((d, i) => (
           <BarRow
             key={d.assignment}
             label={d.assignment}
             value={d.normalizedMean * 100}
             color={difficultyColor(d.normalizedMean)}
             displayValue={toPercent(d.normalizedMean * 100, 0)}
+            postTerm={d.postTerm ?? false}
+            isHardest={i === 0}
+            referenceAt={50}
           />
         ))}
       </SectionCard>
@@ -87,15 +90,21 @@ export default function Overview() {
           title="Student retention"
           sub="% of largest cohort submitting each assignment"
         >
-          {retention.map(r => (
-            <BarRow
-              key={r.assignment}
-              label={r.postTerm ? `${r.assignment}*` : r.assignment}
-              value={r.pct}
-              color={retentionColor(r.pct)}
-              displayValue={`${r.pct}%`}
-            />
-          ))}
+          {retention.map((r, i) => {
+            const drop = i > 0 ? r.pct - retention[i - 1].pct : null;
+            return (
+              <BarRow
+                key={r.assignment}
+                label={r.postTerm ? `${r.assignment}*` : r.assignment}
+                value={r.pct}
+                color={retentionColor(r.pct)}
+                displayValue={drop != null && drop < -15
+                  ? `${r.pct}% ▼${Math.abs(Math.round(drop))}pp`
+                  : `${r.pct}%`}
+                retentionRefAt={80}
+              />
+            );
+          })}
           {hasPostTermRetention && (
             <div style={{
               marginTop: 6,
