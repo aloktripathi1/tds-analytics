@@ -60,7 +60,7 @@
     },
     {
       "assignment": "GA2",
-      "normalizedMean": 0.528,
+      "normalizedMean": 0.53,
       "postTerm": false
     },
     {
@@ -112,7 +112,7 @@
     },
     {
       "assignment": "GA2",
-      "normalizedMean": 0.528,
+      "normalizedMean": 0.53,
       "postTerm": false
     },
     {
@@ -186,5 +186,6 @@
     "P1": 1.5,
     "P2": 0,
     "ROE": 0.5
-  }
+  },
+  "post_term_note": "GA7 and GA8 were added after the term ended. Their completion rates reflect availability, not difficulty. Exclude from difficulty comparisons."
 }
