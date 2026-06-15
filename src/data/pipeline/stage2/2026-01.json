@@ -3,7 +3,7 @@
   "retention": [
     {
       "assignment": "GA1",
-      "pct": 100,
+      "pct": 99.9,
       "postTerm": false
     },
     {
@@ -65,7 +65,7 @@
     },
     {
       "assignment": "GA1",
-      "normalizedMean": 0.6,
+      "normalizedMean": 0.59,
       "postTerm": false
     },
     {
@@ -117,7 +117,7 @@
     },
     {
       "assignment": "GA1",
-      "normalizedMean": 0.6,
+      "normalizedMean": 0.59,
       "postTerm": false
     },
     {
@@ -161,7 +161,7 @@
     "20_40": 588,
     "40_60": 778,
     "60_80": 893,
-    "80_100": 3684
+    "80_100": 3683
   },
   "anomaly_summary_by_assignment": {
     "GA1": 0,
